@@ -13,6 +13,13 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
+    .header-title {
+      color: #00adb5; 
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: bold;
+    }
+
     .card {
       border-radius: 1rem;
       overflow: hidden;
@@ -42,23 +49,43 @@
       color: #000000;
       border: none;
     }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: block;
+      border: 3px solid #00adb5;
+    }
   </style>
 </head>
 
 <body>
 
-  
   <div class="container py-3 text-end">
     <button class="btn btn-light-mode" id="theme-toggle">Light Mode</button>
   </div>
 
-
-  <div class="container py-3">
-    <button class="btn btn-secondary" onclick="window.history.back()">Back</button>
-  </div>
+  <h1 class="header-title">Profile</h1>
 
   <div class="container py-5">
-    <h1 class="text-center mb-4">John Paul D. Godoy</h1>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6">
+        <div class="card shadow text-center">
+          <div class="card-body">
+            <img src="Profile pics/profile2.jpg" alt="Profile Picture" class="profile-img mb-3">
+            <h5 class="card-title" style="color: white;">John Paul D. Godoy</h5>
+            <p class="card-text" style="color: white;">Hi i am a student in PUP Sto.Tomas and here are my hobbies</p>
+            <p class="card-text" style="color: white;">Anime • K-Pop • Gaming</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="text-center mb-4">Projects</h1>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
@@ -68,20 +95,62 @@
           <div class="card-body text-white">
             <h5 class="card-title">A04</h5>
             <p class="card-text">PS5 Showcase</p>
-            <a href="https://github.com/jpgodoy04/jpgodoy04.github.io/tree/main/A04" class="btn btn-primary btn-custom">GitHub</a>
-            <a href="http://127.0.0.1:5500/A04/A04.html" class="btn btn-primary btn-custom">Site</a>
+            <a href="A04/index.html" class="btn btn-primary btn-custom">Go to Site</a>
           </div>
         </div>
       </div>
 
       <div class="col">
         <div class="card h-100 shadow">
-          <img src="https://via.placeholder.com/400x150" class="card-img-top" alt="Lesson Preview">
+          <img src="A05/japan bg.jpg" class="card-img-top" alt="A05 Preview">
           <div class="card-body text-white">
             <h5 class="card-title">A05</h5>
+            <p class="card-text">Japan Showcase</p>
+            <a href="A05/index.html" class="btn btn-primary btn-custom">Go to Site</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow">
+          <img src="A06/photos/thumba06.webp" class="card-img-top" alt="A06 Preview">
+          <div class="card-body text-white">
+            <h5 class="card-title">A06</h5>
+            <p class="card-text">Aespa & LSRFM</p>
+            <a href="A06/index.html" class="btn btn-primary btn-custom">Go to Site</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow">
+          <img src="https://via.placeholder.com/400x150" class="card-img-top" alt="A07 Preview">
+          <div class="card-body text-white">
+            <h5 class="card-title">A07</h5>
             <p class="card-text"></p>
-            <a href="#" class="btn btn-primary btn-custom">GitHub</a>
-            <a href="#" class="btn btn-primary btn-custom">Site</a>
+            <a href="#" class="btn btn-primary btn-custom">Go to Site</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow">
+          <img src="https://via.placeholder.com/400x150" class="card-img-top" alt="A08 Preview">
+          <div class="card-body text-white">
+            <h5 class="card-title">A08</h5>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary btn-custom">Go to Site</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow">
+          <img src="https://via.placeholder.com/400x150" class="card-img-top" alt="A09 Preview">
+          <div class="card-body text-white">
+            <h5 class="card-title">A09</h5>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary btn-custom">Go to Site</a>
           </div>
         </div>
       </div>
@@ -92,14 +161,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Light/Dark mode toggle
     const themeToggleButton = document.getElementById('theme-toggle');
     const body = document.body;
 
     themeToggleButton.addEventListener('click', () => {
       body.classList.toggle('light-theme');
 
-      // Toggle the button text and body background color
       if (body.classList.contains('light-theme')) {
         body.style.backgroundColor = '#ffffff';
         body.style.color = '#000000';
