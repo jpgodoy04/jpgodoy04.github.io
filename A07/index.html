@@ -68,7 +68,7 @@
     <div class="container d-flex align-items-center justify-content-between">
       <img src="valo logo.webp" alt="Valorant Logo" style="max-width: 20%; margin-right: 15px;">
       <div class="h1 text-white mb-0 flex-grow-1">Valorant Agents</div>
-      <a href="../index.html" class="btn btn-primary" style="color: aqua;">Back to Profile</a>
+      <a href="../index.html" class="btn btn-primary" style="color: rgb(242, 245, 245);">Back to Profile</a>
     </div>
   </div>
 
@@ -120,56 +120,51 @@
     };
 
     const renderAgents = (agents) => {
-      const container = document.getElementById("container");
-      container.innerHTML = "";
+  const container = document.getElementById("container");
+  container.innerHTML = "";
 
-      agents.forEach((agent, index) => {
-        const role = agent.role?.displayName || 'Unknown';
-        const roleClass = role.replace(/\s+/g, '');
+  agents.forEach((agent, index) => {
+    const role = agent.role?.displayName || 'Unknown';
+    const roleClass = role.replace(/\s+/g, '');
 
-        container.innerHTML += `
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card my-3 text-center p-4 rounded-5 shadow mx-auto agent-card" data-id="${agent.uuid}">
-              <div class="picture-container mx-auto">
-                <img src="${agent.displayIcon}" alt="${agent.displayName}">
-              </div>
-              <div class="mt-4 h5">${agent.displayName}</div>
-              ${agent.role ? `<div class="mt-2 role-badge ${roleClass}">${role}</div>` : ''}
-            </div>
+    container.innerHTML += `
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card my-3 text-center p-4 rounded-5 shadow mx-auto">
+          <div class="picture-container mx-auto">
+            <img src="${agent.displayIcon}" alt="${agent.displayName}">
           </div>
-        `;
-      });
-
-      container.innerHTML += `
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card my-3 text-center p-4 rounded-5 shadow mx-auto random-spray-card" style="background-color: #292929;">
-            <div class="picture-container mx-auto">
-              <img src="spray img.webp" alt="Random Spray"> 
-            </div>
-            <div class="mt-4 h5">Click to get sprayed</div>
-          </div>
+          <div class="mt-4 h5">${agent.displayName}</div>
+          ${agent.role ? `<div class="mt-2 role-badge ${roleClass}">${role}</div>` : ''}
+          <a href="view.html?agentId=${agent.uuid}" class="btn btn-outline-info mt-3">Show Agent Info</a>
         </div>
-      `;
+      </div>
+    `;
+  });
 
-      document.querySelectorAll('.agent-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const agentId = card.getAttribute('data-id');
-          window.location.href = `view.html?agentId=${agentId}`;
-        });
-      });
+  container.innerHTML += `
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card my-3 text-center p-4 rounded-5 shadow mx-auto random-spray-card" style="background-color: #292929;">
+        <div class="picture-container mx-auto">
+          <img src="spray img.webp" alt="Random Spray"> 
+        </div>
+        <div class="mt-4 h5">Click to get sprayed</div>
+      </div>
+    </div>
+  `;
 
-      document.querySelector('.random-spray-card').addEventListener('click', () => {
-        if (sprayData.length > 0) {
-          const randomSpray = sprayData[Math.floor(Math.random() * sprayData.length)];
-          const sprayImage = document.getElementById("sprayImage");
-          sprayImage.src = randomSpray.fullTransparentIcon;
-          sprayImage.alt = randomSpray.displayName;
-          new bootstrap.Modal(document.getElementById('sprayModal')).show();
-        } else {
-          console.log("No sprays available.");
-        }
-      });
-    };
+  document.querySelector('.random-spray-card').addEventListener('click', () => {
+    if (sprayData.length > 0) {
+      const randomSpray = sprayData[Math.floor(Math.random() * sprayData.length)];
+      const sprayImage = document.getElementById("sprayImage");
+      sprayImage.src = randomSpray.fullTransparentIcon;
+      sprayImage.alt = randomSpray.displayName;
+      new bootstrap.Modal(document.getElementById('sprayModal')).show();
+    } else {
+      console.log("No sprays available.");
+    }
+  });
+};
+
 
     document.getElementById("searchInput").addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
