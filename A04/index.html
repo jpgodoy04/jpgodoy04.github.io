@@ -1,129 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PS5 Showcase</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PS5 Showcase</title>
+  <link rel="icon" href="Me/chaewon.jpg" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: white;
+    }
+
+    .glass-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(12px);
+      background: rgba(30, 30, 30, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem 2rem;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .glass-header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+      text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+      animation: floatUp 2s ease forwards, floatLoop 4s ease-in-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatLoop {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .btn-back {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1f1f1f 40%, #000 100%);
+      color: #00bfff;
+      border: 2px solid #00bfff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00bfff55;
+      z-index: 1000;
+    }
+
+    .btn-back:hover {
+      background-color: #00bfff;
+      color: #000;
+      box-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff;
+      transform: scale(1.1);
+    }
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-areas:
+        "a a b"
+        "c d b"
+        "e f g"
+        "h i g";
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .bento-grid {
+        grid-template-areas:
+          "a"
+          "b"
+          "c"
+          "d"
+          "e"
+          "f"
+          "g"
+          "h"
+          "i";
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bento-card {
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      background: #1a1a1a;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+
+    .bento-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0, 123, 255, 0.3);
+    }
+
+    .bento-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .bento-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Vertical card override */
+    .vertical-card img {
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+      background-color: #111;
+    }
+
+    .card-body {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #fdd835;
+    }
+
+    .a {
+      grid-area: a;
+    }
+
+    .b {
+      grid-area: b;
+    }
+
+    .c {
+      grid-area: c;
+    }
+
+    .d {
+      grid-area: d;
+    }
+
+    .e {
+      grid-area: e;
+    }
+
+    .f {
+      grid-area: f;
+    }
+
+    .g {
+      grid-area: g;
+    }
+
+    .h {
+      grid-area: h;
+    }
+
+    .i {
+      grid-area: i;
+    }
+  </style>
 </head>
-<style>
-    .offcanvas-header,
-.offcanvas-body {
-	background-color: #111;
-	color: white;
-}
-
-.offcanvas-body a {
-	color: #fdd835;
-	text-decoration: none;
-}
-
-.navbar-toggler {
-	position: fixed;
-	top: 1rem;
-	left: 1rem;
-	z-index: 9999;
-}
-</style>
 
 <body>
-    
-    <div class="container-fluid my-2 p-2" style="background-color: rgb(82, 43, 237  );">
-        <a href="../index.html" class = btn btn-primary m-3 style="color: aqua;">Back to Profile</a>
-        <h1 class="text-center my-2 style color text-white">PS5 SHOWCASE</h1>
-    </div>
-    <div class="container-fluid my-4" style="background-color: rgb(82, 43, 237);">
-        <div class="row">
 
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/ps5.jpg" class="card-img-top" alt="PS5 Console">
-                    <div class="card-body">
-                        <p class="card-text text-center">PS5 Console</p>
-                    </div>
-                </div>
-            </div>
+  <div class="glass-header">
+    <a href="../index.html" class="btn-back" title="Back">&#x23FB;</a>
+    <h1>PS5 Showcase</h1>
+  </div>
 
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/control dualsense.jpg" class="card-img-top" alt="Dualsense">
-                    <div class="card-body">
-                        <p class="card-text text-center">Dualsense</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/games.webp" class="card-img-top" alt="Popular Games">
-                    <div class="card-body">
-                        <p class="card-text text-center">Popular Games</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/earphone.webp" class="card-img-top" alt="Playstation Earbuds">
-                    <div class="card-body">
-                        <p class="card-text text-center">Playstation Earbuds</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/games2.webp" class="card-img-top" alt="High Quality Gaming">
-                    <div class="card-body">
-                        <p class="card-text text-center">High Quality Gaming</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/specs.jpg" class="card-img-top" alt="PS5 specs">
-                    <div class="card-body">
-                        <p class="card-text text-center">PS5 specs</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/ps5 pro.jpg" class="card-img-top" alt="PS5 Pro">
-                    <div class="card-body">
-                        <p class="card-text text-center">PS5 Pro</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/color controller.webp" class="card-img-top" alt="Different Variants of Controllers">
-                    <div class="card-body">
-                        <p class="card-text text-center">Different Variants of Controllers</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card shadow rounded-5 overflow-hidden">
-                    <img src="A04 pics/ps5 bg.webp " class="card-img-top" alt="PS5 Console">
-                    <div class="card-body">
-                        <p class="card-text text-center">PS5 Console</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+  <div class="bento-grid">
+    <div class="bento-card a">
+      <img src="A04 pics/ps5-logo.png" alt="PS5 Console">
+      <div class="card-body">
+        <p class="card-text">PS5 Logo</p>
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <div class="bento-card b vertical-card">
+      <img src="A04 pics/new.png" alt="Dualsense">
+      <div class="card-body">
+        <p class="card-text">Dualsense</p>
+      </div>
+    </div>
+
+    <div class="bento-card c">
+      <img src="A04 pics/games.webp" alt="Popular Games">
+      <div class="card-body">
+        <p class="card-text">Popular Games</p>
+      </div>
+    </div>
+
+    <div class="bento-card d">
+      <img src="A04 pics/earphone.webp" alt="Playstation Earbuds">
+      <div class="card-body">
+        <p class="card-text">Playstation Earbuds</p>
+      </div>
+    </div>
+
+    <div class="bento-card e">
+      <img src="A04 pics/games2.webp" alt="High Quality Gaming">
+      <div class="card-body">
+        <p class="card-text">High Quality Gaming</p>
+      </div>
+    </div>
+
+    <div class="bento-card f">
+      <img src="A04 pics/specs.jpg" alt="PS5 Specs">
+      <div class="card-body">
+        <p class="card-text">PS5 Specs</p>
+      </div>
+    </div>
+
+    <div class="bento-card g vertical-card">
+      <img src="A04 pics/ps.webp" alt="PS5 Pro">
+      <div class="card-body">
+        <p class="card-text">PS5 Pro</p>
+      </div>
+    </div>
+
+    <div class="bento-card h">
+      <img src="A04 pics/color controller.webp" alt="Controller Variants">
+      <div class="card-body">
+        <p class="card-text">Controller Variants</p>
+      </div>
+    </div>
+
+    <div class="bento-card i">
+      <img src="A04 pics/ps5 bg.webp" alt="PS5 Console">
+      <div class="card-body">
+        <p class="card-text">PS5 Console</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

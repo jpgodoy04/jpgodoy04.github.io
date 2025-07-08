@@ -21,7 +21,7 @@
       --transition: 0.4s ease;
     }
 
-    
+
     body {
       background-color: var(--dark-bg);
       color: #fff;
@@ -53,7 +53,7 @@
       background-color: #ddd;
     }
 
-    body.light-theme nav.navbar .nav-link  {
+    body.light-theme nav.navbar .nav-link {
       color: var(--light-text);
     }
 
@@ -179,6 +179,7 @@
     .social-icons a {
       color: #ffffff;
       margin: 0 10px;
+      text-decoration: none;
       font-size: 1.6rem;
       transition: color 0.3s ease, transform 0.3s ease;
     }
@@ -258,6 +259,18 @@
       text-align: center;
     }
 
+    .dropdown-menu-dark .dropdown-item {
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .dropdown-menu-dark .dropdown-item:hover {
+      background-color: var(--main-color);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+
     @keyframes float {
       0% {
         transform: translateY(0);
@@ -301,6 +314,28 @@
       </div>
     </div>
   </nav>
+
+  <div class="container my-4 text-center footer-animate">
+    <label for="music-selector" class="form-label text-white fs-5 fw-bold mb-3"> Choose Your Background Music</label>
+    <div class="dropdown d-inline-block">
+      <button class="btn btn-custom dropdown-toggle px-4 py-2" type="button" id="musicDropdown"
+        data-bs-toggle="dropdown" aria-expanded="false">
+         Select Track
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="musicDropdown">
+        <li><a class="dropdown-item music-option" data-src="music/enhypen.mp3" href="#">Enhypen</a></li>
+        <li><a class="dropdown-item music-option" data-src="music/saja.mp3" href="#">Le Sserafim</a></li>
+        <li><a class="dropdown-item music-option" data-src="music/sajaa.mp3" href="#">Saja Boys</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <audio id="bg-music" autoplay loop>
+  <source src="music/enhypen.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+
 
   <div class="container py-3 text-end">
     <button class="btn btn-light-mode" id="theme-toggle">Light Mode</button>
@@ -453,7 +488,8 @@
       </div>
     </div>
     </div>
-    <p class="text-center fs-5 mb-3 footer-animate" id="about-section">Minasan, Konichiwa! <strong>"I'm an aspiring web developer
+    <p class="text-center fs-5 mb-3 footer-animate" id="about-section">Minasan, Konichiwa! <strong>"I'm an aspiring web
+        developer
         passionate about creating engaging and responsive websites. Please look forward to my future works and endeavors
         as I grow and explore the world of web development."</strong></p>
     </div>
@@ -495,8 +531,21 @@
       });
     }
 
-    window.addEventListener('scroll', onScroll);
-    onScroll();
+    const bgMusic = document.getElementById('bg-music');
+    const musicOptions = document.querySelectorAll('.music-option');
+    const dropdownToggle = document.getElementById('musicDropdown');
+
+    musicOptions.forEach(option => {
+      option.addEventListener('click', function (e) {
+        e.preventDefault();
+        const selectedTrack = this.getAttribute('data-src');
+        const selectedName = this.textContent;
+        bgMusic.src = selectedTrack;
+        bgMusic.play();
+        dropdownToggle.textContent = ` ${selectedName}`;
+      });
+    });
+
   </script>
 </body>
 
