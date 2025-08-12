@@ -19,3 +19,5 @@ Currently exploring web development and building cool projects as I grow my skil
 - **Portfolio**: [https://jpgodoy04.github.io/](https://jpgodoy04.github.io/)
 
 ![GIF 3](https://media.giphy.com/media/2zUn8hAwJwG4abiS0p/giphy.gif)
+
+[![JP's GitHub stats](https://github-readme-stats.vercel.app/api?username=jpgodoy04)](https://github.com/anuraghazra/github-readme-stats)
