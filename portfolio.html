@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ChaeDev | JP Godoy Portfolio</title>
+  <link rel="icon"
+    href="Me/chaewon.jpg"
+    type="image/png"
+    onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto+Mono&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --main-color: #9370DB; 
+      --dark-bg: #1c1f26;
+      --card-bg: #2a2d34;
+      --light-bg: #f2f0f8;
+      --light-text: #4a235a;
+      --light-card-bg: #ffffff;
+      --transition: 0.4s ease;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: #fff;
+      font-family: 'Roboto Mono', monospace;
+      transition: background-color var(--transition), color var(--transition);
+      scroll-behavior: smooth;
+    }
+
+    h1,
+    h2,
+    h5,
+    .navbar-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    body.light-theme {
+      background-color: var(--light-bg); 
+      color: var(--light-text);
+    }
+
+    body.light-theme #particles-js {
+      opacity: 1;
+    }
+
+    body.light-theme .card {
+      background: var(--light-card-bg); 
+      color: var(--light-text);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+    }
+
+    body.light-theme nav.navbar {
+      background-color: #ffffff; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    body.light-theme nav.navbar .nav-link,
+    body.light-theme .navbar-brand {
+      color: var(--light-text);
+    }
+
+    body.light-theme nav.navbar .nav-link:hover,
+    body.light-theme nav.navbar .nav-link.active {
+      color: var(--main-color);
+    }
+    
+    body.light-theme .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(74, 35, 90, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    body.light-theme .btn-custom {
+      background-color: var(--main-color);
+      color: #fff;
+    }
+
+    body.light-theme .btn-custom:hover {
+      background-color: #7b5db3; 
+      color: #fff;
+    }
+
+    body.light-theme .social-icons a {
+      color: var(--light-text);
+    }
+
+    body.light-theme .social-icons a:hover {
+      color: var(--main-color);
+    }
+
+    body.light-theme .scroll-to-top {
+      background-color: var(--dark-bg);
+      color: var(--light-bg);
+    }
+    
+    body.light-theme .glow-text {
+        color: var(--light-text);
+        animation: light-glow 2.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes light-glow {
+      from {
+        text-shadow: 0 0 2px var(--main-color), 0 0 5px var(--main-color);
+      }
+
+      to {
+        text-shadow: 0 0 5px var(--main-color), 0 0 10px var(--main-color);
+      }
+    }
+
+
+    nav.navbar {
+      background-color: var(--card-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      transition: background-color var(--transition);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.6rem;
+    }
+
+    .navbar-brand img {
+      height: 32px;
+      width: 32px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    nav.navbar .nav-link {
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      position: relative;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      margin: 0 0.5rem;
+    }
+
+    nav.navbar .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 3px;
+      background: var(--main-color);
+      transition: width 0.3s ease-in-out;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav.navbar .nav-link:hover::after,
+    nav.navbar .nav-link.active::after {
+      width: 100%;
+    }
+
+
+    .header-title {
+      color: var(--main-color);
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: 700;
+      font-size: 3rem;
+      letter-spacing: 1px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      max-width: 700px;
+      margin: 1rem auto 3rem;
+      gap: 1.5rem;
+    }
+
+    .profile img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--main-color);
+      box-shadow: 0 0 10px var(--main-color);
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--main-color);
+    }
+
+    .profile .description {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .typewriter h2 {
+      overflow: hidden;
+      border-right: .15em solid var(--main-color);
+      white-space: nowrap;
+      margin: 0;
+      letter-spacing: .1em;
+      animation:
+        typing 3.5s steps(30, end) forwards,
+        blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0
+      }
+
+      to {
+        width: 100%
+      }
+    }
+
+    @keyframes blink-caret {
+
+      from,
+      to {
+        border-color: transparent
+      }
+
+      50% {
+        border-color: var(--main-color);
+      }
+    }
+
+    .social-icons a {
+      color: #ffffff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1.6rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--main-color);
+      transform: scale(1.2);
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .skill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 3rem;
+      transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+      color: var(--main-color);
+      cursor: pointer;
+    }
+
+    .skill p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    body.light-theme .skill p {
+      color: var(--light-text);
+    }
+
+    .skills-container:hover .skill {
+      filter: blur(2px);
+      opacity: 0.4;
+    }
+
+    .skills-container .skill:hover {
+      filter: none;
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .card {
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, background-color var(--transition), color var(--transition);
+      background: linear-gradient(145deg, #23262e, #1b1d23);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 15px var(--main-color);
+    }
+
+    .card-img-top {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-bottom: 2px solid var(--main-color);
+    }
+    
+    .card-img-top[alt]:after {
+        content: attr(alt);
+        display: block;
+        position: relative;
+        text-align: center;
+        padding: 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #888;
+        background-color: #333;
+        height: 300px;
+        line-height: 260px; 
+    }
+    
+    body.light-theme .card-img-top[alt]:after {
+        background-color: #ddd;
+        color: #555;
+    }
+
+
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-weight: 600;
+    }
+
+    .card-text {
+      flex-grow: 1;
+    }
+
+    .btn-custom {
+      border-radius: 0.5rem;
+      margin-right: 0.5rem;
+      background-color: var(--main-color);
+      border: none;
+      color: white;
+      transition: background-color var(--transition), transform 0.2s ease;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+    }
+
+    .btn-custom:hover {
+      background-color: #7b5db3; 
+      transform: scale(1.05);
+    }
+
+    .btn-light-mode {
+      background-color: var(--light-bg); 
+      color: var(--light-text);
+      border: 1px solid var(--dark-bg);
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+
+    body.light-theme .btn-light-mode {
+      background-color: var(--dark-bg);
+      color: var(--light-bg);
+      border: 1px solid var(--light-bg);
+    }
+
+    .btn-light-mode:hover {
+      background-color: #e2e2e2;
+    }
+
+    body.light-theme .btn-light-mode:hover {
+      background-color: #3a3f4b;
+    }
+
+
+    footer {
+      position: relative;
+      z-index: 2;
+      background-color: var(--dark-bg); 
+      transition: background-color var(--transition);
+    }
+    
+    body.light-theme footer {
+        background-color: var(--light-card-bg);
+        color: var(--light-text);
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    }
+    
+    body.light-theme footer .btn-outline-light {
+        border-color: var(--dark-bg);
+        color: var(--dark-bg);
+    }
+     body.light-theme footer .btn-outline-light:hover {
+        background-color: var(--dark-bg);
+        color: var(--light-bg);
+     }
+     
+    body.light-theme footer .collapse {
+        color: var(--light-text);
+    }
+
+
+    .gif-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+    
+    body.light-theme .gif-img {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .gif-img:hover {
+      transform: scale(1.03);
+    }
+
+    .glow-text {
+      animation: glow 2.5s ease-in-out infinite alternate;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #fff, 0 0 10px var(--main-color), 0 0 15px var(--main-color);
+      }
+
+      to {
+        text-shadow: 0 0 10px #fff, 0 0 15px var(--main-color), 0 0 20px var(--main-color), 0 0 25px var(--main-color);
+      }
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--main-color);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-size: 1.2rem;
+      z-index: 100;
+      display: none;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .scroll-to-top:hover {
+      background-color: #7b5db3; 
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 576px) {
+      .profile {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .typewriter h2 {
+        margin: 0;
+        width: 100%;
+        border-right: none;
+        animation: none;
+        white-space: normal;
+      }
+
+      .header-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="particles-js"></div>
+
+  <nav class="navbar navbar-expand-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand text-white glow-text" href="#">
+        <img
+          src="Me/chaewon.jpg"
+          alt="Mini Logo"
+          onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'"/>
+        ChaeDev
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4 text-center">
+    <label for="music-selector" class="form-label fs-5 fw-bold mb-3"> Choose
+      Your Background Music</label>
+    <div class="dropdown d-inline-block">
+      <button class="btn btn-custom dropdown-toggle px-4 py-2" type="button"
+        id="musicDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Select Track
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark"
+        aria-labelledby="musicDropdown">
+        <li><a class="dropdown-item music-option" data-src="music/enhypen.mp3"
+            href="#">Enhypen</a></li>
+        <li><a class="dropdown-item music-option" data-src="music/saja.mp3"
+            href="#">Le Sserafim</a></li>
+        <li><a class="dropdown-item music-option" data-src="music/sajaa.mp3"
+            href="#">Saja Boys</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="music/enhypen.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container py-3 text-end">
+    <button class="btn btn-light-mode" id="theme-toggle">Light Mode</button>
+  </div>
+
+  <section id="about" class="container my-5">
+    <h1 class="header-title text-center mb-5 glow-text">Web Development</h1>
+
+    <div class="profile mb-5" data-aos="fade-up">
+      <img
+        src="Me/profile2.jpg"
+        alt="Profile Picture"
+        onerror="this.src='https://placehold.co/160x160/333/9370DB?text=JP'"/>
+      <div class="description typewriter">
+        <h2>John Paul D. Godoy</h2>
+        <p>2ND YEAR DIPLOMA IN INFORMATION TECHNOLOGY</p>
+        <p><strong>POLYTECHNIC UNIVERSITY OF THE PHILIPPINES STO TOMAS</strong></p>
+      </div>
+    </div>
+
+    <div class="social-icons text-center mb-5" data-aos="fade-up"
+      data-aos-delay="100">
+      <a href="https://www.instagram.com/jp_desu04/" target="_blank"
+        class="fab fa-instagram"></a>
+      <a href="https://github.com/jpgodoy04" target="_blank"
+        class="fab fa-github"></a>
+      <a href="https://www.facebook.com/chaepi04" target="_blank"
+        class="fab fa-facebook"></a>
+    </div>
+
+    <p class="text-center fs-5 mb-3 glow-text" data-aos="fade-up"
+      data-aos-delay="200">
+      Minasan, Konichiwa! <strong>"I'm an aspiring web
+        developer
+        passionate about creating engaging and responsive websites. Please look
+        forward to my future works and endeavors
+        as I grow and explore the world of web development."</strong>
+    </p>
+  </section>
+
+  <section id="skills" class="container my-5">
+    <h1 class="text-center mb-4 glow-text" data-aos="fade-up">Programming Languages</h1>
+
+    <div class="skills-container text-center mb-5" data-aos="fade-up">
+      <div class="skill"><i class="fab fa-php"></i>
+        <p>PHP</p>
+      </div>
+      <div class="skill"><i class="fab fa-html5"></i>
+        <p>HTML</p>
+      </div>
+      <div class="skill"><i class="fab fa-css3-alt"></i>
+        <p>CSS</p>
+      </div>
+      <div class="skill"><i class="fab fa-js-square"></i>
+        <p>JavaScript</p>
+      </div>
+      <div class="skill"><i class="fab fa-python"></i>
+        <p>Python</p>
+      </div>
+      <div class="skill"><i class="fab fa-java"></i>
+        <p>Java</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="container my-5">
+    <h1 class="text-center my-5 glow-text" data-aos="fade-up">Projects</h1>
+    <div class="container px-4">
+      <div class="row row-cols-1 g-4 mx-auto" style="max-width: 700px;">
+        <div class="col" data-aos="fade-up">
+          <div class="card h-100 p-3">
+            <img
+              src="A04/A04 pics/control dualsense.jpg"
+              class="card-img-top mb-3" alt="PS5 SHOWCASE"
+              onerror="this.src='https://placehold.co/600x300/333/9370DB?text=PS5+Showcase'"/>
+            <div class="card-body">
+              <h5 class="card-title">PS5 SHOWCASE</h5>
+              <p class="card-text">A showcase of the newest Playstation
+                console</p>
+              <a href="A04/index.html" class="btn btn-custom mt-auto">View
+                Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 p-3">
+            <img
+              src="A05/japan bg.jpg"
+              class="card-img-top mb-3" alt="Japan Gallery"
+              onerror="this.src='https://placehold.co/600x300/333/9370DB?text=Japan+Gallery'"/>
+            <div class="card-body">
+              <h5 class="card-title">Japan Gallery</h5>
+              <p class="card-text">A Gallery showcasing the cultures and places
+                in the country of Japan.</p>
+              <a href="A05/index.html" class="btn btn-custom mt-auto">View
+                Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 p-3">
+            <img
+              src="A06/photos/aep.jpg"
+              class="card-img-top mb-3" alt="AESPA & LSRFM"
+              onerror="this.src='https://placehold.co/600x300/333/9370DB?text=AESPA+%26+LSRFM'"/>
+            <div class="card-body">
+              <h5 class="card-title">AESPA & LSRFM</h5>
+              <p class="card-text">A Gallery about the K-Pop group Aespa and
+                Le-Sserafim that has a collapsible footer.
+              </p>
+              <a href="A06/index.html" class="btn btn-custom mt-auto">View
+                Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 p-3">
+            <img
+              src="A07/bg.jpg"
+              class="card-img-top mb-3" alt="Valorant Agents API"
+              onerror="this.src='https://placehold.co/600x300/333/9370DB?text=Valorant+API'"/>
+            <div class="card-body">
+              <h5 class="card-title">Valorant Agents API</h5>
+              <p class="card-text">A Valorant API that shows the agents and its
+                roles with abilities of each.</p>
+              <a href="A07/index.html" class="btn btn-custom mt-auto">View
+                Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="400">
+          <div class="card h-100 p-3">
+            <img
+              src="A08/EZ-Parallax-master/img/strawhats/bgbgbg.webp"
+              class="card-img-top mb-3" alt="One Piece Parallax"
+              onerror="this.src='https://placehold.co/600x300/333/9370DB?text=One+Piece+Parallax'"/>
+            <div class="card-body">
+              <h5 class="card-title">One Piece Parallax</h5>
+              <p class="card-text">A Parallax about One Piece with the Strawhats
+                Pirates in the content.</p>
+              <a href="A08/EZ-Parallax-master/index.html"
+                class="btn btn-custom mt-auto">View Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="500">
+          <div class="card h-100 p-3">
+            <img
+              src=""
+              class="card-img-top mb-3" alt="Coming Soon!"
+              onerror="this.src='https://placehold.co/600x300/333/9370DB?text=Coming+Soon!'"/>
+            <div class="card-body">
+              <h5 class="card-title">To Be Continued!</h5>
+              <p class="card-text">Coming Soon! </p>
+              <a href="#" class="btn btn-custom disabled mt-auto">Coming Soon!
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="text-white mt-5">
+    <div class="container py-4">
+      <button class="btn btn-outline-light mb-3" type="button"
+        data-bs-toggle="collapse" data-bs-target="#gifCollapse"
+        aria-expanded="false" aria-controls="gifCollapse">
+        Show / Hide Chaewon
+      </button>
+      <div class="collapse" id="gifCollapse">
+        <div class="row g-3 mb-3 text-center">
+          <div class="col-6 col-md-3">
+            <img
+              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHV5cjBnb2Q5aXo0d2RsOGFueHl6cDhiMndhOGQzdnF0cDE5djJzciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/vCkarGV0iwXTRfe7IK/giphy.gif"
+              class="gif-img" alt="GIF 1" />
+          </div>
+          <div class="col-6 col-md-3">
+            <img
+              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW45c2I4bWRhM3FkZzIzeDJuMHEycG96aWxmb3lvaGp4cGNobTF0MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DhSfmBc85VYZUTaXy1/giphy.gif"
+              class="gif-img" alt="GIF 2" />
+          </div>
+          <div class="col-6 col-md-3">
+            <img
+              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW45c2I4bWRhM3FkZzIzeDJuMHEycG96aWxmb3lvaGp4cGNobTF0MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/cvlgCRaBhHyicvIfnb/giphy.gif"
+              class="gif-img" alt="GIF 3" />
+          </div>
+          <div class="col-6 col-md-3">
+            <img
+              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW45c2I4bWRhM3FkZzIzeDJuMHEycG96aWxmb3lvaGp4cGNobTF0MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9ZNT6kkQ5iR373s1Gx/giphy.gif"
+              class="gif-img" alt="GIF 4" />
+          </div>
+        </div>
+        <p class="text-center fs-5 mt-3 glow-text">Stay Tuned for more exciting
+          projects!
+      </div>
+    </div>
+    </div>
+  </footer>
+
+  <a href="#" class="scroll-to-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({
+      once: false, 
+      mirror: true,
+      duration: 700,
+      easing: 'ease-in-out'
+    });
+
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    function updateToggleButton() {
+      const isLight = body.classList.contains('light-theme');
+      toggleBtn.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+      
+      if (typeof pJSDom !== 'undefined' && pJSDom.length > 0) {
+        let particleColor = isLight ? '#4a235a' : '#9370DB'; 
+        let lineColor = isLight ? '#4a235a' : '#9370DB';
+
+        if (typeof particlesJS !== 'undefined') {
+          particlesJS('particles-js', getParticlesConfig(particleColor, lineColor));
+        }
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('light-theme');
+      updateToggleButton();
+    });
+
+    updateToggleButton();
+
+    const scrollTopBtn = document.querySelector('.scroll-to-top');
+
+    function toggleScrollTopButton() {
+      if (window.scrollY > 300) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    }
+
+    scrollTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    function onScroll() {
+      toggleScrollTopButton(); 
+
+      let scrollPos = window.scrollY || document.documentElement.scrollTop;
+      
+      let homeLink = document.querySelector('.nav-link[href="index.html"]');
+
+      sections.forEach(section => {
+        let top = section.offsetTop - 80; 
+        let bottom = top + section.offsetHeight;
+        let id = section.getAttribute('id');
+        let currentLink = document.querySelector('.nav-link[href="#' + id + '"]');
+
+        if (scrollPos >= top && scrollPos < bottom) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          if(currentLink) currentLink.classList.add('active');
+          if(homeLink) homeLink.classList.remove('active');
+        }
+      });
+      
+       if (scrollPos < (sections[0].offsetTop - 80)) {
+           navLinks.forEach(link => link.classList.remove('active'));
+       }
+    }
+
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    const bgMusic = document.getElementById('bg-music');
+    const musicOptions = document.querySelectorAll('.music-option');
+    const dropdownToggle = document.getElementById('musicDropdown');
+
+    musicOptions.forEach(option => {
+      option.addEventListener('click', function (e) {
+        e.preventDefault();
+        const selectedTrack = this.getAttribute('data-src');
+        const selectedName = this.textContent;
+        
+        if(selectedTrack) {
+            bgMusic.src = selectedTrack;
+            bgMusic.play().catch(e => console.warn("Music play failed. User may need to interact first."));
+        } else {
+            bgMusic.pause();
+            bgMusic.src = "";
+        }
+        dropdownToggle.textContent = ` ${selectedName}`;
+      });
+    });
+    
+    function attemptAutoplay() {
+        if(bgMusic.src && bgMusic.paused) {
+            bgMusic.play().catch(e => {
+                console.warn("Autoplay was prevented. User must interact to start music.");
+            });
+        }
+        document.body.removeEventListener('click', attemptAutplay);
+        document.body.removeEventListener('scroll', attemptAutplay);
+    }
+    
+    document.body.addEventListener('click', attemptAutoplay);
+    document.body.addEventListener('scroll', attemptAutoplay);
+
+
+    function getParticlesConfig(particleColor, lineColor) {
+      return {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": particleColor 
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": lineColor, 
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 4,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 400,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      };
+    }
+    
+    particlesJS('particles-js', getParticlesConfig('#9370DB', '#9370DB'));
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                let altText = this.alt.replace(/\s/g, '+') || 'Image+Not+Found';
+                let width = this.width || '600';
+                let height = this.height || '300';
+                if(width < 50 || height < 50) {
+                    width = 160; height = 160;
+                }
+                
+                this.src = `https://placehold.co/${width}x${height}/333/FFF?text=${altText}`;
+                this.onerror = null; 
+            };
+        });
+    });
+
+  </script>
+</body>
+
+</html>

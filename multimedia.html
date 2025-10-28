@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ChaeDev | Multimedia</title>
+  <link rel="icon"
+    href="Me/chaewon.jpg"
+    type="image/png"
+    onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto+Mono&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --main-color: #9370DB; 
+      --dark-bg: #1c1f26;
+      --card-bg: #2a2d34;
+      --light-bg: #f2f0f8;
+      --light-text: #4a235a;
+      --light-card-bg: #ffffff;
+      --transition: 0.4s ease;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: #fff;
+      font-family: 'Roboto Mono', monospace;
+      transition: background-color var(--transition), color var(--transition);
+      scroll-behavior: smooth;
+      min-height: 100vh;
+    }
+
+    h1, h2, h5, .navbar-brand, .btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    nav.navbar {
+      background-color: var(--card-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      transition: background-color var(--transition);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.6rem;
+    }
+
+    .navbar-brand img {
+      height: 32px;
+      width: 32px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    
+    nav.navbar .nav-link {
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      position: relative;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      margin: 0 0.5rem;
+    }
+
+    nav.navbar .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 3px;
+      background: var(--main-color);
+      transition: width 0.3s ease-in-out;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav.navbar .nav-link:hover::after,
+    nav.navbar .nav-link.active::after {
+      width: 100%;
+    }
+    
+    body.light-theme nav.navbar {
+      background-color: #ffffff; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    body.light-theme nav.navbar .nav-link,
+    body.light-theme .navbar-brand {
+      color: var(--light-text);
+    }
+
+    body.light-theme nav.navbar .nav-link:hover,
+    body.light-theme nav.navbar .nav-link.active {
+      color: var(--main-color);
+    }
+    
+    body.light-theme .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(74, 35, 90, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .glow-text {
+      animation: glow 2.5s ease-in-out infinite alternate;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #fff, 0 0 10px var(--main-color), 0 0 15px var(--main-color);
+      }
+      to {
+        text-shadow: 0 0 10px #fff, 0 0 15px var(--main-color), 0 0 20px var(--main-color), 0 0 25px var(--main-color);
+      }
+    }
+    
+    body.light-theme .glow-text {
+        color: var(--light-text);
+         animation: light-glow 2.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes light-glow {
+      from {
+        text-shadow: 0 0 2px var(--main-color), 0 0 5px var(--main-color);
+      }
+      to {
+        text-shadow: 0 0 5px var(--main-color), 0 0 10px var(--main-color);
+      }
+    }
+    
+    .project-nav .nav-link {
+        color: #fff;
+        border-radius: 0.5rem;
+        margin: 0.25rem;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        transition: var(--transition);
+        border: 2px solid transparent;
+    }
+    
+    .project-nav .nav-link.active,
+    .project-nav .nav-link:hover {
+        background-color: var(--main-color);
+        color: #fff;
+        border-color: var(--main-color);
+        box-shadow: 0 0 10px var(--main-color);
+    }
+    
+    body.light-theme .project-nav .nav-link {
+        color: var(--light-text);
+        background-color: var(--light-card-bg);
+        border: 2px solid var(--light-card-bg);
+    }
+    
+    body.light-theme .project-nav .nav-link.active,
+    body.light-theme .project-nav .nav-link:hover {
+        background-color: var(--main-color);
+        color: #fff;
+        border-color: var(--main-color);
+    }
+
+    .card {
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, background-color var(--transition), color var(--transition);
+      background: linear-gradient(145deg, #23262e, #1b1d23);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 15px var(--main-color);
+    }
+    
+    .card-img-top-placeholder {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 2px solid var(--main-color);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    .card-img-top-placeholder:hover {
+        transform: scale(1.05);
+    }
+    
+    .card-video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; 
+        height: 0;
+        overflow: hidden;
+        border-bottom: 2px solid var(--main-color);
+    }
+    
+    .card-video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-weight: 600;
+    }
+
+    .card-text {
+      flex-grow: 1;
+    }
+    
+    body.light-theme .card {
+      background: var(--light-card-bg); 
+      color: var(--light-text);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modal-content {
+        background-color: var(--card-bg);
+        border: 1px solid var(--main-color);
+        border-radius: 1rem;
+    }
+    .modal-header {
+        border-bottom: 1px solid #444;
+    }
+    .modal-footer {
+        border-top: 1px solid #444;
+    }
+    .modal-body img {
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 0.5rem;
+    }
+    .btn-close {
+        background-color: #fff;
+        border-radius: 50%;
+    }
+    
+    body.light-theme .modal-content {
+        background-color: var(--light-bg);
+        color: var(--light-text);
+    }
+     body.light-theme .modal-header,
+     body.light-theme .modal-footer {
+        border-color: #ddd;
+     }
+
+    footer {
+        position: relative;
+        z-index: 2;
+        background-color: var(--card-bg);
+        padding: 1.5rem 0;
+        text-align: center;
+        width: 100%;
+        margin-top: 5rem; 
+    }
+    
+    body.light-theme footer {
+       background-color: var(--light-card-bg);
+       color: var(--light-text);
+       box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <nav class="navbar navbar-expand-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand text-white glow-text" href="index.html">
+        <img
+          src="Me/chaewon.jpg"
+          alt="Mini Logo"
+          onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'"/>
+        ChaeDev
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="portfolio.html">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="multimedia.html">Multimedia</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="projects" class="container my-5">
+    <h1 class="text-center my-5 glow-text" data-aos="fade-up">Multimedia Projects</h1>
+    
+    <p class="text-center fs-5 mb-5" data-aos="fade-up" data-aos-delay="50" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+      Hi, I'm <strong>John Paul D. Godoy</strong>, a student currently exploring the exciting world of multimedia. This section showcases my journey and projects in digital art, video, and sound.
+    </p>
+    
+    <ul class="nav nav-pills justify-content-center mb-4 project-nav" id="pills-tab" role="tablist" data-aos="fade-up" data-aos-delay="100">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-photoshop-tab" data-bs-toggle="pill" data-bs-target="#pills-photoshop" type="button" role="tab" aria-controls="pills-photoshop" aria-selected="true">Photoshop</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-vector-tab" data-bs-toggle="pill" data-bs-target="#pills-vector" type="button" role="tab" aria-controls="pills-vector" aria-selected="false">Vector</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-sound-tab" data-bs-toggle="pill" data-bs-target="#pills-sound" type="button" role="tab" aria-controls="pills-sound" aria-selected="false">Sound</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-animation-tab" data-bs-toggle="pill" data-bs-target="#pills-animation" type="button" role="tab" aria-controls="pills-animation" aria-selected="false">Animation</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-video-tab" data-bs-toggle="pill" data-bs-target="#pills-video" type="button" role="tab" aria-controls="pills-video" aria-selected="false">Video Edits</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+      
+      <div class="tab-pane fade show active" id="pills-photoshop" role="tabpanel" aria-labelledby="pills-photoshop-tab">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          
+          <div class="col" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 p-3">
+              <img src="Multimedia/winter after.jpg" 
+                   class="card-img-top-placeholder" 
+                   alt="Photoshop Project 1"
+                   data-bs-toggle="modal"
+                   data-bs-target="#imageModal"
+                   data-src="Multimedia/winter after.jpg">
+              <div class="card-body mt-3">
+                <h5 class="card-title">Hair & Eye Color Manipulation</h5>
+                <p class="card-text">This is the first photoshop project i did, it was a fun experience having to edit my bias Winter in Aespa, manipulating the colors of her hair and eyes.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 p-3">
+              <img src="Multimedia/OOB after.jpg" 
+                   class="card-img-top-placeholder" 
+                   alt="Photoshop Project 2"
+                   data-bs-toggle="modal"
+                   data-bs-target="#imageModal"
+                   data-src="Multimedia/OOB after.jpg">
+              <div class="card-body mt-3">
+                <h5 class="card-title">Out of Bounds</h5>
+                <p class="card-text">This activity is very fun to do as i explore photoshop and it's different kind of tools, especially the use of layer mask and adjustment layers, they are the tools that i used a lot in my activities.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col" data-aos="fade-up" data-aos-delay="400">
+            <div class="card h-100 p-3">
+              <img src="Multimedia/Godoy_After(3).jpg" 
+                   class="card-img-top-placeholder" 
+                   alt="Photoshop Project 3"
+                   data-bs-toggle="modal"
+                   data-bs-target="#imageModal"
+                   data-src="Multimedia/Godoy_After(3).jpg">
+              <div class="card-body mt-3">
+                <h5 class="card-title">Ghost Effect</h5>
+                <p class="card-text">I used the clone stamp tool to create a ghost like effect, it's kinda hard to use but througout the activity i eventually got the hang of it and triedmy best to make it look realistic and believable.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 p-3">
+              <img src="Multimedia/frontulit.jpg" 
+                   class="card-img-top-placeholder" 
+                   alt="Photoshop Project 4"
+                   data-bs-toggle="modal"
+                   data-bs-target="#imageModal"
+                   data-src="Multimedia/frontulit.jpg">
+              <div class="card-body mt-3">
+                <h5 class="card-title">Personal Calling Card/Business Card (Front)  </h5>
+                <p class="card-text">This is one of my favorite activities, because i get to used my own details and used the skills and tools i have learned so far to create my own calling card.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 p-3">
+              <img src="Multimedia/Godoy_Back.jpg" 
+                   class="card-img-top-placeholder" 
+                   alt="Photoshop Project 5"
+                   data-bs-toggle="modal"
+                   data-bs-target="#imageModal"
+                   data-src="Multimedia/Godoy_Back.jpg">
+              <div class="card-body mt-3">
+                <h5 class="card-title">Personal Calling Card/Business Card (Back)</h5>
+                <p class="card-text">I designed the back of my personal calling card and even used my own logo that resembles my nickname which is JP.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col" data-aos="fade-up" data-aos-delay="400">
+            <div class="card h-100 p-3">
+              <img src="https://placehold.co/600x400/9370DB/white?text=Photoshop+6" 
+                   class="card-img-top-placeholder" 
+                   alt="Photoshop Project 6"
+                   data-bs-toggle="modal"
+                   data-bs-target="#imageModal"
+                   data-src="https://placehold.co/1200x800/9370DB/white?text=Photoshop+Project+6">
+              <div class="card-body mt-3">
+                <h5 class="card-title">Personal Movie Poster</h5>
+                <p class="card-text">Coming Soon!</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="tab-pane fade" id="pills-vector" role="tabpanel" aria-labelledby="pills-vector-tab">
+        <div class="text-center p-5">
+            <h3 class="glow-text">Vector Projects</h3>
+            <p>Illustrator and vector art projects will be showcased here soon. Stay tuned!</p>
+        </div>
+      </div>
+      
+      <div class="tab-pane fade" id="pills-sound" role="tabpanel" aria-labelledby="pills-sound-tab">
+        <div class="text-center p-5">
+            <h3 class="glow-text">Sound Design</h3>
+            <p>Sound editing, music production, and foley projects will be showcased here soon. Stay tuned!</p>
+        </div>
+      </div>
+      
+      <div class="tab-pane fade" id="pills-animation" role="tabpanel" aria-labelledby="pills-animation-tab">
+        <div class="text-center p-5">
+            <h3 class="glow-text">Animation</h3>
+            <p>2D/3D animations and motion graphics will be showcased here soon. Stay tuned!</p>
+        </div>
+      </div>
+      
+      <div class="tab-pane fade" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+        <div class="row row-cols-1 g-4 mx-auto" style="max-width: 700px;">
+          <div class="col" data-aos="fade-up">
+            <div class="card h-100 p-3">
+              <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzQ5cXV5dWN0YnVnOXl3NDY2bTRhNTl5NHJ1M2NvdHh4ZGhkazVtMSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/vCkarGV0iwXTRfe7IK/giphy.gif"
+                   class="card-img-top-placeholder" 
+                   alt="Example GIF Edit"
+                   style="height: auto; object-fit: cover;"> 
+                   
+              <div class="card-body mt-3">
+                <h5 class="card-title">Coming Soon!</h5>
+                <p class="card-text">There's nothing here yet. LOL!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center p-5 mt-4" data-aos="fade-up" data-aos-delay="100">
+            <h4 class="glow-text">More Edits Coming Soon!</h4>
+            <p>I'm working on new video projects. Stay tuned!</p>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <footer class="text-white">
+    <div class="container">
+      <p>&copy; 2024 John Paul D. Godoy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Project Preview</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="" id="modalImage" alt="Project Preview">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({
+      once: false, 
+      mirror: true,
+      duration: 700,
+      easing: 'ease-in-out'
+    });
+    
+    const imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+      imageModal.addEventListener('show.bs.modal', event => {
+        const triggerElement = event.relatedTarget;
+        
+        const imageSource = triggerElement.getAttribute('data-src');
+        const imageAlt = triggerElement.getAttribute('alt') || 'Project Preview';
+        
+        const modalImage = imageModal.querySelector('#modalImage');
+        const modalTitle = imageModal.querySelector('#imageModalLabel');
+        
+        modalImage.src = imageSource;
+        modalImage.alt = imageAlt;
+        modalTitle.textContent = imageAlt; 
+      });
+    }
+
+    function getParticlesConfig(particleColor, lineColor) {
+      return {
+        "particles": {
+          "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+          "color": { "value": particleColor },
+          "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+          "opacity": {
+            "value": 0.5, "random": false,
+            "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false }
+          },
+          "size": {
+            "value": 3, "random": true,
+            "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false }
+          },
+          "line_linked": {
+            "enable": true, "distance": 150, "color": lineColor, "opacity": 0.4, "width": 1
+          },
+          "move": {
+            "enable": true, "speed": 4, "direction": "none", "random": false,
+            "straight": false, "out_mode": "out", "bounce": false,
+            "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": { "enable": true, "mode": "repulse" },
+            "onclick": { "enable": true, "mode": "push" },
+            "resize": true
+          },
+          "modes": {
+            "grab": { "distance": 400, "line_linked": { "opacity": 1 } },
+            "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
+            "repulse": { "distance": 200, "duration": 0.4 },
+            "push": { "particles_nb": 4 },
+            "remove": { "particles_nb": 2 }
+          }
+        },
+        "retina_detect": true
+      };
+    }
+    
+    particlesJS('particles-js', getParticlesConfig('#9370DB', '#9370DB'));
+  </script>
+</body>
+</html>

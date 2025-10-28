@@ -1,15 +1,26 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Aespa & Le Sserafim</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
+    :root {
+      --lsrfm-color: #98A7D4; 
+      --aespa-color: #a070db; 
+      --light-bg: #f8f9fa;
+      --light-text: #212529;
+      --dark-bg: #121212;
+      --dark-text: #e0e0e0;
+      --dark-card: #1f1f1f;
+    }
+  
     body {
       background-image: url('drama.jpg');
       background-size: cover;
@@ -17,103 +28,272 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Roboto Mono', monospace;
+      background-color: var(--light-bg); 
+      color: var(--light-text);
+    }
+    
+    h1, h2, h3, h4, h5, .btn, .navbar-brand {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5); 
+      min-height: 100vh;
+      padding-bottom: 50px;
     }
 
     body[data-theme="dark"] {
-      background-color: #121212;
-      color: #e0e0e0;
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    
+    body[data-theme="dark"] .overlay {
+       background-color: rgba(0, 0, 0, 0.7); 
     }
 
     body[data-theme="dark"] .card {
-      background-color: #1f1f1f;
-      color: #e0e0e0;
+      background-color: var(--dark-card);
+      color: var(--dark-text);
+    }
+    
+    body[data-theme="dark"] .navbar-custom {
+        background-color: rgba(18, 18, 18, 0.8);
+    }
+    
+    body[data-theme="dark"] .btn-filter {
+        background-color: var(--dark-card);
+        color: var(--dark-text);
+        border: 1px solid #444;
+    }
+    
+    body[data-theme="dark"] .btn-filter.active,
+    body[data-theme="dark"] .btn-filter:hover {
+        border-color: var(--aespa-color);
+        color: var(--aespa-color);
+    }
+    
+    body[data-theme="dark"] .footer-collapse {
+        background-color: var(--dark-card);
     }
 
-    body[data-theme="dark"] .btn-primary {
-      background-color: #bb86fc;
-      border-color: bl;
+    body[data-theme="light"] {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+    }
+    
+    body[data-theme="light"] .overlay {
+       background-color: rgba(255, 255, 255, 0.3); 
+    }
+    
+    body[data-theme="light"] .navbar-custom {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    body[data-theme="light"] .header-title,
+    body[data-theme="light"] .section-title {
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    body[data-theme="light"] .card {
+        background-color: #fff;
+    }
+    
+    body[data-theme="light"] .btn-filter {
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #ddd;
     }
 
-    body[data-theme="dark"] .btn-outline {
-      color:white;
-      background-color: #a070db;
+    body[data-theme="light"] .btn-filter.active,
+    body[data-theme="light"] .btn-filter:hover {
+        border-color: var(--aespa-color);
+        color: var(--aespa-color);
+        background-color: #fdfaff;
+    }
+    
+    body[data-theme="light"] .footer-collapse {
+        background-color: #fff;
+        color: var(--light-text);
     }
 
-    body[data-theme="dark"] .btn-outline:hover {
-      background-color: #723bb4;
+    /* :: Navbar :: */
+    .navbar-custom {
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-back-nav {
+      border-color: var(--aespa-color);
+      color: var(--aespa-color);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-back-nav:hover {
+      background-color: var(--aespa-color);
+      border-color: var(--aespa-color);
       color: white;
     }
-
-    body[data-theme="light"] .btn-outline {
-      color:white;
-      background-color: #a070db;
+    
+    .navbar-brand {
+      font-weight: 600;
+      color: var(--dark-text);
     }
-
-    body[data-theme="light"] .btn-outline:hover {
-      background-color: #723bb4;
-      color: white;
-    }
-
-    body[data-theme="light"] .header-title {
-      color: white !important;
+    
+    body[data-theme="light"] .navbar-brand {
+        color: var(--light-text);
     }
 
     .theme-btn {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 999;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--dark-text);
+      transition: color 0.3s ease;
     }
+    
+    body[data-theme="light"] .theme-btn {
+        color: var(--light-text);
+    }
+    
+    .theme-btn:hover {
+        color: var(--aespa-color);
+    }
+
+    .btn-filter {
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-filter.active {
+        background-color: var(--aespa-color);
+        color: #fff;
+        border-color: var(--aespa-color);
+        box-shadow: 0 0 10px var(--aespa-color);
+    }
+    
+    .btn-filter[data-filter="lsrfm"].active {
+        background-color: var(--lsrfm-color);
+        border-color: var(--lsrfm-color);
+        box-shadow: 0 0 10px var(--lsrfm-color);
+    }
+
+    .member-card {
+        position: relative;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .member-card img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        object-position: center top;
+        transition: transform 0.3s ease;
+    }
+    
+    .member-card:hover img {
+        transform: scale(1.05);
+    }
+    
+    .member-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        color: white;
+        padding: 2.5rem 1.5rem 1rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .member-card:hover .member-info {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .member-info h5 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        margin: 0;
+    }
+    
+    .member-info p {
+        font-family: 'Roboto Mono', monospace;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+    
+    .member-info[data-group="aespa"] p {
+        color: var(--aespa-color);
+    }
+    .member-info[data-group="lsrfm"] p {
+        color: var(--lsrfm-color);
+    }
+    
+    .footer-collapse {
+        border-radius: 0.75rem;
+    }
+    
   </style>
 </head>
 
-<body data-theme="light">
+<body data-theme="dark"> 
 
-  <button class="btn btn-secondary theme-btn" onclick="toggleTheme()" id="themeButton">Dark Mode</button>
+  <nav class="navbar navbar-expand-sm sticky-top navbar-custom">
+    <div class="container-fluid">
+      <a href="../portfolio.html" class="btn btn-back-nav">
+        <i class="fas fa-arrow-left me-2"></i>Back
+      </a>
+      <span class="navbar-brand mb-0 h1 mx-auto">Groups</span>
+      <div class="ms-auto">
+        <i class="fas fa-sun theme-btn" onclick="toggleTheme()" id="themeButton"></i>
+      </div>
+    </div>
+  </nav>
 
   <div class="overlay">
-    <a href="../index.html" class="btn btn-primary m-3" style="color: rgb(238, 255, 255);">Back to profile</a>
+    
+    <div class="container-fluid p-4">
+      <div class="h1 text-center header-title" data-aos="fade-down">Aespa & Le Sserafim</div>
+    </div>
 
-    <div class="container-fluid p-2 mb-3" style="color: white;">
-      <div class="h3 text-center header-title">Aespa & Le Sserafim</div>
+    <div class="container text-center my-4" data-aos="fade-up">
+        <div class="btn-group" role="group" aria-label="Group Filter">
+            <button type="button" class="btn btn-filter active" data-filter="all">Show All</button>
+            <button type="button" class="btn btn-filter" data-filter="aespa">Aespa</button>
+            <button type="button" class="btn btn-filter" data-filter="lsrfm">Le Sserafim</button>
+        </div>
     </div>
 
     <div class="container-fluid my-3">
-      <div class="row" id="container-row"></div>
-    </div>
-
-    <div class="container-fluid mt-3 py-1" style="background-color: rgb(61, 5, 5); color: white;">
-      <div class="row">
-        <div class="col text-center">
-          <div class="h2 mb-5">Groups</div>
-
-          <div onmouseover="aespaMouseEnter('aespaButton')" onmouseleave="aespaMouseLeave('aespaButton')"
-            id="aespaButton" class="card p-4 my-4 rounded-5 mx-auto text-center"
-            style="max-width: 200px; color: black;">
-            Aespa
-          </div>
-
-          <div onmouseover="aespaMouseEnter('lsrfmButton')" onmouseleave="aespaMouseLeave('lsrfmButton')"
-            id="lsrfmButton" class="card p-4 my-4 rounded-5 mx-auto text-center"
-            style="max-width: 200px; color: black;">
-            Le Sserafim
-          </div>
-        </div>
+      <div class="row" id="container-row">
       </div>
     </div>
 
-    <div class="container text-center my-4">
-      <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#memberList"
+    <div class="container text-center my-4" data-aos="fade-up">
+      <button class="btn btn-outline-light" data-bs-toggle="collapse" data-bs-target="#memberList"
         aria-expanded="false" aria-controls="memberList">
-        Show / Hide 
+        Show / Hide Full Member List
       </button>
 
-      <div class="collapse" id="memberList">
-        <div class="card card-body bg-light text-dark">
-          <div class="h5 mb-3">Le Sserafim and Aespa Members</div>
+      <div class="collapse mt-3" id="memberList">
+        <div class="card card-body footer-collapse text-start">
+          <div class="h5 mb-3 text-center">Full Member List</div>
           <div class="row">
             <div class="col-md-6">
-              <strong>Le Sserafim</strong>
+              <strong style="color: var(--lsrfm-color);">Le Sserafim</strong>
               <ul class="list-unstyled">
                 <li>Kim Chaewon</li>
                 <li>Huh Yunjin</li>
@@ -123,7 +303,7 @@
               </ul>
             </div>
             <div class="col-md-6">
-              <strong>Aespa</strong>
+              <strong style="color: var(--aespa-color);">Aespa</strong>
               <ul class="list-unstyled">
                 <li>Karina</li>
                 <li>Winter</li>
@@ -138,63 +318,91 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    var titles = ["Karina", "Winter", "Giselle", "Ningning", "Chaewon", "Sakura", "Yunjin", "Kazuha", "Eunchae"];
-    var photos = ["karina3.jpg", "winter3.jpg", "giselle2.jpg", "ningning.jpg", "chaewon2.jpg", "sakura2.jpg", "yunjin2.jpg", "kazu.jpg", "eunch.jpg"];
-    var contents = ["Aespa", "Aespa", "Aespa", "Aespa", "Le Sserafim", "Le Sserafim", "Le Sserafim", "Le Sserafim", "Le Sserafim"];
+    AOS.init({
+        duration: 800,
+        once: true,
+        easing: 'ease-in-out'
+    });
+  
+    const members = [
+        { title: "Karina", photo: "karina.webp", group: "aespa" },
+        { title: "Winter", photo: "winter.webp", group: "aespa" },
+        { title: "Giselle", photo: "giselle.webp", group: "aespa" },
+        { title: "Ningning", photo: "ning.webp", group: "aespa" },
+        { title: "Chaewon", photo: "chaewon2.jpg", group: "lsrfm" },
+        { title: "Sakura", photo: "sakura2.jpg", group: "lsrfm" },
+        { title: "Yunjin", photo: "yunjin2.jpg", group: "lsrfm" },
+        { title: "Kazuha", photo: "kazu.jpg", group: "lsrfm" },
+        { title: "Eunchae", photo: "eunch.jpg", group: "lsrfm" }
+    ];
 
-    var rowElement = document.getElementById("container-row");
-    for (var i = 0; i < titles.length; i++) {
-      rowElement.innerHTML += `
-        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch p-3">
-          <div class="card shadow rounded-5 overflow-hidden w-100" style="height: 100%;">
-            <img src="photos/${photos[i]}" class="card-img-top bg-white" style="height: 300px; object-fit: contain;" alt="">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${titles[i]}</h5>
-              <p class="card-text flex-grow-1">${contents[i]}</p>
-              <a href="#" class="btn btn-primary mt-auto">Preview</a>
-            </div>
-          </div>
-        </div>`;
+    const rowElement = document.getElementById("container-row");
+    
+    function renderMembers(filter = "all") {
+        rowElement.innerHTML = ""; 
+        
+        const filteredMembers = members.filter(member => 
+            filter === "all" || member.group === filter
+        );
+        
+        filteredMembers.forEach((member, i) => {
+            rowElement.innerHTML += `
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-3 member-card-wrapper" data-group="${member.group}" data-aos="fade-up" data-aos-delay="${(i % 4) * 100}">
+                <div class="card member-card shadow rounded-4 overflow-hidden w-100">
+                  <img src="photos/${member.photo}" alt="${member.title}"
+                       onerror="this.src='https://placehold.co/400x600/333/fff?text=${member.title}'">
+                  <div class="member-info" data-group="${member.group}">
+                    <h5>${member.title}</h5>
+                    <p>${member.group === 'aespa' ? 'Aespa' : 'Le Sserafim'}</p>
+                  </div>
+                </div>
+              </div>`;
+        });
+        
+        AOS.refresh();
     }
 
+    const themeButton = document.getElementById("themeButton");
+    
     function toggleTheme() {
       const body = document.body;
-      const button = document.getElementById("themeButton");
       const current = body.getAttribute("data-theme");
 
       if (current === "dark") {
         body.setAttribute("data-theme", "light");
-        button.textContent = "Dark Mode";
+        themeButton.classList.remove("fa-sun");
+        themeButton.classList.add("fa-moon");
       } else {
         body.setAttribute("data-theme", "dark");
-        button.textContent = "Light Mode";
+        themeButton.classList.remove("fa-moon");
+        themeButton.classList.add("fa-sun");
       }
     }
-
-    function aespaMouseEnter(id) {
-      var inquireButton = document.getElementById(id);
-      inquireButton.style.backgroundColor = "pink";
-      inquireButton.classList.add("shadow");
+    
+    if (document.body.getAttribute("data-theme") === "dark") {
+        themeButton.classList.add("fa-sun");
+    } else {
+        themeButton.classList.add("fa-moon");
     }
 
-    function aespaMouseLeave(id) {
-      var inquireButton = document.getElementById(id);
-      inquireButton.style.backgroundColor = "white";
-      inquireButton.classList.remove("shadow");
-    }
+    const filterButtons = document.querySelectorAll('.btn-filter');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            const filterValue = button.getAttribute('data-filter');
+            renderMembers(filterValue);
+        });
+    });
+
+    renderMembers("all");
+    
   </script>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
 </body>
-
 </html>

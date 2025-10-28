@@ -1,59 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <title>ChaeDev</title>
-  <link rel="icon" href="Me/chaewon.jpg" />
+  <title>ChaeDev | Home</title>
+  <!-- Favicon -->
+  <link rel="icon"
+    href="Me/chaewon.jpg"
+    type="image/png"
+    onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto+Mono&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono&display=swap"
     rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     :root {
-      --main-color: #00adb5;
+      --main-color: #9370DB; /* Purple */
+      --secondary-color: #6a4acd; /* Darker Purple */
       --dark-bg: #1c1f26;
       --card-bg: #2a2d34;
-      --light-bg: #fefefe;
+      --light-bg: #f0f2f5; /* Light purple-grey */
       --light-text: #121212;
+      --light-card: #ffffff;
       --transition: 0.4s ease;
+      --img-border-color: rgba(255, 255, 255, 0.1);
+      --light-img-border-color: rgba(0, 0, 0, 0.1);
     }
 
-
+    /* :: Base Styles :: */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    
     body {
       background-color: var(--dark-bg);
       color: #fff;
       font-family: 'Roboto Mono', monospace;
       transition: background-color var(--transition), color var(--transition);
-      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
     }
 
-    h1,
-    h2,
-    h5,
-    .navbar-brand {
+    h1, h2, h3, h5, .navbar-brand, .btn, .profile-stats li {
       font-family: 'Poppins', sans-serif;
+    }
+    
+    h1, h2, h3, h5, .navbar-brand, .btn {
       font-weight: 600;
     }
+    
+    .content-wrapper {
+      flex: 1 0 auto;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 3rem; /* Add padding to avoid footer overlap */
+    }
+    
+    footer {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
 
+    /* :: Particle Background :: */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    /* :: Light Theme Overrides (Purple) :: */
     body.light-theme {
       background-color: var(--light-bg);
       color: var(--light-text);
     }
 
-    body.light-theme .card {
-      background: #e8e8e8;
-      color: var(--light-text);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    body.light-theme #particles-js {
+      opacity: 1;
     }
 
     body.light-theme nav.navbar {
-      background-color: #ddd;
+      background-color: var(--light-card);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    body.light-theme nav.navbar .nav-link {
+    body.light-theme nav.navbar .nav-link,
+    body.light-theme .navbar-brand {
       color: var(--light-text);
     }
 
@@ -61,182 +103,73 @@
     body.light-theme nav.navbar .nav-link.active {
       color: var(--main-color);
     }
-
-    body.light-theme .btn-custom {
+    
+    body.light-theme .btn-primary {
       background-color: var(--main-color);
+      border-color: var(--main-color);
+      color: #fff;
+    }
+    
+    body.light-theme .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+
+    body.light-theme .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
       color: #fff;
     }
 
-    body.light-theme .btn-custom:hover {
-      background-color: #2a6e70;
-      color: #fff;
+    body.light-theme .btn-secondary:hover {
+      background-color: #5a6268;
+      border-color: #5a6268;
+    }
+    
+    body.light-theme .profile-header-container hr,
+    body.light-theme .photo-grid-container hr {
+        border-top: 1px solid var(--light-img-border-color);
+    }
+    
+    body.light-theme .grid-item img {
+        border: 1px solid var(--light-img-border-color);
+    }
+    
+    body.light-theme .modal-content {
+        background-color: var(--light-bg);
+        color: var(--light-text);
+    }
+    
+    body.light-theme .modal-header {
+        border-bottom: 1px solid var(--light-img-border-color);
+    }
+    
+    body.light-theme .story-gif {
+        border-color: var(--main-color);
+        background-color: var(--light-card);
+    }
+    
+    body.light-theme .profile-socials a {
+      color: var(--light-text);
     }
 
+    body.light-theme .profile-socials a:hover {
+      color: var(--main-color);
+    }
+    
+    body.light-theme .qr-coffee img {
+      border-color: var(--light-img-border-color);
+    }
+
+
+    /* :: Navbar :: */
     nav.navbar {
       background-color: var(--card-bg);
-    }
-
-    nav.navbar .nav-link {
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    nav.navbar .nav-link:hover,
-    nav.navbar .nav-link.active {
-      color: var(--main-color);
-    }
-
-    .header-title {
-      color: var(--main-color);
-      text-align: center;
-      margin-top: 2rem;
-      font-weight: 700;
-      font-size: 3rem;
-      letter-spacing: 1px;
-    }
-
-    .card {
-      border-radius: 1rem;
-      overflow: hidden;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, background-color var(--transition), color var(--transition);
-      background: linear-gradient(145deg, #23262e, #1b1d23);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-      color: #fff;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .card-img-top {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-bottom: 2px solid var(--main-color);
-      border-radius: 0.5rem;
-    }
-
-    .btn-custom {
-      border-radius: 0.5rem;
-      margin-right: 0.5rem;
-      background-color: var(--main-color);
-      border: none;
-      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1030;
       transition: background-color var(--transition);
-    }
-
-    .btn-custom:hover {
-      background-color: #2a6e70;
-    }
-
-    .btn-light-mode {
-      background-color: var(--light-bg);
-      color: var(--light-text);
-      border: none;
-      padding: 8px 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .btn-light-mode:hover {
-      background-color: #e2e2e2;
-    }
-
-    .profile {
-      display: flex;
-      align-items: center;
-      max-width: 700px;
-      margin: 1rem auto 3rem;
-      gap: 1.5rem;
-    }
-
-    .profile img {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--main-color);
-      box-shadow: 0 0 10px var(--main-color);
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-
-    .profile img:hover {
-      transform: scale(1.05);
-    }
-
-    .profile .description {
-      flex: 1;
-      font-size: 1.1rem;
-      line-height: 1.4;
-    }
-
-    .social-icons a {
-      color: #ffffff;
-      margin: 0 10px;
-      text-decoration: none;
-      font-size: 1.6rem;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    body.light-theme .social-icons a {
-      color: var(--light-text);
-    }
-
-    .social-icons a:hover {
-      color: var(--main-color);
-      transform: scale(1.2);
-    }
-
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .skill {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 3rem;
-      transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
-      color: var(--main-color);
-      cursor: pointer;
-    }
-
-    .skill p {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    .skills-container:hover .skill {
-      filter: blur(2px);
-      opacity: 0.4;
-    }
-
-    .skills-container .skill:hover {
-      filter: none;
-      opacity: 1;
-      transform: scale(1.1);
-    }
-
-    .gif-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .gif-img:hover {
-      transform: scale(1.03);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     .navbar-brand {
@@ -253,35 +186,358 @@
       object-fit: cover;
     }
 
-    .footer-animate {
-      animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite, colorShift 6s linear infinite;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .dropdown-menu-dark .dropdown-item {
-      font-weight: 500;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .dropdown-menu-dark .dropdown-item:hover {
-      background-color: var(--main-color);
+    nav.navbar .nav-link {
       color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      position: relative;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      margin: 0 0.5rem;
+    }
+
+    nav.navbar .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 3px;
+      background: var(--main-color);
+      transition: width 0.3s ease-in-out;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav.navbar .nav-link:hover::after,
+    nav.navbar .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* :: Profile Header Section :: */
+    .profile-header-container {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+    
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid var(--main-color);
+      box-shadow: 0 0 25px rgba(147, 112, 219, 0.7);
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-pic:hover {
+        transform: scale(1.05);
+    }
+    
+    .profile-info h1 {
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .profile-stats {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 1.5rem;
+        font-size: 1.1rem;
+        margin: 1rem 0;
+    }
+    
+    .profile-stats strong {
+        color: var(--main-color);
+    }
+    
+    .profile-bio p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+    }
+    
+    .profile-socials a {
+      color: #fff;
+      margin: 0 0.75rem;
+      font-size: 1.8rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .profile-socials a:hover {
+      color: var(--main-color);
+      transform: scale(1.1);
+    }
+
+    .btn-lg {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .btn-lg:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-primary {
+      background-color: var(--main-color);
+      border-color: var(--main-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+    
+    .btn-secondary {
+       background-color: #4a4a4a;
+       border-color: #4a4a4a;
+    }
+    
+    .btn-secondary:hover {
+       background-color: #333;
+       border-color: #333;
+    }
+    
+    .qr-coffee {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .qr-coffee img {
+      width: 100px;
+      height: 100px;
+      border-radius: 0.5rem;
+      border: 2px solid var(--img-border-color);
+    }
+    
+    .qr-coffee a {
+      display: inline-block;
+      color: #000;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background-color: #FFDD00; /* BuyMeACoffee yellow */
+      transition: transform 0.2s ease;
+    }
+    
+    .qr-coffee a:hover {
       transform: scale(1.05);
     }
 
+    
+    /* :: Story Highlights :: */
+    .story-highlights {
+        display: flex;
+        justify-content: center; /* Center the stories */
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 0;
+        flex-wrap: wrap; /* Allow wrapping if needed */
+    }
 
-    @keyframes float {
-      0% {
-        transform: translateY(0);
+    .story-item {
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .story-gif {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--main-color);
+        padding: 3px;
+        background-color: var(--dark-bg); /* To hide non-circular GIF parts */
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .story-item:hover .story-gif {
+        transform: scale(1.08);
+        border-color: var(--secondary-color);
+    }
+
+    .story-label {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+    }
+
+    /* :: Photo Grid :: */
+    .photo-grid-container {
+        margin-bottom: 3rem;
+    }
+    
+    .photo-grid-container hr {
+        border-top: 1px solid var(--img-border-color);
+        margin-bottom: 2rem;
+    }
+    
+    .grid-item {
+        overflow: hidden;
+        border-radius: 0.5rem;
+    }
+    
+    .grid-item img {
+        width: 100%;
+        height: 300px; /* Taller images */
+        object-fit: cover;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+        border: 1px solid var(--img-border-color);
+        border-radius: 0.5rem;
+    }
+    
+    .grid-item img:hover {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    
+    /* :: Image Modal :: */
+    .modal-content {
+        background-color: var(--dark-bg);
+        border: 1px solid var(--card-bg);
+        border-radius: 0.5rem;
+    }
+    
+    .modal-header {
+        border-bottom: 1px solid var(--card-bg);
+    }
+    
+    .modal-body img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+    }
+
+
+    /* :: Theme Toggle Button :: */
+    .btn-light-mode {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      border: 1px solid var(--dark-bg);
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    body.light-theme .btn-light-mode {
+      background-color: var(--dark-bg);
+      color: var(--light-bg);
+      border: 1px solid var(--light-bg);
+    }
+    
+    .btn-light-mode:hover {
+      background-color: #e2e2e2;
+    }
+
+    body.light-theme .btn-light-mode:hover {
+      background-color: #3a3f4b;
+    }
+
+
+    /* :: Footer :: */
+    footer {
+      background: var(--card-bg);
+      color: #aaa;
+      padding: 1rem 0;
+    }
+    
+    body.light-theme footer {
+      background: var(--light-card);
+      color: #555;
+    }
+
+    /* :: Responsive Adjustments :: */
+    @media (max-width: 991px) { /* lg breakpoint */
+        .profile-socials {
+            text-align: center; /* Center socials on tablet */
+        }
+        .profile-socials a {
+            margin: 0 0.5rem; /* Tighter spacing */
+        }
+        .qr-coffee {
+            justify-content: center; /* Center QR code on tablet */
+        }
+    }
+    
+    @media (max-width: 768px) {
+      .profile-header {
+        text-align: center;
+      }
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1.5rem;
+      }
+      .profile-info h1 {
+        font-size: 2rem;
+      }
+      .profile-stats {
+        justify-content: center;
+        gap: 1rem;
+        font-size: 1rem;
+      }
+      .profile-buttons .btn {
+        width: 80%;
+        margin-bottom: 0.5rem;
+      }
+      
+      .qr-coffee {
+        text-align: center;
+        display: block; /* Override flex */
+      }
+      .qr-coffee img {
+        margin-bottom: 0.5rem;
+      }
+      
+      .grid-item img {
+        height: 200px;
+      }
+      
+      .story-highlights {
+          gap: 1rem;
+          justify-content: flex-start; /* Allow scrolling on mobile */
+          overflow-x: auto;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-bottom: 0.5rem; /* For scrollbar space */
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+          flex-wrap: nowrap; /* Prevent wrapping on mobile */
+      }
+      
+      .story-highlights::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
       }
 
-      50% {
-        transform: translateY(-5px);
+      .story-item {
+          flex: 0 0 auto; /* Prevent shrinking */
       }
 
-      100% {
-        transform: translateY(0);
+      .story-gif {
+          width: 70px;
+          height: 70px;
+      }
+
+      .story-label {
+          font-size: 0.8rem;
       }
     }
   </style>
@@ -289,222 +545,280 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-sm sticky-top">
+  <!-- Particle.js Container -->
+  <div id="particles-js"></div>
+
+  <div class="content-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand text-white" href="#">
+          <img
+            src="Me/chaewon.jpg"
+            alt="Mini Logo"
+            onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'"/>
+          ChaeDev
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <!-- Bootstrap default toggler icon -->
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="portfolio.html">WebDev</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="multimedia.html">Multimedia</a>
+            </li>
+          </ul>
+           <!-- Theme Toggle Button -->
+          <button class="btn btn-light-mode ms-3" id="theme-toggle">Light Mode</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <div class="container profile-header-container">
+        <div class="row profile-header align-items-center">
+            <!-- Profile Picture -->
+            <div class="col-lg-4 text-center" data-aos="fade-right">
+                <img src="Me/profile2.jpg" 
+                     alt="John Paul Godoy" 
+                     class="profile-pic"
+                     onerror="this.src='https://placehold.co/180x180/9370DB/white?text=JP'" />
+            </div>
+            
+            <!-- Profile Info -->
+            <div class="col-lg-8 profile-info" data-aos="fade-left">
+                <h1>John Paul D. Godoy</h1>
+                
+                <!-- Profile Stats -->
+                <ul class="profile-stats">
+                    <li><strong>5</strong> Web Projects</li>
+                    <li><strong>6</strong> Multimedia</li>
+                    <li><strong>6</strong> Skills</li>
+                </ul>
+
+                <!-- Profile Bio -->
+                <div class="profile-bio">
+                    <p>
+                        I'm a student currently exploring the dynamic worlds of web development and multimedia creation. This site is my personal playground and portfolio, showcasing my journey, projects, and discoveries. 
+                    </p>
+                    <p>
+                        Feel free to explore my work.
+                    </p>
+                </div>
+                
+                <!-- Social Icons -->
+                <div class="profile-socials my-3">
+                    <a href="https://www.facebook.com/chaepi04" target="_blank" class="fab fa-facebook" aria-label="Facebook"></a>
+                    <a href="https://github.com/jpgodoy04" target="_blank" class="fab fa-github" aria-label="GitHub"></a>
+                    <a href="https://www.instagram.com/jp_desu04/" target="_blank" class="fab fa-instagram" aria-label="Instagram"></a>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="profile-buttons mt-4">
+                    <a href="portfolio.html" class="btn btn-primary btn-lg m-1">
+                      <i class="fas fa-code me-2"></i> Web Portfolio
+                    </a>
+                    <a href="multimedia.html" class="btn btn-secondary btn-lg m-1">
+                      <i class="fas fa-camera-retro me-2"></i> Multimedia
+                    </a>
+                </div>
+                
+                <!-- QR & BuyMeACoffee -->
+                <div class="qr-coffee mt-4">
+                    <img src="Me/qr.png" alt="QR Code" />
+                    <a href="https://buymeacoffee.com/jpgodoy" target="_blank">
+                        <i class="fas fa-coffee me-2"></i> Buy me a coffee
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- Photo Grid -->
+    <div class="container photo-grid-container">
+        <hr />
+
+        <!-- Story Highlights -->
+        <div class="story-highlights mb-4" data-aos="fade-up">
+            <!-- Story 1 -->
+            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
+                 data-bs-img-src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p3eGIzZjdsaW44anZwemN6dmx2ZXZudjJ5cnNlbWx6Zno4ZDI0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EwwHX78xRXN0o2ncPm/giphy.gif">
+                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p3eGIzZjdsaW44anZwemN6dmx2ZXZudjJ5cnNlbWx6Zno4ZDI0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EwwHX78xRXN0o2ncPm/giphy.gif" 
+                     alt="Story 1" class="story-gif"
+                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+1'" />
+                <p class="story-label">Chaewon</p>
+            </div>
+            <!-- Story 2 -->
+            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
+                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlpbG9xMndyOTE0czNnamMzYWZ3MDlxNzU5Y3B5cmxsaXlucWgzZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jSCsVmzaTI21xQyNfb/giphy.gif">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlpbG9xMndyOTE0czNnamMzYWZ3MDlxNzU5Y3B5cmxsaXlucWgzZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jSCsVmzaTI21xQyNfb/giphy.gif" 
+                     alt="Story 2" class="story-gif"
+                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+2'" />
+                <p class="story-label">Winter</p>
+            </div>
+            <!-- Story 3 -->
+            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
+                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Z2OGJsbDFpdWQ0dDlmMmpzNHc2M2NncHo0eXNpbjdyNGNjaTFhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9LhVXzyEYWsiwOK7sA/giphy.gif">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Z2OGJsbDFpdWQ0dDlmMmpzNHc2M2NncHo0eXNpbjdyNGNjaTFhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9LhVXzyEYWsiwOK7sA/giphy.gif" 
+                     alt="Story 3" class="story-gif"
+                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+3'" />
+                <p class="story-label">Yooyeon</p>
+            </div>
+            <!-- Story 4 -->
+            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
+                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZxcjd2anBjbHdvNDZ5Zm9xZ3dteXA0NmNmbXd1YTFmcHZmYnBwcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DSCsnr7mVlrFuPKfYv/giphy.gif">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZxcjd2anBjbHdvNDZ5Zm9xZ3dteXA0NmNmbXd1YTFmcHZmYnBwcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DSCsnr7mVlrFuPKfYv/giphy.gif" 
+                     alt="Story 4" class="story-gif"
+                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+4'" />
+                <p class="story-label">Asa</p>
+            </div>
+            <!-- Story 5 -->
+            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
+                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlsM2FidDU1MmNhcDRqa3FrdnBiMjhiemFtdmdrM3dkbzNyNjhhbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KirIunHoT9Sg1Tu1JN/giphy.gif">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlsM2FidDU1MmNhcDRqa3FrdnBiMjhiemFtdmdrM3dkbzNyNjhhbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KirIunHoT9Sg1Tu1JN/giphy.gif" 
+                     alt="Story 5" class="story-gif" />
+                <p class="story-label">Karina</p>
+            </div>
+            <!-- Story 6 -->
+            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
+                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXU4ZTkzYnc3ZHg5eDVscHFuN2lhNzh6MzRveWx1czBmOXZncDgzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5MKsSWDJ4QkgazInrZ/giphy.gif">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXU4ZTkzYnc3ZHg5eDVscHFuN2lhNzh6MzRveWx1czBmOXZncDgzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5MKsSWDJ4QkgazInrZ/giphy.gif" 
+                     alt="Story 6" class="story-gif" />
+                <p class="story-label">Hayoung</p>
+            </div>
+        </div>
+        
+        <h2 class="text-center mb-4" data-aos="fade-up">Gallery</h2>
+        
+        <div class="row row-cols-2 row-cols-md-3 g-3 photo-grid">
+            
+            <!-- Grid Item 1 -->
+            <div class="col grid-item" data-aos="zoom-in-up">
+                <img src="Me/jp.jpg" 
+                     alt="Gallery Photo 1"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-bs-img-src="Me/jp.jpg" />
+            </div>
+            
+            <!-- Grid Item 2 -->
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="50">
+                <img src="Me/jp1.jpg" 
+                     alt="Gallery Photo 2"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-bs-img-src="Me/jp1.jpg" />
+            </div>
+            
+            <!-- Grid Item 3 -->
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="100">
+                <img src="Me/pfp7.jpg" 
+                     alt="Gallery Photo 3"
+                     onerror="this.src='https://placehold.co/600x600/555/fff?text=Photo+3'"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-bs-img-src="Me/pfp7.jpg" />
+            </div>
+            
+            <!-- Grid Item 4 -->
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="150">
+                <img src="Me/jp2.jpg" 
+                     alt="Gallery Photo 4"
+                     onerror="this.src='https://placehold.co/600x600/666/fff?text=Photo+4'"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-bs-img-src="Me/jp2.jpg" />
+            </div>
+            
+            <!-- Grid Item 5 -->
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="200">
+                <img src="Me/jp3.jpg" 
+                     alt="Gallery Photo 5"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-bs-img-src="Me/jp3.jpg" />
+            </div>
+            
+            <!-- Grid Item 6 -->
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="250">
+                <img src="Me/jp5.jpg" 
+                     alt="Gallery Photo 6"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-bs-img-src="Me/jp5.jpg" />
+            </div>
+
+        </div>
+    </div>
+
+  </div>
+  
+  <!-- Footer -->
+  <footer class="text-center">
     <div class="container">
-      <a class="navbar-brand text-white fw-bold footer-animate" href="#">
-        <img src="Me/chaewon.jpg" alt="Mini Logo" />
-        ChaeDev
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="footer-animate navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#programming-languages-section">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#activity-section ">Programming Languages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about-section ">About Me</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container my-4 text-center footer-animate">
-    <label for="music-selector" class="form-label text-white fs-5 fw-bold mb-3"> Choose Your Background Music</label>
-    <div class="dropdown d-inline-block">
-      <button class="btn btn-custom dropdown-toggle px-4 py-2" type="button" id="musicDropdown"
-        data-bs-toggle="dropdown" aria-expanded="false">
-         Select Track
-      </button>
-      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="musicDropdown">
-        <li><a class="dropdown-item music-option" data-src="music/enhypen.mp3" href="#">Enhypen</a></li>
-        <li><a class="dropdown-item music-option" data-src="music/saja.mp3" href="#">Le Sserafim</a></li>
-        <li><a class="dropdown-item music-option" data-src="music/sajaa.mp3" href="#">Saja Boys</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <audio id="bg-music" autoplay loop>
-  <source src="music/enhypen.mp3" type="audio/mpeg" />
-  Your browser does not support the audio element.
-</audio>
-
-
-
-  <div class="container py-3 text-end">
-    <button class="btn btn-light-mode" id="theme-toggle">Light Mode</button>
-  </div>
-
-  <h1 class="header-title text-center mb-5 footer-animate" id="activity-section">Web Development</h1>
-
-  <div class="profile mb-5">
-    <img src="Me/profile2.jpg" alt="Profile Picture" />
-    <div class="description">
-      <h2>John Paul D. Godoy</h2>
-      <p>2ND YEAR DIPLOMA IN INFORMATION TECHNOLOGY</p>
-      <p><strong>POLYTECHNIC UNIVERSITY OF THE PHILIPPINES STO TOMAS</strong></p>
-    </div>
-  </div>
-
-  <div class="social-icons text-center mb-5 footer-animate">
-    <a href="https://www.instagram.com/jp_desu04/" target="_blank" class="fab fa-instagram"></a>
-    <a href="https://github.com/jpgodoy04" target="_blank" class="fab fa-github"></a>
-    <a href="https://www.facebook.com/chaepi04" target="_blank" class="fab fa-facebook"></a>
-  </div>
-
-  <h1 class="text-center mb-4 footer-animate" id="programming-languages-section">Programming Languages</h1>
-
-  <div class="skills-container text-center mb-5">
-    <div class="skill"><i class="fab fa-php"></i>
-      <p>PHP</p>
-    </div>
-    <div class="skill"><i class="fab fa-html5"></i>
-      <p>HTML</p>
-    </div>
-    <div class="skill"><i class="fab fa-css3-alt"></i>
-      <p>CSS</p>
-    </div>
-    <div class="skill"><i class="fab fa-js-square"></i>
-      <p>JavaScript</p>
-    </div>
-    <div class="skill"><i class="fab fa-python"></i>
-      <p>Python</p>
-    </div>
-    <div class="skill"><i class="fab fa-java"></i>
-      <p>Java</p>
-    </div>
-  </div>
-
-  <h1 class="text-center my-5 footer-animate">Projects</h1>
-  <div class="container px-4">
-    <div class="row g-4">
-      <div class="col-12" data-aos="fade-up">
-        <div class="card h-100 p-3">
-          <img src="A04/A04 pics/control dualsense.jpg" class="card-img-top mb-3" alt="Project 1" />
-          <div class="card-body">
-            <h5 class="card-title">PS5 SHOWCASE</h5>
-            <p class="card-text">A showcase of the newest Playstation console</p>
-            <a href="A04/index.html" class="btn btn-custom">View Project</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12" data-aos="fade-up" data-aos-delay="100">
-        <div class="card h-100 p-3">
-          <img src="A05/japan bg.jpg" class="card-img-top mb-3" alt="Project 2" />
-          <div class="card-body">
-            <h5 class="card-title">Japan Gallery</h5>
-            <p class="card-text">A Gallery showcasing the cultures and places in the country of Japan.</p>
-            <a href="A05/index.html" class="btn btn-custom">View Project</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12" data-aos="fade-up" data-aos-delay="200">
-        <div class="card h-100 p-3">
-          <img src="A06/photos/aep.jpg" class="card-img-top mb-3" alt="Project 3" />
-          <div class="card-body">
-            <h5 class="card-title">AESPA & LSRFM</h5>
-            <p class="card-text">A Gallery about the K-Pop group Aespa and Le-Sserafim that has a collapsible footer.
-            </p>
-            <a href="A06/index.html" class="btn btn-custom">View Project</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12" data-aos="fade-up" data-aos-delay="300">
-        <div class="card h-100 p-3">
-          <img src="A07/bg.jpg" class="card-img-top mb-3" alt="Project 4" />
-          <div class="card-body">
-            <h5 class="card-title">Valorant Agents API</h5>
-            <p class="card-text">A Valorant API that shows the agents and its roles with abilities of each.</p>
-            <a href="A07/index.html" class="btn btn-custom">View Project</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12" data-aos="fade-up" data-aos-delay="400">
-        <div class="card h-100 p-3">
-          <img src="A08/EZ-Parallax-master/img/strawhats/bgbgbg.webp" class="card-img-top mb-3" alt="Project 5" />
-          <div class="card-body">
-            <h5 class="card-title">One Piece Parallax</h5>
-            <p class="card-text">A Parallax about One Piece with the Strawhats Pirates in the content.</p>
-            <a href="A08/EZ-Parallax-master/index.html" class="btn btn-custom">View Project</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12" data-aos="fade-up" data-aos-delay="500">
-        <div class="card h-100 p-3">
-          <img src="" card-img-top mb-3" alt="Coming Soon!" />
-          <div class="card-body">
-            <h5 class="card-title">To Be Continued!</h5>
-            <p class="card-text">Coming Soon! </p>
-            <a href="#" class="btn btn-custom">Coming Soon! </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-  <footer class="bg-dark text-white mt-5">
-    <div class="container py-4">
-      <button class="btn btn-outline-light mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#gifCollapse"
-        aria-expanded="false" aria-controls="gifCollapse">
-        Show / Hide
-      </button>
-      <div class="collapse" id="gifCollapse">
-        <div class="row g-3 mb-3 text-center">
-          <div class="col-6 col-md-3">
-            <img
-              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHV5cjBnb2Q5aXo0d2RsOGFueHl6cDhiMndhOGQzdnF0cDE5djJzciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/vCkarGV0iwXTRfe7IK/giphy.gif"
-              class="gif-img" alt="GIF 1" />
-          </div>
-          <div class="col-6 col-md-3">
-            <img
-              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW45c2I4bWRhM3FkZzIzeDJuMHEycG96aWxmb3lvaGp4cGNobTF0MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DhSfmBc85VYZUTaXy1/giphy.gif"
-              class="gif-img" alt="GIF 2" />
-          </div>
-          <div class="col-6 col-md-3">
-            <img
-              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW45c2I4bWRhM3FkZzIzeDJuMHEycG96aWxmb3lvaGp4cGNobTF0MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/cvlgCRaBhHyicvIfnb/giphy.gif"
-              class="gif-img" alt="GIF 3" />
-          </div>
-          <div class="col-6 col-md-3">
-            <img
-              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW45c2I4bWRhM3FkZzIzeDJuMHEycG96aWxmb3lvaGp4cGNobTF0MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9ZNT6kkQ5iR373s1Gx/giphy.gif"
-              class="gif-img" alt="GIF 4" />
-          </div>
-        </div>
-        <p class="text-center fs-5 mt-3 footer-animate">Stay Tuned for more exciting projects!
-      </div>
-    </div>
-    </div>
-    <p class="text-center fs-5 mb-3 footer-animate" id="about-section">Minasan, Konichiwa! <strong>"I'm an aspiring web
-        developer
-        passionate about creating engaging and responsive websites. Please look forward to my future works and endeavors
-        as I grow and explore the world of web development."</strong></p>
+      <p>&copy; 2024 ChaeDev | John Paul Godoy. All rights reserved.</p>
     </div>
   </footer>
+  
+  <!-- Image Preview Modal -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="" id="modalImage" class="img-fluid" alt="Preview" />
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scripts -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- particles.js script -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    AOS.init({ once: false, mirror: true, duration: 700, easing: 'ease-in-out' });
+    // :: Initialize AOS (Animate on Scroll) ::
+    AOS.init({
+      once: false, 
+      mirror: true,
+      duration: 800,
+      easing: 'ease-in-out'
+    });
 
+    // :: Theme Toggle ::
     const toggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
 
     function updateToggleButton() {
-      toggleBtn.textContent = body.classList.contains('light-theme') ? 'Dark Mode' : 'Light Mode';
+      const isLight = body.classList.contains('light-theme');
+      toggleBtn.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+      
+      // Update particle colors based on theme
+      if (typeof pJSDom !== 'undefined' && pJSDom.length > 0) {
+        let particleColor = isLight ? '#2a2d34' : '#9370DB'; // Dark particles on light bg
+        let lineColor = isLight ? '#2a2d34' : '#9370DB';
+
+        if (typeof particlesJS !== 'undefined') {
+          particlesJS('particles-js', getParticlesConfig(particleColor, lineColor));
+        }
+      }
     }
 
     toggleBtn.addEventListener('click', () => {
@@ -512,41 +826,109 @@
       updateToggleButton();
     });
 
+    // Set initial button text and particle config
     updateToggleButton();
 
+    // :: Active Nav Link on Scroll (Simple version for home) ::
     const navLinks = document.querySelectorAll('.nav-link');
-
-    function onScroll() {
-      let scrollPos = window.scrollY || document.documentElement.scrollTop;
-      navLinks.forEach(link => {
-        let section = document.querySelector(link.getAttribute('href'));
-        if (section) {
-          let top = section.offsetTop - 80;
-          let bottom = top + section.offsetHeight;
-          if (scrollPos >= top && scrollPos < bottom) {
-            navLinks.forEach(lnk => lnk.classList.remove('active'));
-            link.classList.add('active');
-          }
-        }
-      });
-    }
-
-    const bgMusic = document.getElementById('bg-music');
-    const musicOptions = document.querySelectorAll('.music-option');
-    const dropdownToggle = document.getElementById('musicDropdown');
-
-    musicOptions.forEach(option => {
-      option.addEventListener('click', function (e) {
-        e.preventDefault();
-        const selectedTrack = this.getAttribute('data-src');
-        const selectedName = this.textContent;
-        bgMusic.src = selectedTrack;
-        bgMusic.play();
-        dropdownToggle.textContent = ` ${selectedName}`;
-      });
+    
+    // Set 'Home' as active by default on this page
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === 'index.html') {
+        link.classList.add('active');
+      }
     });
+
+    // :: Image Modal Logic ::
+    const imageModal = document.getElementById('imageModal');
+    imageModal.addEventListener('show.bs.modal', function (event) {
+      // Button that triggered the modal
+      const triggerElement = event.relatedTarget;
+      
+      // Extract info from data-bs-* attributes
+      const imageSource = triggerElement.getAttribute('data-bs-img-src');
+      
+      // Update the modal's content.
+      const modalImage = imageModal.querySelector('#modalImage');
+      modalImage.src = imageSource;
+    });
+
+
+    // :: particles.js config function ::
+    function getParticlesConfig(particleColor, lineColor) {
+      return {
+        "particles": {
+          "number": {
+            "value": 60,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": particleColor 
+          },
+          "shape": {
+            "type": "circle",
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": lineColor,
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 4,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "repulse": {
+              "distance": 150,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      };
+    }
+    
+    // Initial particles.js call
+    // This will be re-called by updateToggleButton if needed
+    particlesJS('particles-js', getParticlesConfig('#9370DB', '#9370DB'));
 
   </script>
 </body>
-
 </html>
+

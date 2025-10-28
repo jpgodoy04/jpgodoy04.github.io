@@ -3,130 +3,363 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Activity 05</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <title>Activity 05 | Japan Gallery</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" />\<link rel="icon" href="../Me/chaewon.jpg">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     body {
-      background-image: url('japan bg.jpg');    
+      background-image: url('japan bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
       color: white;
+      font-family: 'Roboto Mono', monospace;
+    }
+    
+    h1, h2, h3, h4, h5, .btn, .navbar-brand {
+        font-family: 'Poppins', sans-serif;
     }
 
     .overlay {
-      background-color: rgba(0, 0, 0, 0.5); 
+      background-color: rgba(0, 0, 0, 0.6); 
       min-height: 100vh;
       padding-bottom: 50px;
     }
+    
+    .navbar-custom {
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+    }
+    
+    .btn-back-nav {
+      border-color: var(--main-color, #9370DB);
+      color: var(--main-color, #9370DB);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-back-nav:hover {
+      background-color: var(--main-color, #9370DB);
+      border-color: var(--main-color, #9370DB);
+      color: white;
+    }
+    
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 600;
+    }
+    
+    .intro-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(80vh - 70px); 
+        text-align: center;
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
 
     .header-title {
-      font-size: 3rem;
-      font-weight: bold;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-      text-align: center;
-      padding: 100px 0 40px;
+      font-size: 4rem;
+      font-weight: 700;
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+      padding: 40px 0 20px;
+    }
+
+    .japan-flag {
+        width: 150px;
+        height: 100px;
+        background-color: white;
+        border: 2px solid #fff;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .japan-flag:hover {
+        transform: scale(1.1);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .japan-flag-circle {
+        width: 60px;
+        height: 60px;
+        background-color: #BC002D; 
+        border-radius: 50%;
+    }
+    
+    .intro-section p {
+        font-size: 1.2rem;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 1rem;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    }
+    
+    .gallery-section {
+        display: none; 
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    
+    .section-heading {
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      border-bottom: 3px solid var(--main-color, #9370DB);
+      display: inline-block;
+      padding-bottom: 10px;
     }
 
     .card {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.95); 
       color: black;
       border: none;
+      border-radius: 0.75rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%; 
+    }
+    
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     .card img {
-      height: 200px;
+      height: 220px; 
       object-fit: cover;
+      border-radius: 0.75rem 0.75rem 0 0; 
     }
-    .offcanvas-header,
-.offcanvas-body {
-	background-color: #111;
-	color: white;
-}
+    
+    .col-md-6 .card img {
+        height: 280px;
+    }
+    
+    .card-feature {
+        flex-direction: row; /* Horizontal layout */
+        align-items: stretch;
+    }
+    
+    .card-feature img {
+        height: auto;
+        width: 40%;
+        object-fit: cover;
+        border-radius: 0.75rem 0 0 0.75rem;
+    }
+    
+    .card-feature .card-body {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    @media (max-width: 768px) {
+        .card-feature {
+            flex-direction: column;
+        }
+        .card-feature img {
+            width: 100%;
+            height: 250px;
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+        .card-feature .card-body {
+            width: 100%;
+        }
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .card-title {
+        font-weight: 600;
+        color: #BC002D; 
+    }
 
-.offcanvas-body a {
-	color: #fdd835;
-	text-decoration: none;
-}
-
-.navbar-toggler {
-	position: fixed;
-	top: 1rem;
-	left: 1rem;
-	z-index: 9999;
-}
   </style>
 </head>
 <body>
   <div class="overlay">
-    <a href="../index.html" class = btn btn-primary m-3 style="color: aqua;">Back to profile</a>
-    <div class="header-title">Japan</div>
+    
+    <nav class="navbar navbar-expand-sm sticky-top navbar-custom">
+      <div class="container-fluid">
+        <a href="../portfolio.html" class="btn btn-back-nav">
+          <i class="fas fa-arrow-left me-2"></i>Back to Home
+        </a>
+        <span class="navbar-brand mb-0 h1 ms-auto">Japan Gallery</span>
+      </div>
+    </nav>
+    
+    <div class="container intro-section" id="introSection">
+        <div class="header-title" data-aos="fade-down">Japan</div>
+        <div class="japan-flag" id="japanFlag" data-aos="fade-up">
+            <div class="japan-flag-circle"></div>
+        </div>
+        <p data-aos="fade-up" data-aos-delay="100">Click the flag to explore</p>
+    </div>
 
-    <div class="container-fluid">
-      <div class="row g-4">
-
-        <div class="col-md-4">
-          <div class="card shadow rounded-3 h-100">
-            <img src="A05 Pics/shibuya.jpg" class="card-img-top">
+    <div class="container-fluid gallery-section p-4" id="gallerySection">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 section-heading">Iconic Landmarks & Cities</h2>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="card shadow rounded-3">
+            <img src="A05 Pics/shibuya.jpg" class="card-img-top"
+                 onerror="this.src='https://placehold.co/600x400/333/fff?text=Shibuya'">
             <div class="card-body">
               <h5 class="card-title">Shibuya</h5>
-              <p class="card-text">It is famous for its enormous and crowded pedestrian crossing, hundreds of fashion stores, neon signs, and giant screens. Shibuya is the center of Tokyo's cutting-edge culture and is considered the youth heart and soul of the city.</p>
+              <p class="card-text">Famous for its enormous pedestrian crossing, hundreds of fashion stores, and neon signs. Shibuya is the center of Tokyo's cutting-edge youth culture.</p>
             </div>
           </div>
         </div>
-
-        <div class="col-md-4">
-          <div class="card shadow rounded-3 h-100">
-            <img src="A05 Pics/anime.jpg" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Anime</h5>
-              <p class="card-text">Anime is a distinct form of animation that originated in Japan, characterized by its ⁢colorful artwork, vibrant characters, fantastical themes, and emotional ⁤narratives. This​ unique art form encapsulates a myriad of genres, appealing to audiences of ⁢all ages around the globe. </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card shadow rounded-3 h-100">
-            <img src="A05 Pics/GettyRF1125806115.avif" class="card-img-top">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card shadow rounded-3">
+            <img src="A05 Pics/GettyRF1125806115.avif" class="card-img-top"
+                 onerror="this.src='https://placehold.co/600x400/333/fff?text=Mt.+Fuji'">
             <div class="card-body">
               <h5 class="card-title">Mt Fuji</h5>
-              <p class="card-text">Mount Fuji is the tallest mountain in Japan. It is a stratovolcano that rose sometime after 400,000 years ago. The present-day mountain is a composite of three successive volcanoes: at the bottom is Komitake, which was surmounted by Ko Fuji (“Old Fuji”) about 100,000 years ago and, finally, by the most recent, Shin Fuji (“New Fuji”). </p>
+              <p class="card-text">Mount Fuji is the tallest mountain in Japan and a stratovolcano. The present-day mountain is a composite of three successive volcanoes.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-            <div class="card shadow rounded-3 h-100">
-              <img src="A05 Pics/tokyo.avif" class="card-img-top">
+        <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="card shadow rounded-3">
+              <img src="A05 Pics/tokyo.avif" class="card-img-top"
+                   onerror="this.src='https://placehold.co/600x400/333/fff?text=Tokyo'">
               <div class="card-body">
                 <h5 class="card-title">Tokyo</h5>
-                <p class="card-text">It's Japan's top spot for contemporary art and architecture, pop culture, shopping, drinking and entertainment (and a tie with Kyoto for dining). But more than in any other place, it's the city itself that enchants visitors.</p>
+                <p class="card-text">It's Japan's top spot for contemporary art, pop culture, shopping, and entertainment. The city itself is what enchants visitors the most.</p>
               </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card shadow rounded-3 h-100">
-              <img src="A05 Pics/kyoto.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">Kyoto</h5>
-                <p class="card-text">Kyoto is a city located in the Kansai region of Japan, and is considered the cultural capital of Japan. It is home to numerous Buddhist temples, Shinto shrines, palaces and gardens, some of which have been designated collectively as a World Heritage Site by UNESCO.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card shadow rounded-3 h-100">
-              <img src="A05 Pics/Japanese Cuisines.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">Japanese Cuisines</h5>
-                <p class="card-text">Japanese cuisine is incredibly diverse, emphasizing both seasonality and quality of ingredients, raw seafood is one of the most famous dishes in the Japanese cuisine. Seafood is most commonly eaten as sashimi, but other meats and foods can also be served as sashimi.</p>
-              </div>
-            </div>
-          </div>
-
+        </div>
       </div>
+
+      <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 section-heading">Historic & Spiritual Hubs</h2>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-md-6" data-aos="fade-up">
+          <div class="card shadow rounded-3">
+            <img src="A05 Pics/kyoto.jpg" class="card-img-top"
+                 onerror="this.src='https://placehold.co/600x400/333/fff?text=Kyoto'">
+            <div class="card-body">
+              <h5 class="card-title">Kyoto</h5>
+              <p class="card-text">Kyoto is considered the cultural capital of Japan. It is home to numerous Buddhist temples, Shinto shrines, palaces and gardens, many designated as a World Heritage Site by UNESCO.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card shadow rounded-3">
+            <img src="A05 Pics/fushimi.png" class="card-img-top"
+                 onerror="this.src='https://placehold.co/600x400/333/fff?text=Fushimi+Inari'">
+            <div class="card-body">
+              <h5 class="card-title">Fushimi Inari Shrine</h5>
+              <p class="card-text">Famous for its thousands of vibrant red torii gates, this Shinto shrine in Kyoto is dedicated to Inari, the god of rice. Visitors walk through the mesmerizing tunnels of gates that wind up a mountain.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 section-heading">Natural Beauty</h2>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-12" data-aos="fade-up">
+            <div class="card card-feature shadow rounded-3">
+                <img src="A05 Pics/sakura.jpg" class="card-img-top"
+                     onerror="this.src='A05 Pics/sakura.jpg'">
+                <div class="card-body">
+                  <h5 class="card-title">Cherry Blossoms (Sakura)</h5>
+                  <p class="card-text">Sakura is the iconic Japanese cherry blossom, which blooms in spring. This beautiful, fleeting flower is celebrated with 'hanami' (flower viewing) parties, where people gather under the trees to eat, drink, and appreciate the transient beauty of nature.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 section-heading">Art & Cuisine</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="card shadow rounded-3">
+            <img src="A05 Pics/anime.jpg" class="card-img-top"
+                 onerror="this.src='https://placehold.co/600x400/333/fff?text=Anime'">
+            <div class="card-body">
+              <h5 class="card-title">Anime</h5>
+              <p class="card-text">A distinct form of animation originating in Japan, characterized by ⁢colorful artwork, vibrant characters, and fantastical themes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card shadow rounded-3">
+            <img src="A05 Pics/Japanese Cuisines.jpg" class="card-img-top"
+                 onerror="this.src='https://placehold.co/600x400/333/fff?text=Cuisine'">
+            <div class="card-body">
+              <h5 class="card-title">Japanese Cuisines</h5>
+              <p class="card-text">Incredibly diverse, emphasizing seasonality and quality of ingredients. Raw seafood is one of the most famous dishes, often eaten as sashimi.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+          <div class="card shadow rounded-3">
+            <img src="A05 Pics/ramen.jpg" class="card-img-top"
+                 onerror="this.src='https://placehold.co/600x400/333/fff?text=Ramen'">
+            <div class="card-body">
+              <h5 class="card-title">Ramen</h5>
+              <p class="card-text">A beloved noodle soup with Chinese-style wheat noodles in a rich broth, flavored with soy sauce or miso and various toppings.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        easing: 'ease-in-out'
+    });
+
+    const flag = document.getElementById('japanFlag');
+    const introSection = document.getElementById('introSection');
+    const gallerySection = document.getElementById('gallerySection');
+
+    flag.addEventListener('click', () => {
+        introSection.style.opacity = '0';
+        introSection.style.transform = 'scale(0.9)';
+        
+        setTimeout(() => {
+            introSection.style.display = 'none';
+            
+            gallerySection.style.display = 'block';
+            
+            setTimeout(() => {
+                gallerySection.style.opacity = '1';
+            }, 10); 
+            
+        }, 500); 
+    });
+  </script>
 </body>
 </html>
+
