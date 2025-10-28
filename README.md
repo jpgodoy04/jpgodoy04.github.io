@@ -121,8 +121,6 @@ Another table for layout.
 
 
 
-
-
 <a href="https://jpgodoy04.github.io/">
 <img src="https://www.google.com/search?q=https://img.shields.io/badge/Portfolio-Visit_My_Site-9370DB%3Fstyle%3Dfor-the-badge%26logo%3Dgithub%26logoColor%3Dwhite" alt="Portfolio"/>
 </a>
