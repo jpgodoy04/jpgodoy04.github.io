@@ -1,10 +1,5 @@
-<!--
-This is a GitHub-flavored Markdown file.
-It includes HTML and CSS for styling and animation.
--->
 
 <style>
-/* Define a glowing animation for the main header */
 @keyframes glow {
 0%, 100% {
 text-shadow: 0 0 10px #9370DB, 0 0 20px #9370DB, 0 0 30px #9370DB;
@@ -16,10 +11,8 @@ text-shadow: 0 0 20px #9370DB, 0 0 30px #9370DB, 0 0 40px #9370DB;
 
 .glow-h1 {
 animation: glow 3s ease-in-out infinite;
-color: #f2f0f8; /* Lighter color to help the glow */
-}
+color: #f2f0f8; 
 
-/* Define a slide-in animation for content blocks */
 @keyframes slideInUp {
 from {
 transform: translateY(50px);
@@ -33,16 +26,14 @@ opacity: 1;
 
 .slide-in {
 animation: slideInUp 0.8s ease-out forwards;
-opacity: 0; /* Start hidden */
+opacity: 0; 
 }
 
-/* Add animation delays for a staggered effect */
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 .delay-3 { animation-delay: 0.6s; }
 .delay-4 { animation-delay: 0.8s; }
 
-/* Style for layout tables */
 .layout-table {
 width: 100%;
 border-collapse: collapse;
@@ -56,10 +47,6 @@ background-color: transparent;
 }
 </style>
 
-<!--
-Header and Intro Section
-Using align="center" and the custom CSS class for animation.
--->
 
 <div align="center">
 <h1 class="glow-h1">Hi, I'm John Paul Godoy (Jp) 👋</h1>
@@ -72,17 +59,12 @@ Currently exploring web development and building cool projects as I grow my skil
 <img src="https://media.giphy.com/media/EwwHX78xRXN0o2ncPm/giphy.gif" width="300" class="slide-in delay-1" />
 </div>
 
-<!--
-Skills Section
-Using a table for a side-by-side layout with the GIF.
--->
 
 <h2 align="center" class="slide-in delay-2">My Tech Stack 💻</h2>
 
 <table class="layout-table slide-in delay-3" style="max-width: 800px; margin: auto;">
 <tr>
 <td width="60%" align="center">
-<!-- Using shields.io badges for a clean, professional look -->
 <p>
 <img src="https://www.google.com/search?q=https://img.shields.io/badge/HTML5-E34F26%3Fstyle%3Dfor-the-badge%26logo%3Dhtml5%26logoColor%3Dwhite" alt="HTML5"/>
 <img src="https://www.google.com/search?q=https://img.shields.io/badge/CSS3-1572B6%3Fstyle%3Dfor-the-badge%26logo%3Dcss3%26logoColor%3Dwhite" alt="CSS3"/>
@@ -99,10 +81,6 @@ Using a table for a side-by-side layout with the GIF.
 </tr>
 </table>
 
-<!--
-Connect Section
-Another table for layout.
--->
 
 <h2 align="center" class="slide-in delay-4">Let's Connect 📬</h2>
 
@@ -112,10 +90,11 @@ Another table for layout.
 <img src="https://media.giphy.com/media/2zUn8hAwJwG4abiS0p/giphy.gif" width="200" alt="Connect GIF"/>
 </td>
 <td width="60%" align="center">
-<!-- Badges for social links -->
 <a href="mailto:godoyjp443@gmail.com">
 <img src="https://www.google.com/search?q=https://img.shields.io/badge/Email-godoyjp443%40gmail.com-blue%3Fstyle%3Dfor-the-badge%26logo%3Dgmail%26logoColor%3Dwhite" alt="Email"/>
 </a>
+
+
 
 
 
@@ -128,10 +107,7 @@ Another table for layout.
 </tr>
 </table>
 
-<!--
-GitHub Stats Section
-Centered with a final animation.
--->
+
 
 <div align="center" class="slide-in" style="animation-delay: 0.9s;">
 <h2 align="center">My GitHub Stats</h2>
