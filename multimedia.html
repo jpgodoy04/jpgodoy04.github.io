@@ -34,6 +34,34 @@
       scroll-behavior: smooth;
       min-height: 100vh;
     }
+     ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--main-color);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color);
+    }
+    
+    body.light-theme::-webkit-scrollbar-track {
+      background: var(--light-bg);
+    }
+    
+    body.light-theme::-webkit-scrollbar-thumb {
+      background: var(--main-color);
+    }
+    
+    body.light-theme::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color);
+    }
 
     h1, h2, h5, .navbar-brand, .btn {
       font-family: 'Poppins', sans-serif;

@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>ChaeDev | Home</title>
-  <!-- Favicon -->
-  <link rel="icon"
-    href="Me/chaewon.jpg"
-    type="image/png"
+  <title>ChaeDev</title>
+  <link rel="icon" href="Me/chaewon.jpg" type="image/png"
     onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono&display=swap"
     rel="stylesheet" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet" />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     :root {
-      --main-color: #9370DB; /* Purple */
-      --secondary-color: #6a4acd; /* Darker Purple */
+      --main-color: #9370DB;
+      --secondary-color: #6a4acd;
       --dark-bg: #1c1f26;
       --card-bg: #2a2d34;
-      --light-bg: #f0f2f5; /* Light purple-grey */
+      --light-bg: #f0f2f5;
       --light-text: #121212;
       --light-card: #ffffff;
       --transition: 0.4s ease;
@@ -33,12 +26,12 @@
       --light-img-border-color: rgba(0, 0, 0, 0.1);
     }
 
-    /* :: Base Styles :: */
-    html, body {
+    html,
+    body {
       height: 100%;
       margin: 0;
     }
-    
+
     body {
       background-color: var(--dark-bg);
       color: #fff;
@@ -48,28 +41,68 @@
       flex-direction: column;
     }
 
-    h1, h2, h3, h5, .navbar-brand, .btn, .profile-stats li {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--main-color);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color);
+    }
+
+    body.light-theme::-webkit-scrollbar-track {
+      background: var(--light-bg);
+    }
+
+    body.light-theme::-webkit-scrollbar-thumb {
+      background: var(--main-color);
+    }
+
+    body.light-theme::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color);
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h5,
+    .navbar-brand,
+    .btn,
+    .profile-stats li {
       font-family: 'Poppins', sans-serif;
     }
-    
-    h1, h2, h3, h5, .navbar-brand, .btn {
+
+    h1,
+    h2,
+    h3,
+    h5,
+    .navbar-brand,
+    .btn {
       font-weight: 600;
     }
-    
+
     .content-wrapper {
       flex: 1 0 auto;
       position: relative;
       z-index: 2;
-      padding-bottom: 3rem; /* Add padding to avoid footer overlap */
+      padding-bottom: 3rem;
     }
-    
+
     footer {
       flex-shrink: 0;
       position: relative;
       z-index: 2;
     }
 
-    /* :: Particle Background :: */
     #particles-js {
       position: fixed;
       width: 100%;
@@ -79,7 +112,6 @@
       z-index: 0;
     }
 
-    /* :: Light Theme Overrides (Purple) :: */
     body.light-theme {
       background-color: var(--light-bg);
       color: var(--light-text);
@@ -103,13 +135,13 @@
     body.light-theme nav.navbar .nav-link.active {
       color: var(--main-color);
     }
-    
+
     body.light-theme .btn-primary {
       background-color: var(--main-color);
       border-color: var(--main-color);
       color: #fff;
     }
-    
+
     body.light-theme .btn-primary:hover {
       background-color: var(--secondary-color);
       border-color: var(--secondary-color);
@@ -125,30 +157,45 @@
       background-color: #5a6268;
       border-color: #5a6268;
     }
-    
+
     body.light-theme .profile-header-container hr,
-    body.light-theme .photo-grid-container hr {
-        border-top: 1px solid var(--light-img-border-color);
+    body.light-theme .photo-grid-container hr,
+    body.light-theme .gallery-music-tabs {
+      border-top-color: var(--light-img-border-color);
     }
-    
+
+    body.light-theme .gallery-music-tabs .nav-link {
+      color: var(--light-text);
+    }
+
+    body.light-theme .gallery-music-tabs .nav-link.active {
+      color: var(--main-color);
+      border-bottom-color: var(--main-color);
+    }
+
     body.light-theme .grid-item img {
-        border: 1px solid var(--light-img-border-color);
+      border: 1px solid var(--light-img-border-color);
     }
-    
-    body.light-theme .modal-content {
-        background-color: var(--light-bg);
-        color: var(--light-text);
+
+    body.light-theme .instagram-story-modal .modal-content {
+      background-color: rgba(240, 242, 245, 0.95);
+      color: var(--light-text);
     }
-    
-    body.light-theme .modal-header {
-        border-bottom: 1px solid var(--light-img-border-color);
+
+    body.light-theme .instagram-story-modal .carousel-control-next-icon,
+    body.light-theme .instagram-story-modal .carousel-control-prev-icon {
+      filter: none;
     }
-    
+
+    body.light-theme .instagram-story-modal .btn-close {
+      filter: none;
+    }
+
     body.light-theme .story-gif {
-        border-color: var(--main-color);
-        background-color: var(--light-card);
+      border-color: var(--main-color);
+      background-color: var(--light-card);
     }
-    
+
     body.light-theme .profile-socials a {
       color: var(--light-text);
     }
@@ -156,13 +203,85 @@
     body.light-theme .profile-socials a:hover {
       color: var(--main-color);
     }
-    
+
+    body.light-theme .footer-socials a {
+      color: var(--light-text);
+    }
+
+    body.light-theme .footer-socials a:hover {
+      color: var(--main-color);
+    }
+
+
     body.light-theme .qr-coffee img {
       border-color: var(--light-img-border-color);
     }
 
+    body.light-theme .music-player-container {
+      background-color: var(--light-card);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
-    /* :: Navbar :: */
+    body.light-theme .music-player-playlist .song-item {
+      border-bottom-color: var(--light-img-border-color);
+    }
+
+    body.light-theme .music-player-playlist .song-item:hover {
+      background-color: var(--light-bg);
+    }
+
+    body.light-theme .music-player-playlist .song-item.active {
+      background-color: #e6e0f5;
+      color: var(--main-color);
+    }
+
+    body.light-theme .music-player-controls .control-btn {
+      color: var(--light-text);
+    }
+
+    body.light-theme .music-player-controls .control-btn:hover {
+      color: var(--main-color);
+    }
+
+    body.light-theme .music-player-controls .play-btn {
+      background-color: var(--main-color);
+      color: #fff;
+    }
+
+    body.light-theme .music-player-controls .play-btn:hover {
+      background-color: var(--secondary-color);
+    }
+
+    body.light-theme .music-player-controls .progress-bar-container {
+      background-color: #e9ecef;
+    }
+
+    body.light-theme .music-player-playlist .form-check-label {
+      color: var(--light-text);
+    }
+
+    body.light-theme .music-player-playlist .form-check-input:checked {
+      background-color: var(--main-color);
+      border-color: var(--main-color);
+    }
+
+    body.light-theme .music-player-toggle .toggle-btn {
+      background-color: var(--light-card);
+      color: var(--light-text);
+      border: 1px solid var(--light-img-border-color);
+    }
+
+    body.light-theme .music-player-toggle .toggle-btn.active {
+      background-color: var(--main-color);
+      color: #fff;
+      border-color: var(--main-color);
+    }
+
+    body.light-theme .music-player-toggle .toggle-btn:not(.active):hover {
+      background-color: var(--light-bg);
+    }
+
+
     nav.navbar {
       background-color: var(--card-bg);
       position: sticky;
@@ -214,53 +333,138 @@
     nav.navbar .nav-link.active::after {
       width: 100%;
     }
-    
-    /* :: Profile Header Section :: */
+
     .profile-header-container {
-        margin-top: 3rem;
-        margin-bottom: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
     }
-    
-    .profile-pic {
+
+    .profile-pic-container {
       width: 180px;
       height: 180px;
+      perspective: 1000px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    @media (min-width: 992px) {
+      .profile-pic-container {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-pic-container {
+        width: auto;
+        height: auto;
+        margin: 0 auto 1.5rem auto;
+        perspective: initial;
+        cursor: default;
+      }
+    }
+
+    .profile-pic-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    @media (max-width: 768px) {
+      .profile-pic-inner {
+        position: static;
+        width: auto;
+        height: auto;
+        transform-style: initial;
+        transition: none;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+    }
+
+
+    .profile-pic-container.is-flipped .profile-pic-inner {
+      transform: rotateY(180deg);
+    }
+
+    @media (max-width: 768px) {
+      .profile-pic-container.is-flipped .profile-pic-inner {
+        transform: none;
+      }
+    }
+
+    .profile-pic-front,
+    .profile-pic-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
       object-fit: cover;
       border-radius: 50%;
       border: 5px solid var(--main-color);
       box-shadow: 0 0 25px rgba(147, 112, 219, 0.7);
       transition: transform 0.3s ease;
     }
-    
-    .profile-pic:hover {
-        transform: scale(1.05);
+
+    @media (max-width: 768px) {
+
+      .profile-pic-front,
+      .profile-pic-back {
+        position: static;
+        width: 130px;
+        height: 130px;
+        backface-visibility: initial;
+        transition: transform 0.3s ease;
+      }
     }
-    
+
+    .profile-pic-front:hover,
+    .profile-pic-back:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-pic-back {
+      transform: rotateY(180deg);
+    }
+
+    @media (max-width: 768px) {
+      .profile-pic-back {
+        transform: none;
+      }
+    }
+
+
     .profile-info h1 {
-        font-weight: 700;
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
     }
-    
+
     .profile-stats {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        gap: 1.5rem;
-        font-size: 1.1rem;
-        margin: 1rem 0;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.1rem;
+      margin: 1rem 0;
     }
-    
+
     .profile-stats strong {
-        color: var(--main-color);
+      color: var(--main-color);
     }
-    
+
     .profile-bio p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
     }
-    
+
     .profile-socials a {
       color: #fff;
       margin: 0 0.75rem;
@@ -268,10 +472,22 @@
       transition: color 0.3s ease, transform 0.3s ease;
       text-decoration: none;
     }
-    
+
     .profile-socials a:hover {
       color: var(--main-color);
       transform: scale(1.1);
+    }
+
+    .verified-icon {
+      color: #1DA1F2;
+      font-size: 1.75rem;
+      margin-left: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .verified-icon {
+        font-size: 1.5rem;
+      }
     }
 
     .btn-lg {
@@ -281,46 +497,46 @@
       letter-spacing: 0.5px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    
+
     .btn-lg:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
-    
+
     .btn-primary {
       background-color: var(--main-color);
       border-color: var(--main-color);
     }
-    
+
     .btn-primary:hover {
       background-color: var(--secondary-color);
       border-color: var(--secondary-color);
     }
-    
+
     .btn-secondary {
-       background-color: #4a4a4a;
-       border-color: #4a4a4a;
+      background-color: #4a4a4a;
+      border-color: #4a4a4a;
     }
-    
+
     .btn-secondary:hover {
-       background-color: #333;
-       border-color: #333;
+      background-color: #333;
+      border-color: #333;
     }
-    
+
     .qr-coffee {
       display: flex;
       align-items: center;
       gap: 1rem;
       margin-top: 1.5rem;
     }
-    
+
     .qr-coffee img {
       width: 100px;
       height: 100px;
       border-radius: 0.5rem;
       border: 2px solid var(--img-border-color);
     }
-    
+
     .qr-coffee a {
       display: inline-block;
       color: #000;
@@ -329,102 +545,919 @@
       font-weight: 600;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
-      background-color: #FFDD00; /* BuyMeACoffee yellow */
+      background-color: #FFDD00;
       transition: transform 0.2s ease;
     }
-    
+
     .qr-coffee a:hover {
       transform: scale(1.05);
     }
 
-    
-    /* :: Story Highlights :: */
+
     .story-highlights {
-        display: flex;
-        justify-content: center; /* Center the stories */
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-        padding: 0;
-        flex-wrap: wrap; /* Allow wrapping if needed */
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 0;
+      flex-wrap: wrap;
     }
 
     .story-item {
-        text-align: center;
-        cursor: pointer;
+      text-align: center;
+      cursor: pointer;
     }
 
     .story-gif {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--main-color);
-        padding: 3px;
-        background-color: var(--dark-bg); /* To hide non-circular GIF parts */
-        transition: transform 0.3s ease, border-color 0.3s ease;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--main-color);
+      padding: 3px;
+      background-color: var(--dark-bg);
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     .story-item:hover .story-gif {
-        transform: scale(1.08);
-        border-color: var(--secondary-color);
+      transform: scale(1.08);
+      border-color: var(--secondary-color);
     }
 
     .story-label {
-        margin-top: 0.5rem;
-        font-size: 0.9rem;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
     }
 
-    /* :: Photo Grid :: */
     .photo-grid-container {
-        margin-bottom: 3rem;
+      margin-bottom: 3rem;
     }
-    
+
     .photo-grid-container hr {
-        border-top: 1px solid var(--img-border-color);
-        margin-bottom: 2rem;
+      border-top: 1px solid var(--img-border-color);
+      margin-bottom: 0;
     }
-    
+
+    .gallery-music-tabs {
+      border-top: 1px solid var(--img-border-color);
+      margin-bottom: 2rem;
+      justify-content: center;
+      border-bottom: none;
+    }
+
+    .gallery-music-tabs .nav-link {
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-bottom: 3px solid transparent;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .gallery-music-tabs .nav-link.active {
+      color: var(--main-color);
+      background: none;
+      border-bottom: 3px solid var(--main-color);
+    }
+
+    .gallery-music-tabs .nav-link:hover {
+      color: var(--main-color);
+      border-bottom-color: var(--secondary-color);
+    }
+
     .grid-item {
-        overflow: hidden;
-        border-radius: 0.5rem;
+      overflow: hidden;
+      border-radius: 0.5rem;
     }
-    
+
     .grid-item img {
-        width: 100%;
-        height: 300px; /* Taller images */
-        object-fit: cover;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        cursor: pointer;
-        border: 1px solid var(--img-border-color);
-        border-radius: 0.5rem;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+      border: 1px solid var(--img-border-color);
+      border-radius: 0.5rem;
     }
-    
+
     .grid-item img:hover {
-        transform: scale(1.05);
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+
+    .music-player-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .music-player-toggle .toggle-btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      background-color: var(--card-bg);
+      color: #aaa;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .music-player-toggle .toggle-btn:first-child {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    .music-player-toggle .toggle-btn:last-child {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .music-player-toggle .toggle-btn.active {
+      background-color: var(--main-color);
+      color: #fff;
+    }
+
+    .music-player-toggle .toggle-btn:not(.active):hover {
+      color: #fff;
+    }
+
+    .music-player-container {
+      max-width: 800px;
+      margin: 0 auto 1rem auto;
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      display: flex;
+    }
+
+    .music-player-details {
+      width: 40%;
+      padding: 2rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .music-player-details img,
+    .music-player-details video {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #player-song-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0.25rem;
+    }
+
+    #player-song-artist {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+    }
+
+    .music-player-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .music-player-controls .control-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .music-player-controls .control-btn:hover {
+      color: var(--main-color);
+    }
+
+    .music-player-controls .play-btn {
+      background-color: var(--main-color);
+      color: #fff;
+      font-size: 1.5rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .music-player-controls .play-btn:hover {
+      background-color: var(--secondary-color);
+      color: #fff;
+    }
+
+    .progress-bar-container {
+      background-color: #444;
+      border-radius: 5px;
+      height: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: var(--main-color);
+      transition: width 0.1s linear;
+    }
+
+    .music-player-playlist {
+      width: 60%;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .music-player-playlist h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      padding: 0.5rem;
+    }
+
+    .music-player-playlist .song-item {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-bottom: 1px solid var(--img-border-color);
+    }
+
+    .music-player-playlist .song-item:last-child {
+      border-bottom: none;
+    }
+
+    .music-player-playlist .song-item:hover {
+      background-color: var(--dark-bg);
+    }
+
+    .music-player-playlist .song-item.active {
+      background-color: var(--secondary-color);
+      color: #fff;
+    }
+
+    .music-player-playlist .song-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 0.25rem;
+      margin-right: 1rem;
+    }
+
+    .music-player-playlist .song-info .title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .music-player-playlist .song-info .artist {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+
+    .instagram-story-modal .modal-dialog {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    @media (max-width: 576px) {
+      .instagram-story-modal .modal-dialog {
+        margin: 0;
+      }
+
+      .instagram-story-modal .modal-content {
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+      }
+    }
+
+    .instagram-story-modal .modal-content {
+      background-color: rgba(0, 0, 0, 0.95);
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .instagram-story-modal .modal-header {
+      border-bottom: none;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 1056;
+    }
+
+    .instagram-story-modal .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%);
+      font-size: 1rem;
+    }
+
+    .instagram-story-modal .modal-body {
+      padding: 0;
+      position: relative;
+    }
+
+    .instagram-story-modal .story-modal-user-info {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1055;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .instagram-story-modal .story-modal-profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--main-color);
+    }
+
+    .instagram-story-modal .story-modal-username {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #fff;
+      font-size: 1rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .instagram-story-modal .verified-icon-story {
+      color: #1DA1F2;
+      font-size: 0.9rem;
+      margin-left: 0.25rem;
+    }
+
+    .instagram-story-modal .story-modal-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1055;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .instagram-story-modal .story-modal-footer .collapse {
+      width: 100%;
+    }
+
+    .instagram-story-modal .reaction-toggle,
+    .instagram-story-modal .comment-toggle {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-decoration: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .instagram-story-modal .reaction-toggle:hover,
+    .instagram-story-modal .comment-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .instagram-story-modal .reaction-toggle .fa-heart {
+      color: #ff4d4d;
+      margin-right: 0.5rem;
+    }
+
+    .instagram-story-modal .comment-toggle .fa-comment {
+      margin-right: 0.5rem;
+    }
+
+    .instagram-story-modal .reaction-list {
+      list-style: none;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .instagram-story-modal .reaction-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    .instagram-story-modal .reaction-list img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    body.light-theme .instagram-story-modal .story-modal-username {
+      color: #fff;
+    }
+
+    body.light-theme .instagram-story-modal .verified-icon-story {
+      color: #1DA1F2;
+    }
+
+    body.light-theme .instagram-story-modal .reaction-toggle,
+    body.light-theme .instagram-story-modal .comment-toggle {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #000;
+      text-shadow: none;
+    }
+
+    body.light-theme .instagram-story-modal .reaction-toggle:hover,
+    body.light-theme .instagram-story-modal .comment-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: #000;
+    }
+
+    body.light-theme .instagram-story-modal .reaction-list {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    body.light-theme .instagram-story-modal .reaction-list li {
+      color: var(--light-text);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.5);
         opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(-80px) scale(1.5);
+        opacity: 0;
+      }
     }
-    
-    /* :: Image Modal :: */
-    .modal-content {
-        background-color: var(--dark-bg);
-        border: 1px solid var(--card-bg);
-        border-radius: 0.5rem;
+
+    .instagram-story-modal .floating-hearts-container {
+      position: absolute;
+      bottom: 25px;
+      left: 45px;
+      width: 50px;
+      height: 80px;
+      pointer-events: none;
+      z-index: 1054;
     }
-    
-    .modal-header {
-        border-bottom: 1px solid var(--card-bg);
+
+    .instagram-story-modal .heart-particle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      opacity: 0;
+      animation: floatUp 4s infinite ease-out;
+      color: #ff4d4d;
+      transform-origin: center;
     }
-    
-    .modal-body img {
-        width: 100%;
+
+    .instagram-story-modal .heart-particle:nth-child(1) {
+      animation-delay: 0s;
+      transform: translateX(-20px);
+      font-size: 10px;
+    }
+
+    .instagram-story-modal .heart-particle:nth-child(2) {
+      animation-delay: 0.8s;
+      transform: translateX(10px);
+      font-size: 14px;
+    }
+
+    .instagram-story-modal .heart-particle:nth-child(3) {
+      animation-delay: 1.7s;
+      transform: translateX(-10px);
+      font-size: 12px;
+    }
+
+    .instagram-story-modal .heart-particle:nth-child(4) {
+      animation-delay: 2.5s;
+      transform: translateX(5px);
+      font-size: 16px;
+    }
+
+    .instagram-story-modal .heart-particle:nth-child(5) {
+      animation-delay: 3.3s;
+      transform: translateX(-5px);
+      font-size: 8px;
+    }
+
+    .instagram-story-modal .carousel-item {
+      height: 90vh;
+    }
+
+    @media (max-width: 576px) {
+      .instagram-story-modal .carousel-item {
+        height: 100vh;
+      }
+    }
+
+    .instagram-story-modal .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .instagram-story-modal .carousel-control-next,
+    .instagram-story-modal .carousel-control-prev {
+      width: 15%;
+    }
+
+    .instagram-story-modal .carousel-control-next-icon,
+    .instagram-story-modal .carousel-control-prev-icon {
+      filter: invert(1) grayscale(100%) brightness(200%);
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+
+    #galleryModal .modal-dialog {
+      max-width: 1000px;
+      margin: 1.75rem auto;
+    }
+
+    #galleryModal .modal-content {
+      background-color: var(--dark-bg);
+      color: #fff;
+      border: 1px solid var(--card-bg);
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    body.light-theme #galleryModal .modal-content {
+      background-color: var(--light-card);
+      color: var(--light-text);
+      border-color: var(--light-img-border-color);
+    }
+
+    #galleryModal .modal-body {
+      padding: 0;
+    }
+
+    #galleryModal .modal-header {
+      position: static;
+      border-bottom: 1px solid var(--card-bg);
+    }
+
+    body.light-theme #galleryModal .modal-header {
+      border-bottom-color: var(--light-img-border-color);
+    }
+
+    #galleryModal .btn-close {
+      filter: none;
+    }
+
+    #galleryModal .btn-close-white {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    body.light-theme #galleryModal .btn-close-white {
+      filter: none;
+    }
+
+
+    .instagram-post-container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @media (max-width: 991px) {
+      .instagram-post-container {
+        flex-direction: column;
+      }
+    }
+
+    .instagram-post-image {
+      flex: 7;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      position: relative;
+    }
+
+    .instagram-post-image .carousel {
+      width: 100%;
+      height: 100%;
+    }
+
+    .instagram-post-image .carousel-item {
+      max-height: 85vh;
+    }
+
+    @media (max-width: 991px) {
+      .instagram-post-image .carousel-item {
+        max-height: 60vh;
+      }
+    }
+
+    .instagram-post-image .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .instagram-post-image .carousel-control-next,
+    .instagram-post-image .carousel-control-prev {
+      width: 15%;
+    }
+
+    .instagram-post-image .carousel-control-next-icon,
+    .instagram-post-image .carousel-control-prev-icon {
+      filter: invert(1) grayscale(100%) brightness(200%);
+      width: 2rem;
+      height: 2rem;
+    }
+
+    body.light-theme .instagram-post-image .carousel-control-next-icon,
+    body.light-theme .instagram-post-image .carousel-control-prev-icon {
+      filter: none;
+    }
+
+
+    .instagram-post-details {
+      flex: 5;
+      display: flex;
+      flex-direction: column;
+      max-height: 85vh;
+    }
+
+    @media (max-width: 991px) {
+      .instagram-post-details {
+        max-height: none;
         height: auto;
-        border-radius: 0.5rem;
+      }
+    }
+
+    .instagram-post-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-bottom: 1px solid var(--img-border-color);
+    }
+
+    body.light-theme .instagram-post-header {
+      border-bottom-color: var(--light-img-border-color);
+    }
+
+    .instagram-post-header .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--main-color);
+    }
+
+    .instagram-post-header .username {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .instagram-post-header .verified-icon-post {
+      color: #1DA1F2;
+      font-size: 0.9rem;
+      margin-left: 0.25rem;
+    }
+
+    .instagram-post-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .post-caption-container {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-caption-container .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .post-caption-container .caption-content {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .post-caption-container .caption-content strong {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+
+    .post-comment-item {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .post-comment-item .profile-pic {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .post-comment-item strong {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+
+    .instagram-post-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--img-border-color);
+      position: relative;
+    }
+
+    body.light-theme .instagram-post-footer {
+      border-top-color: var(--light-img-border-color);
+    }
+
+    .instagram-post-footer .reaction-toggle {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    body.light-theme .instagram-post-footer .reaction-toggle {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: var(--light-text);
+    }
+
+    .instagram-post-footer .reaction-toggle .fa-heart {
+      color: #ff4d4d;
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .instagram-post-footer .reaction-toggle strong {
+      font-size: 1rem;
+    }
+
+    .instagram-post-footer .reaction-list {
+      list-style: none;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .instagram-post-footer .reaction-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    .instagram-post-footer .reaction-list img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    body.light-theme .instagram-post-footer .reaction-list {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    body.light-theme .instagram-post-footer .reaction-list li {
+      color: var(--light-text);
     }
 
 
-    /* :: Theme Toggle Button :: */
+    .instagram-post-footer .floating-hearts-container {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      width: 50px;
+      height: 80px;
+      pointer-events: none;
+      z-index: 1054;
+    }
+
+    .instagram-post-footer .heart-particle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      opacity: 0;
+      animation: floatUp 4s infinite ease-out;
+      color: #ff4d4d;
+      transform-origin: center;
+    }
+
+    .instagram-post-footer .heart-particle:nth-child(1) {
+      animation-delay: 0s;
+      transform: translateX(-20px);
+      font-size: 10px;
+    }
+
+    .instagram-post-footer .heart-particle:nth-child(2) {
+      animation-delay: 0.8s;
+      transform: translateX(10px);
+      font-size: 14px;
+    }
+
+    .instagram-post-footer .heart-particle:nth-child(3) {
+      animation-delay: 1.7s;
+      transform: translateX(-10px);
+      font-size: 12px;
+    }
+
+    .instagram-post-footer .heart-particle:nth-child(4) {
+      animation-delay: 2.5s;
+      transform: translateX(5px);
+      font-size: 16px;
+    }
+
+    .instagram-post-footer .heart-particle:nth-child(5) {
+      animation-delay: 3.3s;
+      transform: translateX(-5px);
+      font-size: 8px;
+    }
+
+
     .btn-light-mode {
       background-color: var(--light-bg);
       color: var(--light-text);
@@ -442,7 +1475,7 @@
       color: var(--light-bg);
       border: 1px solid var(--light-bg);
     }
-    
+
     .btn-light-mode:hover {
       background-color: #e2e2e2;
     }
@@ -452,92 +1485,136 @@
     }
 
 
-    /* :: Footer :: */
     footer {
-      background: var(--card-bg);
+      background: linear-gradient(to bottom, var(--card-bg), var(--dark-bg));
       color: #aaa;
-      padding: 1rem 0;
+      padding: 2rem 0;
     }
-    
+
     body.light-theme footer {
-      background: var(--light-card);
+      background: linear-gradient(to bottom, var(--light-card), var(--light-bg));
       color: #555;
     }
 
-    /* :: Responsive Adjustments :: */
-    @media (max-width: 991px) { /* lg breakpoint */
-        .profile-socials {
-            text-align: center; /* Center socials on tablet */
-        }
-        .profile-socials a {
-            margin: 0 0.5rem; /* Tighter spacing */
-        }
-        .qr-coffee {
-            justify-content: center; /* Center QR code on tablet */
-        }
+    .footer-socials {
+      margin-top: 1rem;
     }
-    
+
+    .footer-socials a {
+      color: #aaa;
+      margin: 0 0.6rem;
+      font-size: 1.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-socials a:hover {
+      color: var(--main-color);
+      transform: scale(1.1);
+    }
+
+
+    @media (max-width: 991px) {
+      .profile-socials {
+        text-align: center;
+      }
+
+      .profile-socials a {
+        margin: 0 0.5rem;
+      }
+
+      .qr-coffee {
+        justify-content: center;
+      }
+    }
+
     @media (max-width: 768px) {
       .profile-header {
         text-align: center;
       }
-      .profile-pic {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 1.5rem;
-      }
+
       .profile-info h1 {
         font-size: 2rem;
+        justify-content: center;
       }
+
       .profile-stats {
         justify-content: center;
         gap: 1rem;
         font-size: 1rem;
       }
+
       .profile-buttons .btn {
         width: 80%;
         margin-bottom: 0.5rem;
       }
-      
+
       .qr-coffee {
         text-align: center;
-        display: block; /* Override flex */
+        display: block;
       }
+
       .qr-coffee img {
         margin-bottom: 0.5rem;
       }
-      
+
       .grid-item img {
         height: 200px;
       }
-      
+
       .story-highlights {
-          gap: 1rem;
-          justify-content: flex-start; /* Allow scrolling on mobile */
-          overflow-x: auto;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-bottom: 0.5rem; /* For scrollbar space */
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-          flex-wrap: nowrap; /* Prevent wrapping on mobile */
+        gap: 1rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 0.5rem;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
       }
-      
+
       .story-highlights::-webkit-scrollbar {
-          display: none; /* Chrome, Safari, Opera */
+        display: none;
       }
 
       .story-item {
-          flex: 0 0 auto; /* Prevent shrinking */
+        flex: 0 0 auto;
       }
 
       .story-gif {
-          width: 70px;
-          height: 70px;
+        width: 70px;
+        height: 70px;
       }
 
       .story-label {
-          font-size: 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      .gallery-music-tabs .nav-link {
+        font-size: 1.25rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .music-player-container {
+        flex-direction: column;
+        max-height: 80vh;
+        max-width: 95%;
+      }
+
+      .music-player-details {
+        width: 100%;
+        padding: 1.5rem;
+      }
+
+      .music-player-playlist {
+        width: 100%;
+        max-height: 300px;
+      }
+
+      .music-player-details img,
+      .music-player-details video {
+        max-width: 150px;
       }
     }
   </style>
@@ -545,24 +1622,18 @@
 
 <body>
 
-  <!-- Particle.js Container -->
   <div id="particles-js"></div>
 
   <div class="content-wrapper">
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-sm sticky-top">
       <div class="container">
         <a class="navbar-brand text-white" href="#">
-          <img
-            src="Me/chaewon.jpg"
-            alt="Mini Logo"
-            onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'"/>
+          <img src="Me/chaewon.jpg" alt="Mini Logo"
+            onerror="this.src='https://placehold.co/32x32/9370DB/white?text=C'" />
           ChaeDev
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNav" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <!-- Bootstrap default toggler icon -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse justify-content-end" id="navbarNav">
@@ -577,242 +1648,650 @@
               <a class="nav-link" href="multimedia.html">Multimedia</a>
             </li>
           </ul>
-           <!-- Theme Toggle Button -->
           <button class="btn btn-light-mode ms-3" id="theme-toggle">Light Mode</button>
         </div>
       </div>
     </nav>
 
-    <!-- Profile Header -->
     <div class="container profile-header-container">
-        <div class="row profile-header align-items-center">
-            <!-- Profile Picture -->
-            <div class="col-lg-4 text-center" data-aos="fade-right">
-                <img src="Me/profile2.jpg" 
-                     alt="John Paul Godoy" 
-                     class="profile-pic"
-                     onerror="this.src='https://placehold.co/180x180/9370DB/white?text=JP'" />
+      <div class="row profile-header align-items-center">
+        <div class="col-lg-4 text-center d-flex justify-content-center d-lg-block">
+          <div class="profile-pic-container">
+            <div class="profile-pic-inner">
+              <img src="Me/profile2.jpg" alt="Chaewon" class="profile-pic-front"
+                onerror="this.src='https://placehold.co/180x180/9370DB/white?text=C'" />
+              <img src="Me/chaewon.jpg" alt="John Paul Godoy" class="profile-pic-back"
+                onerror="this.src='https://placehold.co/180x180/9370DB/white?text=JP'" />
             </div>
-            
-            <!-- Profile Info -->
-            <div class="col-lg-8 profile-info" data-aos="fade-left">
-                <h1>John Paul D. Godoy</h1>
-                
-                <!-- Profile Stats -->
-                <ul class="profile-stats">
-                    <li><strong>5</strong> Web Projects</li>
-                    <li><strong>6</strong> Multimedia</li>
-                    <li><strong>6</strong> Skills</li>
-                </ul>
+          </div>
 
-                <!-- Profile Bio -->
-                <div class="profile-bio">
-                    <p>
-                        I'm a student currently exploring the dynamic worlds of web development and multimedia creation. This site is my personal playground and portfolio, showcasing my journey, projects, and discoveries. 
-                    </p>
-                    <p>
-                        Feel free to explore my work.
-                    </p>
-                </div>
-                
-                <!-- Social Icons -->
-                <div class="profile-socials my-3">
-                    <a href="https://www.facebook.com/chaepi04" target="_blank" class="fab fa-facebook" aria-label="Facebook"></a>
-                    <a href="https://github.com/jpgodoy04" target="_blank" class="fab fa-github" aria-label="GitHub"></a>
-                    <a href="https://www.instagram.com/jp_desu04/" target="_blank" class="fab fa-instagram" aria-label="Instagram"></a>
-                </div>
-
-                <!-- Navigation Buttons -->
-                <div class="profile-buttons mt-4">
-                    <a href="portfolio.html" class="btn btn-primary btn-lg m-1">
-                      <i class="fas fa-code me-2"></i> Web Portfolio
-                    </a>
-                    <a href="multimedia.html" class="btn btn-secondary btn-lg m-1">
-                      <i class="fas fa-camera-retro me-2"></i> Multimedia
-                    </a>
-                </div>
-                
-                <!-- QR & BuyMeACoffee -->
-                <div class="qr-coffee mt-4">
-                    <img src="Me/qr.png" alt="QR Code" />
-                    <a href="https://buymeacoffee.com/jpgodoy" target="_blank">
-                        <i class="fas fa-coffee me-2"></i> Buy me a coffee
-                    </a>
-                </div>
-
-            </div>
         </div>
+
+        <div class="col-lg-8 profile-info" data-aos="fade-left">
+          <h1>John Paul D. Godoy <i class="fas fa-check-circle verified-icon"></i></h1>
+
+          <ul class="profile-stats">
+            <li><strong>5</strong> Web Projects</li>
+            <li><strong>6</strong> Multimedia</li>
+            <li><strong>6</strong> Skills</li>
+          </ul>
+
+          <div class="profile-bio">
+            <p>
+              I'm a student currently exploring the dynamic worlds of web development and multimedia creation. This site
+              is my personal playground and portfolio, showcasing my journey, projects, and discoveries.
+            </p>
+            <p>
+              Feel free to explore my work.
+            </p>
+          </div>
+
+          <div class="profile-socials my-3">
+            <a href="https://www.facebook.com/chaepi04" target="_blank" class="fab fa-facebook"
+              aria-label="Facebook"></a>
+            <a href="https://github.com/jpgodoy04" target="_blank" class="fab fa-github" aria-label="GitHub"></a>
+            <a href="https://www.instagram.com/jp_desu04/" target="_blank" class="fab fa-instagram"
+              aria-label="Instagram"></a>
+          </div>
+
+          <div class="profile-buttons mt-4">
+            <a href="portfolio.html" class="btn btn-primary btn-lg m-1">
+              <i class="fas fa-code me-2"></i> Web Portfolio
+            </a>
+            <a href="multimedia.html" class="btn btn-secondary btn-lg m-1">
+              <i class="fas fa-camera-retro me-2"></i> Multimedia
+            </a>
+          </div>
+
+          <div class="qr-coffee mt-4">
+            <img src="Me/qr.png" alt="QR Code" onerror="this.src='https://placehold.co/100x100/eee/333?text=QR'" />
+            <a href="https://buymeacoffee.com/jpgodoy" target="_blank">
+              <i class="fas fa-coffee me-2"></i> Buy me a coffee
+            </a>
+          </div>
+
+        </div>
+      </div>
     </div>
-    
-    <!-- Photo Grid -->
+
     <div class="container photo-grid-container">
-        <hr />
 
-        <!-- Story Highlights -->
-        <div class="story-highlights mb-4" data-aos="fade-up">
-            <!-- Story 1 -->
-            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
-                 data-bs-img-src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p3eGIzZjdsaW44anZwemN6dmx2ZXZudjJ5cnNlbWx6Zno4ZDI0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EwwHX78xRXN0o2ncPm/giphy.gif">
-                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p3eGIzZjdsaW44anZwemN6dmx2ZXZudjJ5cnNlbWx6Zno4ZDI0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EwwHX78xRXN0o2ncPm/giphy.gif" 
-                     alt="Story 1" class="story-gif"
-                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+1'" />
-                <p class="story-label">Chaewon</p>
-            </div>
-            <!-- Story 2 -->
-            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
-                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlpbG9xMndyOTE0czNnamMzYWZ3MDlxNzU5Y3B5cmxsaXlucWgzZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jSCsVmzaTI21xQyNfb/giphy.gif">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlpbG9xMndyOTE0czNnamMzYWZ3MDlxNzU5Y3B5cmxsaXlucWgzZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jSCsVmzaTI21xQyNfb/giphy.gif" 
-                     alt="Story 2" class="story-gif"
-                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+2'" />
-                <p class="story-label">Winter</p>
-            </div>
-            <!-- Story 3 -->
-            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
-                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Z2OGJsbDFpdWQ0dDlmMmpzNHc2M2NncHo0eXNpbjdyNGNjaTFhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9LhVXzyEYWsiwOK7sA/giphy.gif">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Z2OGJsbDFpdWQ0dDlmMmpzNHc2M2NncHo0eXNpbjdyNGNjaTFhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9LhVXzyEYWsiwOK7sA/giphy.gif" 
-                     alt="Story 3" class="story-gif"
-                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+3'" />
-                <p class="story-label">Yooyeon</p>
-            </div>
-            <!-- Story 4 -->
-            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
-                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZxcjd2anBjbHdvNDZ5Zm9xZ3dteXA0NmNmbXd1YTFmcHZmYnBwcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DSCsnr7mVlrFuPKfYv/giphy.gif">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZxcjd2anBjbHdvNDZ5Zm9xZ3dteXA0NmNmbXd1YTFmcHZmYnBwcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DSCsnr7mVlrFuPKfYv/giphy.gif" 
-                     alt="Story 4" class="story-gif"
-                     onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+4'" />
-                <p class="story-label">Asa</p>
-            </div>
-            <!-- Story 5 -->
-            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
-                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlsM2FidDU1MmNhcDRqa3FrdnBiMjhiemFtdmdrM3dkbzNyNjhhbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KirIunHoT9Sg1Tu1JN/giphy.gif">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlsM2FidDU1MmNhcDRqa3FrdnBiMjhiemFtdmdrM3dkbzNyNjhhbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KirIunHoT9Sg1Tu1JN/giphy.gif" 
-                     alt="Story 5" class="story-gif" />
-                <p class="story-label">Karina</p>
-            </div>
-            <!-- Story 6 -->
-            <div class="story-item" data-bs-toggle="modal" data-bs-target="#imageModal"
-                 data-bs-img-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXU4ZTkzYnc3ZHg5eDVscHFuN2lhNzh6MzRveWx1czBmOXZncDgzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5MKsSWDJ4QkgazInrZ/giphy.gif">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXU4ZTkzYnc3ZHg5eDVscHFuN2lhNzh6MzRveWx1czBmOXZncDgzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5MKsSWDJ4QkgazInrZ/giphy.gif" 
-                     alt="Story 6" class="story-gif" />
-                <p class="story-label">Hayoung</p>
-            </div>
+      <div class="story-highlights mb-4" data-aos="fade-up">
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="0">
+          <img
+            src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p3eGIzZjdsaW44anZwemN6dmx2ZXZudjJ5cnNlbWx6Zno4ZDI0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EwwHX78xRXN0o2ncPm/giphy.gif"
+            alt="Story 1" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+1'" />
+          <p class="story-label">Chaewon</p>
         </div>
-        
-        <h2 class="text-center mb-4" data-aos="fade-up">Gallery</h2>
-        
-        <div class="row row-cols-2 row-cols-md-3 g-3 photo-grid">
-            
-            <!-- Grid Item 1 -->
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="1">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlpbG9xMndyOTE0czNnamMzYWZ3MDlxNzU5Y3B5cmxsaXlucWgzZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jSCsVmzaTI21xQyNfb/giphy.gif"
+            alt="Story 2" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+2'" />
+          <p class="story-label">Winter</p>
+        </div>
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="2">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Z2OGJsbDFpdWQ0dDlmMmpzNHc2M2NncHo0eXNpbjdyNGNjaTFhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9LhVXzyEYWsiwOK7sA/giphy.gif"
+            alt="Story 3" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+3'" />
+          <p class="story-label">Yooyeon</p>
+        </div>
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="3">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZxcjd2anBjbHdvNDZ5Zm9xZ3dteXA0NmNmbXd1YTFmcHZmYnBwcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DSCsnr7mVlrFuPKfYv/giphy.gif"
+            alt="Story 4" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+4'" />
+          <p class="story-label">Asa</p>
+        </div>
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="4">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlsM2FidDU1MmNhcDRqa3FrdnBiMjhiemFtdmdrM3dkbzNyNjhhbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KirIunHoT9Sg1Tu1JN/giphy.gif"
+            alt="Story 5" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+5'" />
+          <p class="story-label">Karina</p>
+        </div>
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="5">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXU4ZTkzYnc3ZHg5eDVscHFuN2lhNzh6MzRveWx1czBmOXZncDgzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5MKsSWDJ4QkgazInrZ/giphy.gif"
+            alt="Story 6" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+6'" />
+          <p class="story-label">Hayoung</p>
+        </div>
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="6">
+          <img
+            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnZmemJzY3BubHEzdGc3eTBtMHk4eDE0YmcxbWNvMjQxcTRjZGdxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SzqtszDHgd5mZIWfmq/giphy.gif"
+            alt="Story 7" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+7'" />
+          <p class="story-label">Haerin</p>
+        </div>
+
+        <div class="story-item" data-bs-toggle="modal" data-bs-target="#storyModal" data-bs-slide-to="7">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YmhvNGNvMjd2NDRiMHIwZHE4bzYxM2tiMzNiNjJqN2s3MHpyb2c1YiZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/21SGPlMsLeCHSVMOnB/giphy.gif"
+            alt="Story 8" class="story-gif" onerror="this.src='https://placehold.co/80x80/9370DB/fff?text=GIF+8'" />
+          <p class="story-label">Wonyoung</p>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs gallery-music-tabs" id="galleryMusicTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#gallery-tab-pane"
+            type="button" role="tab" aria-controls="gallery-tab-pane" aria-selected="true">
+            <i class="fas fa-th"></i>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button"
+            role="tab" aria-controls="music-tab-pane" aria-selected="false">
+            <i class="fas fa-music"></i>
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="galleryMusicTabContent">
+
+        <div class="tab-pane fade show active" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab"
+          tabindex="0">
+          <h2 class="text-center mb-4" data-aos="fade-up">Gallery</h2>
+          <div class="row row-cols-2 row-cols-md-3 g-3 photo-grid">
+
             <div class="col grid-item" data-aos="zoom-in-up">
-                <img src="Me/jp.jpg" 
-                     alt="Gallery Photo 1"
-                     data-bs-toggle="modal" 
-                     data-bs-target="#imageModal"
-                     data-bs-img-src="Me/jp.jpg" />
-            </div>
-            
-            <!-- Grid Item 2 -->
-            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="50">
-                <img src="Me/jp1.jpg" 
-                     alt="Gallery Photo 2"
-                     data-bs-toggle="modal" 
-                     data-bs-target="#imageModal"
-                     data-bs-img-src="Me/jp1.jpg" />
-            </div>
-            
-            <!-- Grid Item 3 -->
-            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="100">
-                <img src="Me/pfp7.jpg" 
-                     alt="Gallery Photo 3"
-                     onerror="this.src='https://placehold.co/600x600/555/fff?text=Photo+3'"
-                     data-bs-toggle="modal" 
-                     data-bs-target="#imageModal"
-                     data-bs-img-src="Me/pfp7.jpg" />
-            </div>
-            
-            <!-- Grid Item 4 -->
-            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="150">
-                <img src="Me/jp2.jpg" 
-                     alt="Gallery Photo 4"
-                     onerror="this.src='https://placehold.co/600x600/666/fff?text=Photo+4'"
-                     data-bs-toggle="modal" 
-                     data-bs-target="#imageModal"
-                     data-bs-img-src="Me/jp2.jpg" />
-            </div>
-            
-            <!-- Grid Item 5 -->
-            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="200">
-                <img src="Me/jp3.jpg" 
-                     alt="Gallery Photo 5"
-                     data-bs-toggle="modal" 
-                     data-bs-target="#imageModal"
-                     data-bs-img-src="Me/jp3.jpg" />
-            </div>
-            
-            <!-- Grid Item 6 -->
-            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="250">
-                <img src="Me/jp5.jpg" 
-                     alt="Gallery Photo 6"
-                     data-bs-toggle="modal" 
-                     data-bs-target="#imageModal"
-                     data-bs-img-src="Me/jp5.jpg" />
+              <img src="Me/meulit.jpg" alt="Gallery Photo 1"
+                onerror="this.src='https://placehold.co/600x300/444/fff?text=Photo+1'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="0" />
             </div>
 
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="50">
+              <img src="Me/jp1.jpg" alt="Gallery Photo 2"
+                onerror="this.src='https://placehold.co/600x300/444/fff?text=Photo+2'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="1" />
+            </div>
+
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="100">
+              <img src="Me/pfp7.jpg" alt="Gallery Photo 3"
+                onerror="this.src='https://placehold.co/600x300/555/fff?text=Photo+3'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="2" />
+            </div>
+
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="150">
+              <img src="Me/jp2.jpg" alt="Gallery Photo 4"
+                onerror="this.src='https://placehold.co/600x300/666/fff?text=Photo+4'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="3" />
+            </div>
+
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="200">
+              <img src="Me/jp3.jpg" alt="Gallery Photo 5"
+                onerror="this.src='https://placehold.co/600x300/777/fff?text=Photo+5'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="4" />
+            </div>
+
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="250">
+              <img src="Me/jp5.jpg" alt="Gallery Photo 6"
+                onerror="this.src='https://placehold.co/600x300/888/fff?text=Photo+6'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="5" />
+            </div>
+
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="300">
+              <img src="Me/jp6.jpg" alt="Gallery Photo 7"
+                onerror="this.src='https://placehold.co/600x300/777/fff?text=Photo+7'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="6" />
+            </div>
+
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="350">
+              <img src="Me/jpuli.jpg" alt="Gallery Photo 8"
+                onerror="this.src='https://placehold.co/600x300/888/fff?text=Photo+8'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="7" />
+            </div>
+
+            <div class="col grid-item" data-aos="zoom-in-up" data-aos-delay="400">
+              <img src="Me/me.jpg" alt="Gallery Photo 9"
+                onerror="this.src='https://placehold.co/600x300/999/fff?text=Photo+9'" data-bs-toggle="modal"
+                data-bs-target="#galleryModal" data-bs-slide-to="8" />
+            </div>
+
+          </div>
         </div>
+
+        <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
+          <h2 class="text-center mb-4" data-aos="fade-up">My Playlist</h2>
+
+          <video id="video-player" style="display: none;"></video>
+
+          <div class="music-player-toggle" data-aos="fade-up">
+            <button class="toggle-btn active" id="song-toggle-btn">Song</button>
+            <button class="toggle-btn" id="video-toggle-btn">Video</button>
+          </div>
+
+          <div class="music-player-container" data-aos="fade-up">
+            <div class="music-player-details">
+
+              <img src="https://placehold.co/200x200/9370DB/white?text=ChaeDev" alt="Album Art" id="player-album-art">
+              <div id="video-placeholder">
+              </div>
+
+              <h4 id="player-song-title">Select a Song</h4>
+              <p id="player-song-artist">From the playlist</p>
+
+              <div class="music-player-controls">
+                <button class="control-btn" id="prev-btn"><i class="fas fa-backward-step"></i></button>
+                <button class="control-btn play-btn" id="play-pause-btn"><i class="fas fa-play"
+                    id="play-pause-icon"></i></button>
+                <button class="control-btn" id="next-btn"><i class="fas fa-forward-step"></i></button>
+              </div>
+
+              <div class="progress-bar-container">
+                <div id="progress-bar"></div>
+              </div>
+            </div>
+
+            <div class="music-player-playlist" id="playlist-container">
+              <h5>Pick Your Vibe</h5>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
   </div>
-  
-  <!-- Footer -->
+
   <footer class="text-center">
-    <div class="container">
+    <div class="container d-flex flex-column align-items-center">
       <p>&copy; 2024 ChaeDev | John Paul Godoy. All rights reserved.</p>
+      <div class="footer-socials mt-2">
+        <a href="https://www.facebook.com/chaepi04" target="_blank" class="fab fa-facebook" aria-label="Facebook"></a>
+        <a href="https://github.com/jpgodoy04" target="_blank" class="fab fa-github" aria-label="GitHub"></a>
+        <a href="https://www.instagram.com/jp_desu04/" target="_blank" class="fab fa-instagram"
+          aria-label="Instagram"></a>
+      </div>
     </div>
   </footer>
-  
-  <!-- Image Preview Modal -->
-  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+  <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="instagram-post-container">
+
+            <div class="instagram-post-image">
+              <div id="galleryCarousel" class="carousel slide">
+                <div class="carousel-inner">
+
+                  <div class="carousel-item active">
+                    <img src="Me/jp.jpg" class="d-block" alt="Gallery Photo 1"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=jp.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          My first post on the new gallery! What do you think?
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="/A06/photos/chaewon2.jpg" alt="User 1" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>chaechae1</strong> :>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/jp1.jpg" class="d-block" alt="Gallery Photo 2"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=jp1.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          Brought the heat back.
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="Me/winter.webp" alt="User 2" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>Winter</strong> 🔥🔥🔥
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/pfp7.jpg" class="d-block" alt="Gallery Photo 3"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=pfp7.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                         Splashed.
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="Me/karina.jpg" alt="User 3" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>Karina</strong> 💕
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/jp2.jpg" class="d-block" alt="Gallery Photo 4"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=jp2.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          Tinted.
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="Me/asa.jpg" alt="User 1" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>Asa</strong> 😻
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/jp3.jpg" class="d-block" alt="Gallery Photo 5"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=jp3.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          Reflect.
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="Me/yooyeon.jpg" alt="User 2" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>Yooyeon_04</strong> 🙀🙀🙀
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/jp5.jpg" class="d-block" alt="Gallery Photo 6"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=jp5.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          owo.
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="Me/hayoung.webp" alt="User 3" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>Hayoung</strong> 😽
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/jp6.jpg" class="d-block" alt="Gallery Photo 7"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=pfp1.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          Outside.
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="Me/chaewon2.jpg" alt="User 1" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>kimchae1</strong> ♡´･ᴗ･`♡
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/jpuli.jpg" class="d-block" alt="Gallery Photo 8"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=pfp3.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          Art.
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="Me/yy.webp" alt="User 2" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>yooyeon_nie</strong> 🥰
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="Me/me.jpg" class="d-block" alt="Gallery Photo 9"
+                      onerror="this.src='https://placehold.co/800x800/2a2d34/white?text=pfp5.jpg'">
+                    <div class="post-data" style="display: none;">
+                      <div class="post-caption-container">
+                        <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                          onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                        <div class="caption-content">
+                          <strong>John Paul D. Godoy</strong>
+                          Senior High!
+                        </div>
+                      </div>
+                      <div class="post-comment-item">
+                        <img src="/A06/photos/karina3.jpg" alt="User 3" class="profile-pic">
+                        <div class="comment-content">
+                          <strong>katarinablu</strong> T_T
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="instagram-post-details">
+              <div class="instagram-post-header">
+                <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                  onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                <span class="username">
+                  John Paul D. Godoy
+                  <i class="fas fa-check-circle verified-icon-post"></i>
+                </span>
+                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+
+              <div class="instagram-post-body" id="gallery-post-body">
+              </div>
+
+              <div class="instagram-post-footer">
+                <div class="floating-hearts-container">
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                </div>
+
+                <a class="reaction-toggle" data-bs-toggle="collapse" href="#galleryReactions" role="button"
+                  aria-expanded="false" aria-controls="galleryReactions">
+                  <i class="fas fa-heart"></i> Liked by <strong>3</strong>
+                </a>
+
+                <div class="collapse" id="galleryReactions">
+                  <ul class="reaction-list">
+                    <li><img src="Me/chaewon2.jpg" alt="User 1"> <strong>chaewon</strong>
+                    </li>
+                    <li><img src="Me/winter.webp" alt="User 2"> <strong>winter</strong>
+                    </li>
+                    <li><img src="Me/karina.jpg" alt="User 3"> <strong>karina</strong>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade instagram-story-modal" id="storyModal" tabindex="-1" aria-labelledby="storyModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-center">
-          <img src="" id="modalImage" class="img-fluid" alt="Preview" />
+        <div class="modal-body">
+
+          <div class="story-modal-user-info">
+            <img src="Me/profile2.jpg" alt="Profile" class="story-modal-profile-pic"
+              onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+            <span class="story-modal-username">
+              John Paul D. Godoy
+              <i class="fas fa-check-circle verified-icon-story"></i>
+            </span>
+          </div>
+
+          <div id="storyCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p3eGIzZjdsaW44anZwemN6dmx2ZXZudjJ5cnNlbWx6Zno4ZDI0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EwwHX78xRXN0o2ncPm/giphy.gif"
+                  class="d-block" alt="Story 1">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlpbG9xMndyOTE0czNnamMzYWZ3MDlxNzU5Y3B5cmxsaXlucWgzZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jSCsVmzaTI21xQyNfb/giphy.gif"
+                  class="d-block" alt="Story 2">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Z2OGJsbDFpdWQ0dDlmMmpzNHc2M2NncHo0eXNpbjdyNGNjaTFhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9LhVXzyEYWsiwOK7sA/giphy.gif"
+                  class="d-block" alt="Story 3">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZxcjd2anBjbHdvNDZ5Zm9xZ3dteXA0NmNmbXd1YTFmcHZmYnBwcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DSCsnr7mVlrFuPKfYv/giphy.gif"
+                  class="d-block" alt="Story 4">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlsM2FidDU1MmNhcDRqa3FrdnBiMjhiemFtdmdrM3dkbzNyNjhhbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KirIunHoT9Sg1Tu1JN/giphy.gif"
+                  class="d-block" alt="Story 5">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXU4ZTkzYnc3ZHg5eDVscHFuN2lhNzh6MzRveWx1czBmOXZncDgzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5MKsSWDJ4QkgazInrZ/giphy.gif"
+                  class="d-block" alt="Story 6">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnZmemJzY3BubHEzdGc3eTBtMHk4eDE0YmcxbWNvMjQxcTRjZGdxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SzqtszDHgd5mZIWfmq/giphy.gif"
+                  class="d-block" alt="Story 7">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YmhvNGNvMjd2NDRiMHIwZHE4bzYxM2tiMzNiNjJqN2s3MHpyb2c1YiZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/21SGPlMsLeCHSVMOnB/giphy.gif"
+                  class="d-block" alt="Story 8">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#storyCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#storyCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+          <div class="story-modal-footer">
+            <div class="floating-hearts-container">
+              <i class="fas fa-heart heart-particle"></i>
+              <i class="fas fa-heart heart-particle"></i>
+              <i class="fas fa-heart heart-particle"></i>
+              <i class="fas fa-heart heart-particle"></i>
+              <i class="fas fa-heart heart-particle"></i>
+            </div>
+
+            <a class="reaction-toggle" data-bs-toggle="collapse" href="#storyReactions" role="button"
+              aria-expanded="false" aria-controls="storyReactions">
+              <i class="fas fa-heart"></i> Liked by <strong>3</strong>
+            </a>
+            <div class="collapse" id="storyReactions">
+              <ul class="reaction-list">
+                <li><img src="Me/chaewon2.jpg" alt="User 1"> <strong>chaewon</strong>
+                </li>
+                <li><img src="Me/winter.webp" alt="User 2"> <strong>winter</strong></li>
+                <li><img src="Me/karina.jpg" alt="User 3"> <strong>karina</strong></li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 
 
-  <!-- Scripts -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <!-- particles.js script -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    // :: Initialize AOS (Animate on Scroll) ::
     AOS.init({
-      once: false, 
+      once: false,
       mirror: true,
       duration: 800,
       easing: 'ease-in-out'
     });
 
-    // :: Theme Toggle ::
     const toggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
 
     function updateToggleButton() {
       const isLight = body.classList.contains('light-theme');
-      toggleBtn.textContent = isLight ? 'Dark Mode' : 'Light Mode';
-      
-      // Update particle colors based on theme
+      toggleBtn.textContent = isLight ? 'Dark Mode' : 'Light Mode'; // Adjusted logic
+
+      const galleryCloseBtn = document.querySelector('#galleryModal .btn-close');
+      if (galleryCloseBtn) {
+        if (isLight) {
+          galleryCloseBtn.classList.remove('btn-close-white');
+        } else {
+          galleryCloseBtn.classList.add('btn-close-white');
+        }
+      }
+
       if (typeof pJSDom !== 'undefined' && pJSDom.length > 0) {
-        let particleColor = isLight ? '#2a2d34' : '#9370DB'; // Dark particles on light bg
+        let particleColor = isLight ? '#2a2d34' : '#9370DB';
         let lineColor = isLight ? '#2a2d34' : '#9370DB';
 
         if (typeof particlesJS !== 'undefined') {
@@ -826,13 +2305,10 @@
       updateToggleButton();
     });
 
-    // Set initial button text and particle config
     updateToggleButton();
 
-    // :: Active Nav Link on Scroll (Simple version for home) ::
     const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Set 'Home' as active by default on this page
+
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === 'index.html') {
@@ -840,22 +2316,287 @@
       }
     });
 
-    // :: Image Modal Logic ::
-    const imageModal = document.getElementById('imageModal');
-    imageModal.addEventListener('show.bs.modal', function (event) {
-      // Button that triggered the modal
+    const galleryModal = document.getElementById('galleryModal');
+    const galleryCarousel = new bootstrap.Carousel(document.getElementById('galleryCarousel'), {
+      interval: false,
+      wrap: true
+    });
+    const galleryPostBody = document.getElementById('gallery-post-body');
+
+    function updateGalleryPostData(slideIndex) {
+      if (!galleryPostBody) return;
+
+      const actualIndex = slideIndex !== undefined ? slideIndex :
+        [...document.querySelectorAll('#galleryCarousel .carousel-item')].findIndex(item => item.classList.contains('active'));
+
+      const activeItem = document.querySelector(`#galleryCarousel .carousel-item:nth-child(${actualIndex + 1})`);
+
+      if (activeItem) {
+        const postData = activeItem.querySelector('.post-data');
+        if (postData) {
+          galleryPostBody.innerHTML = postData.innerHTML;
+        } else {
+          galleryPostBody.innerHTML = "";
+        }
+      }
+    }
+
+
+    galleryModal.addEventListener('show.bs.modal', function (event) {
       const triggerElement = event.relatedTarget;
-      
-      // Extract info from data-bs-* attributes
-      const imageSource = triggerElement.getAttribute('data-bs-img-src');
-      
-      // Update the modal's content.
-      const modalImage = imageModal.querySelector('#modalImage');
-      modalImage.src = imageSource;
+      const slideIndex = parseInt(triggerElement.getAttribute('data-bs-slide-to'), 10);
+      galleryCarousel.to(slideIndex);
+      updateGalleryPostData(slideIndex);
+
+      const closeBtn = galleryModal.querySelector('.btn-close');
+      if (body.classList.contains('light-theme')) {
+        closeBtn.classList.remove('btn-close-white');
+      } else {
+        closeBtn.classList.add('btn-close-white');
+      }
+    });
+
+    galleryModal.addEventListener('slide.bs.carousel', function (event) {
+      updateGalleryPostData(event.to);
     });
 
 
-    // :: particles.js config function ::
+    const storyModal = document.getElementById('storyModal');
+    const storyCarousel = new bootstrap.Carousel(document.getElementById('storyCarousel'), {
+      interval: false,
+      wrap: true
+    });
+
+    storyModal.addEventListener('show.bs.modal', function (event) {
+      const triggerElement = event.relatedTarget;
+      const slideIndex = parseInt(triggerElement.getAttribute('data-bs-slide-to'), 10);
+      storyCarousel.to(slideIndex);
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const picContainer = document.querySelector('.profile-pic-container');
+      let flipTimeout;
+
+      if (picContainer) {
+        picContainer.addEventListener('click', () => {
+          if (window.innerWidth > 768) {
+            clearTimeout(flipTimeout);
+
+            if (!picContainer.classList.contains('is-flipped')) {
+              picContainer.classList.add('is-flipped');
+
+              flipTimeout = setTimeout(() => {
+                picContainer.classList.remove('is-flipped');
+              }, 1500);
+            }
+          }
+        });
+      }
+
+
+      const videoPlayer = document.getElementById('video-player');
+      const playPauseBtn = document.getElementById('play-pause-btn');
+      const playPauseIcon = document.getElementById('play-pause-icon');
+      const nextBtn = document.getElementById('next-btn');
+      const prevBtn = document.getElementById('prev-btn');
+      const progressBar = document.getElementById('progress-bar');
+      const playerAlbumArt = document.getElementById('player-album-art');
+      const playerSongTitle = document.getElementById('player-song-title');
+      const playerSongArtist = document.getElementById('player-song-artist');
+      const playlistContainer = document.getElementById('playlist-container');
+      const videoPlaceholder = document.getElementById('video-placeholder');
+
+      const songToggleBtn = document.getElementById('song-toggle-btn');
+      const videoToggleBtn = document.getElementById('video-toggle-btn');
+
+      const songs = [
+        {
+          title: "No Doubt",
+          artist: "ENHYPEN",
+          src: "mp4/nodoubt.mp4",
+          img: "me/nodoubt.png",
+        },
+        {
+          title: "Hit the Floor!",
+          artist: "tripleS",
+          src: "mp4/triples.mp4",
+          img: "me/triples.webp",
+        },
+        {
+          title: "Antifragile",
+          artist: "Le Sserafim",
+          src: "mp4/lsrfm.mp4",
+          img: "me/antifragile.jpg",
+        },
+        {
+          title: "Drama",
+          artist: "Aespa",
+          src: "mp4/aespa.mp4",
+          img: "me/drama.png",
+        },
+        {
+          title: "SHEESH",
+          artist: "BABYMONSTER",
+          src: "mp4/baemon.mp4",
+          img: "me/baemon.webp",
+        }
+      ];
+
+      let currentSongIndex = 0;
+      let isPlaying = false;
+      let showVideo = false;
+
+      function updateVideoVisibility() {
+        const currentSong = songs[currentSongIndex];
+        if (!currentSong) return;
+
+        if (showVideo) {
+          videoPlayer.style.display = 'block';
+          playerAlbumArt.style.display = 'none';
+          if (videoPlaceholder) videoPlaceholder.appendChild(videoPlayer);
+        } else {
+          videoPlayer.style.display = 'none';
+          playerAlbumArt.style.display = 'block';
+          playerAlbumArt.src = currentSong.img;
+          if (document.body.contains(videoPlayer)) document.body.appendChild(videoPlayer);
+        }
+      }
+
+      function loadSong(song) {
+        if (!song) return;
+        playerSongTitle.textContent = song.title;
+        playerSongArtist.textContent = song.artist;
+        videoPlayer.src = song.src;
+
+        updateVideoVisibility();
+
+        document.querySelectorAll('.song-item').forEach((item, index) => {
+          if (index === currentSongIndex) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+
+      function playSong() {
+        videoPlayer.play().then(() => {
+          isPlaying = true;
+          playPauseIcon.classList.remove('fa-play');
+          playPauseIcon.classList.add('fa-pause');
+        }).catch(e => {
+          console.log("Play failed. User interaction might be needed first.", e);
+          isPlaying = false;
+          playPauseIcon.classList.remove('fa-pause');
+          playPauseIcon.classList.add('fa-play');
+        });
+      }
+
+      function pauseSong() {
+        videoPlayer.pause();
+        isPlaying = false;
+        playPauseIcon.classList.remove('fa-pause');
+        playPauseIcon.classList.add('fa-play');
+      }
+
+      function togglePlayPause() {
+        if (isPlaying) {
+          pauseSong();
+        } else {
+          playSong();
+        }
+      }
+
+      function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        const wasPlaying = isPlaying;
+        loadSong(songs[currentSongIndex]);
+        if (wasPlaying) playSong();
+        else pauseSong();
+      }
+
+      function prevSong() {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        const wasPlaying = isPlaying;
+        loadSong(songs[currentSongIndex]);
+        if (wasPlaying) playSong();
+        else pauseSong();
+      }
+
+      function updateProgress() {
+        if (videoPlayer.duration) {
+          const progressPercent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+          progressBar.style.width = `${progressPercent}%`;
+        } else {
+          progressBar.style.width = '0%';
+        }
+      }
+
+      if (playlistContainer) {
+        songs.forEach((song, index) => {
+          const songItem = document.createElement('div');
+          songItem.classList.add('song-item');
+          songItem.innerHTML = `
+                                <img src="${song.img}" alt="${song.title}">
+                                <div class="song-info">
+                                    <div class="title">${song.title}</div>
+                                    <div class="artist">${song.artist}</div>
+                                </div>
+                            `;
+
+          songItem.addEventListener('click', () => {
+            currentSongIndex = index;
+            loadSong(songs[currentSongIndex]);
+            playSong();
+          });
+
+          playlistContainer.appendChild(songItem);
+        });
+
+        playPauseBtn.addEventListener('click', togglePlayPause);
+        nextBtn.addEventListener('click', nextSong);
+        prevBtn.addEventListener('click', prevSong);
+
+        if (songToggleBtn && videoToggleBtn) {
+          songToggleBtn.addEventListener('click', () => {
+            if (showVideo) {
+              showVideo = false;
+              songToggleBtn.classList.add('active');
+              videoToggleBtn.classList.remove('active');
+              updateVideoVisibility();
+            }
+          });
+
+          videoToggleBtn.addEventListener('click', () => {
+            if (!showVideo) {
+              showVideo = true;
+              songToggleBtn.classList.remove('active');
+              videoToggleBtn.classList.add('active');
+              updateVideoVisibility();
+            }
+          });
+        }
+
+        videoPlayer.addEventListener('timeupdate', updateProgress);
+        videoPlayer.addEventListener('ended', nextSong);
+
+        videoPlayer.addEventListener('pause', (event) => {
+          if (!showVideo && isPlaying && videoPlayer.style.display === 'none') {
+            console.log("Video paused likely due to visibility, attempting resume.");
+          }
+        });
+
+        loadSong(songs[currentSongIndex]);
+        document.body.appendChild(videoPlayer);
+        updateVideoVisibility();
+      }
+
+
+    });
+
+
     function getParticlesConfig(particleColor, lineColor) {
       return {
         "particles": {
@@ -867,7 +2608,7 @@
             }
           },
           "color": {
-            "value": particleColor 
+            "value": particleColor
           },
           "shape": {
             "type": "circle",
@@ -923,12 +2664,11 @@
         "retina_detect": true
       };
     }
-    
-    // Initial particles.js call
-    // This will be re-called by updateToggleButton if needed
+
     particlesJS('particles-js', getParticlesConfig('#9370DB', '#9370DB'));
 
   </script>
 </body>
+
 </html>
 
