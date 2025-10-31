@@ -692,6 +692,8 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       overflow: hidden;
       display: flex;
+      /* Set a fixed height for the player, adjust as needed */
+      height: 450px;
     }
 
     .music-player-details {
@@ -699,6 +701,8 @@
       padding: 2rem;
       text-align: center;
       background-color: rgba(0, 0, 0, 0.1);
+      /* Allow details to shrink but not grow excessively */
+      flex-shrink: 0;
     }
 
     .music-player-details img,
@@ -784,9 +788,12 @@
 
     .music-player-playlist {
       width: 60%;
-      max-height: 400px;
+      /* Let the playlist fill the remaining height */
+      flex: 1;
       overflow-y: auto;
       padding: 1rem;
+      /* Remove max-height to allow it to fill */
+      /* max-height: 400px; */
     }
 
     .music-player-playlist h5 {
@@ -1598,6 +1605,8 @@
 
       .music-player-container {
         flex-direction: column;
+        /* Remove fixed height on mobile, let it be determined by content */
+        height: auto;
         max-height: 80vh;
         max-width: 95%;
       }
@@ -1605,11 +1614,16 @@
       .music-player-details {
         width: 100%;
         padding: 1.5rem;
+        /* Allow details to shrink on mobile */
+        flex-shrink: 1;
       }
 
       .music-player-playlist {
         width: 100%;
+        /* Set a specific max-height for mobile playlist */
         max-height: 300px;
+        /* Ensure it can grow if needed, but still scrolls */
+        flex-basis: 300px;
       }
 
       .music-player-details img,
@@ -1781,6 +1795,12 @@
             <i class="fas fa-music"></i>
           </button>
         </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="hobbies-tab" data-bs-toggle="tab" data-bs-target="#hobbies-tab-pane" type="button"
+            role="tab" aria-controls="hobbies-tab-pane" aria-selected="false">
+            <i class="fas fa-gamepad"></i>
+          </button>
+        </li>
       </ul>
 
       <div class="tab-content" id="galleryMusicTabContent">
@@ -1885,6 +1905,34 @@
           </div>
 
         </div>
+
+        <div class="tab-pane fade" id="hobbies-tab-pane" role="tabpanel" aria-labelledby="hobbies-tab" tabindex="0">
+          <h2 class="text-center mb-4" data-aos="fade-up">My Hobbies</h2>
+          <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Using profile-bio class for consistent styling -->
+                <div class="profile-bio text-center">
+                  <p style="font-size: 1.1rem; line-height: 1.6; font-family: 'Poppins', sans-serif;">
+                    When I'm not coding or creating multimedia content, I enjoy a few hobbies:
+                  </p>
+                  <ul class="list-unstyled text-start"
+                    style="font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8; display: inline-block; margin-top: 1rem;">
+                    <li class="mb-2"><i class="fas fa-gamepad me-3"
+                        style="color: var(--main-color); width: 20px;"></i> Playing Video Games</li>
+                    <li class="mb-2"><i class="fas fa-headphones me-3"
+                        style="color: var(--main-color); width: 20px;"></i> Listening to K-Pop</li>
+                    <li class="mb-2"><i class="fas fa-book-open me-3"
+                        style="color: var(--main-color); width: 20px;"></i> Reading Webtoons</li>
+                    <li class="mb-2"><i class="fas fa-film me-3" style="color: var(--main-color); width: 20px;"></i>
+                      Watching Anime & Movies</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -1963,7 +2011,7 @@
                           onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
                         <div class="caption-content">
                           <strong>John Paul D. Godoy</strong>
-                         Splashed.
+                          Splashed.
                         </div>
                       </div>
                       <div class="post-comment-item">
@@ -2167,7 +2215,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
+        <div classs="modal-header">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -2539,12 +2587,12 @@
           const songItem = document.createElement('div');
           songItem.classList.add('song-item');
           songItem.innerHTML = `
-                                <img src="${song.img}" alt="${song.title}">
-                                <div class="song-info">
-                                    <div class="title">${song.title}</div>
-                                    <div class="artist">${song.artist}</div>
-                                </div>
-                            `;
+                                    <img src="${song.img}" alt="${song.title}">
+                                    <div class="song-info">
+                                        <div class="title">${song.title}</div>
+                                        <div class="artist">${song.artist}</div>
+                                    </div>
+                                `;
 
           songItem.addEventListener('click', () => {
             currentSongIndex = index;
