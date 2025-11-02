@@ -281,6 +281,101 @@
       background-color: var(--light-bg);
     }
 
+    /* Achievement Post Light Theme */
+    body.light-theme .achievement-post {
+      background-color: var(--light-card);
+      border-color: var(--light-img-border-color);
+    }
+
+    body.light-theme .achievement-post-header .username-caption {
+      color: var(--light-text);
+    }
+
+    body.light-theme .achievement-post-header .verified-icon-post {
+      color: #1DA1F2;
+    }
+
+    body.light-theme .achievement-post-image .carousel-control-next-icon,
+    body.light-theme .achievement-post-image .carousel-control-prev-icon {
+      filter: none;
+    }
+
+    body.light-theme .achievement-post-footer {
+      border-top-color: var(--light-img-border-color);
+    }
+
+    body.light-theme .achievement-post-footer .post-actions i {
+      color: var(--light-text);
+    }
+
+    body.light-theme .achievement-post-footer .post-actions i:hover {
+      color: #888;
+    }
+
+    body.light-theme .achievement-post-footer .post-actions i.fas.fa-heart {
+      color: #ff4d4d;
+    }
+
+    body.light-theme .achievement-post-footer .post-likes strong {
+      color: var(--light-text);
+    }
+
+    body.light-theme .achievement-post-caption .username-caption {
+      color: var(--light-text);
+    }
+
+    body.light-theme .achievement-post-caption p {
+      color: var(--light-text);
+    }
+
+    /* Achievement Modal Light Theme */
+    body.light-theme #achievementModal .modal-content {
+      background-color: var(--light-card);
+      color: var(--light-text);
+      border-color: var(--light-img-border-color);
+    }
+
+    body.light-theme #achievementModal .btn-close {
+      filter: none;
+    }
+
+    body.light-theme #achievementModal .instagram-post-image .carousel-control-next-icon,
+    body.light-theme #achievementModal .instagram-post-image .carousel-control-prev-icon {
+      filter: none;
+    }
+
+    body.light-theme #achievementModal .instagram-post-header {
+      border-bottom-color: var(--light-img-border-color);
+    }
+
+    body.light-theme #achievementModal .instagram-post-footer {
+      border-top-color: var(--light-img-border-color);
+    }
+
+    body.light-theme #achievementModal .post-actions i {
+      color: var(--light-text);
+    }
+
+    body.light-theme #achievementModal .post-actions i:hover {
+      color: #888;
+    }
+
+    body.light-theme #achievementModal .post-actions i.fas.fa-heart {
+      color: #ff4d4d;
+    }
+
+    body.light-theme #achievementModal .post-likes strong {
+      color: var(--light-text);
+    }
+
+    body.light-theme #achievementModal .post-caption-container .caption-content {
+      color: var(--light-text);
+    }
+
+    body.light-theme #achievementModal .post-caption-container .caption-content strong {
+      color: var(--light-text);
+    }
+
 
     nav.navbar {
       background-color: var(--card-bg);
@@ -1465,6 +1560,291 @@
     }
 
 
+    /* Achievements Tab */
+    #achievements-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .achievement-post {
+      background-color: var(--card-bg);
+      border: 1px solid var(--img-border-color);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .achievement-post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .achievement-post-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+    }
+
+    .achievement-post-header .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--main-color);
+    }
+
+    .achievement-post-header .username-caption {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .achievement-post-header .verified-icon-post {
+      color: #1DA1F2;
+      font-size: 0.9rem;
+      margin-left: 0.25rem;
+    }
+
+    .achievement-post-image {
+      position: relative;
+    }
+
+    .achievement-post-image .carousel {
+      width: 100%;
+    }
+
+    .achievement-post-image .carousel-item {
+      max-height: 600px;
+      /* Adjust as needed */
+      background-color: #000;
+    }
+
+    .achievement-post-image .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .achievement-post-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .achievement-post-image .carousel-control-next,
+    .achievement-post-image .carousel-control-prev {
+      width: 10%;
+    }
+
+    .achievement-post-image .carousel-control-next-icon,
+    .achievement-post-image .carousel-control-prev-icon {
+      filter: invert(1) grayscale(100%) brightness(200%);
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .achievement-post-footer {
+      padding: 1rem;
+      position: relative;
+    }
+
+    .achievement-post-footer .post-actions {
+      display: flex;
+      gap: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .achievement-post-footer .post-actions i {
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .achievement-post-footer .post-actions i:hover {
+      color: #aaa;
+      transform: scale(1.1);
+    }
+
+    .achievement-post-footer .post-actions i.fas.fa-heart {
+      color: #ff4d4d;
+    }
+
+    .achievement-post-footer .post-likes {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.75rem;
+    }
+
+    .achievement-post-footer .post-likes strong {
+      color: #fff;
+    }
+
+    .achievement-post-caption {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      padding: 0 1rem 1rem 1rem;
+    }
+
+    .achievement-post-caption .username-caption {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-right: 0.25rem;
+      color: #fff;
+    }
+
+    /* Floating heart animation for achievement posts */
+    .achievement-post-footer .floating-hearts-container {
+      position: absolute;
+      bottom: 50px;
+      /* Position above the heart icon */
+      left: 1rem;
+      /* Align with the heart icon */
+      width: 50px;
+      height: 80px;
+      pointer-events: none;
+      z-index: 10;
+      display: none;
+      /* Hidden by default */
+    }
+
+    .achievement-post-footer .floating-hearts-container.animate {
+      display: block;
+      /* Show when animated */
+    }
+
+    .achievement-post-footer .heart-particle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      opacity: 0;
+      animation: floatUp 2s ease-out;
+      /* Shorter duration */
+      color: #ff4d4d;
+      transform-origin: center;
+    }
+
+    .achievement-post-footer .heart-particle:nth-child(1) {
+      animation-delay: 0s;
+      transform: translateX(-20px);
+      font-size: 10px;
+    }
+
+    .achievement-post-footer .heart-particle:nth-child(2) {
+      animation-delay: 0.3s;
+      transform: translateX(10px);
+      font-size: 14px;
+    }
+
+    .achievement-post-footer .heart-particle:nth-child(3) {
+      animation-delay: 0.6s;
+      transform: translateX(-10px);
+      font-size: 12px;
+    }
+
+    .achievement-post-footer .heart-particle:nth-child(4) {
+      animation-delay: 0.9s;
+      transform: translateX(5px);
+      font-size: 16px;
+    }
+
+    .achievement-post-footer .heart-particle:nth-child(5) {
+      animation-delay: 1.2s;
+      transform: translateX(-5px);
+      font-size: 8px;
+    }
+
+    /* Achievement Preview Modal */
+    #achievementModal .modal-dialog {
+      max-width: 1000px;
+      margin: 1.75rem auto;
+    }
+
+    #achievementModal .modal-content {
+      background-color: var(--dark-bg);
+      /* Default dark mode background */
+      color: #fff;
+      /* Default dark mode text */
+      border: 1px solid var(--card-bg);
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    #achievementModal .modal-body {
+      padding: 0;
+    }
+
+    #achievementModal .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    #achievementModal .instagram-post-details {
+      /* Ensure details have the correct background in dark mode */
+      background-color: var(--dark-bg);
+    }
+
+    /* Light theme override for achievement modal */
+    body.light-theme #achievementModal .modal-content {
+      background-color: var(--light-card);
+      color: var(--light-text);
+      border-color: var(--light-img-border-color);
+    }
+
+    body.light-theme #achievementModal .btn-close {
+      filter: none;
+    }
+
+    body.light-theme #achievementModal .instagram-post-details {
+      background-color: var(--light-card);
+      /* Light mode background */
+    }
+
+    body.light-theme #achievementModal .instagram-post-image .carousel-control-next-icon,
+    body.light-theme #achievementModal .instagram-post-image .carousel-control-prev-icon {
+      filter: none;
+    }
+
+    body.light-theme #achievementModal .instagram-post-header {
+      border-bottom-color: var(--light-img-border-color);
+    }
+
+    body.light-theme #achievementModal .instagram-post-footer {
+      border-top-color: var(--light-img-border-color);
+    }
+
+    body.light-theme #achievementModal .post-actions i {
+      color: var(--light-text);
+    }
+
+    body.light-theme #achievementModal .post-actions i:hover {
+      color: #888;
+    }
+
+    body.light-theme #achievementModal .post-actions i.fas.fa-heart {
+      color: #ff4d4d;
+    }
+
+    body.light-theme #achievementModal .post-likes strong {
+      color: var(--light-text);
+    }
+
+    body.light-theme #achievementModal .post-caption-container .caption-content {
+      color: var(--light-text);
+    }
+
+    body.light-theme #achievementModal .post-caption-container .caption-content strong {
+      color: var(--light-text);
+    }
+
+
     .btn-light-mode {
       background-color: var(--light-bg);
       color: var(--light-text);
@@ -1629,6 +2009,11 @@
       .music-player-details img,
       .music-player-details video {
         max-width: 150px;
+      }
+
+      #achievements-feed {
+        max-width: 100%;
+        padding: 0 1rem;
       }
     }
   </style>
@@ -1798,7 +2183,7 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="hobbies-tab" data-bs-toggle="tab" data-bs-target="#hobbies-tab-pane" type="button"
             role="tab" aria-controls="hobbies-tab-pane" aria-selected="false">
-            <i class="fas fa-gamepad"></i>
+            <i class="fas fa-medal"></i> <!-- Changed icon -->
           </button>
         </li>
       </ul>
@@ -1807,7 +2192,7 @@
 
         <div class="tab-pane fade show active" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab"
           tabindex="0">
-          <h2 class="text-center mb-4" data-aos="fade-up">Gallery</h2>
+          <h2 class="text-center mb-4" data-aos="fade-up">Jp </h2>
           <div class="row row-cols-2 row-cols-md-3 g-3 photo-grid">
 
             <div class="col grid-item" data-aos="zoom-in-up">
@@ -1907,29 +2292,305 @@
         </div>
 
         <div class="tab-pane fade" id="hobbies-tab-pane" role="tabpanel" aria-labelledby="hobbies-tab" tabindex="0">
-          <h2 class="text-center mb-4" data-aos="fade-up">My Hobbies</h2>
-          <div class="container" data-aos="fade-up">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Using profile-bio class for consistent styling -->
-                <div class="profile-bio text-center">
-                  <p style="font-size: 1.1rem; line-height: 1.6; font-family: 'Poppins', sans-serif;">
-                    When I'm not coding or creating multimedia content, I enjoy a few hobbies:
-                  </p>
-                  <ul class="list-unstyled text-start"
-                    style="font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8; display: inline-block; margin-top: 1rem;">
-                    <li class="mb-2"><i class="fas fa-gamepad me-3"
-                        style="color: var(--main-color); width: 20px;"></i> Playing Mobile and PC games</li>
-                    <li class="mb-2"><i class="fas fa-headphones me-3"
-                        style="color: var(--main-color); width: 20px;"></i> Listening to K-Pop</li>
-                    <li class="mb-2"><i class="fas fa-book-open me-3"
-                        style="color: var(--main-color); width: 20px;"></i> Reading Webtoons</li>
-                    <li class="mb-2"><i class="fas fa-film me-3" style="color: var(--main-color); width: 20px;"></i>
-                      Watching Anime & Movies</li>
-                  </ul>
+          <h2 class="text-center mb-4" data-aos="fade-up">My Journey</h2>
+          <div id="achievements-feed">
+            <!-- Achievement Post 1 -->
+            <div class="achievement-post" data-aos="fade-up" data-post-id="1">
+              <div class="achievement-post-header">
+                <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                  onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                <span class="username-caption">
+                  John Paul D. Godoy
+                  <i class="fas fa-check-circle verified-icon-post"></i>
+                </span>
+              </div>
+              <div class="achievement-post-image">
+                <div id="achievementCarousel1" class="carousel slide">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="Me/theater1.jpg " class="d-block" alt="Achievement 1 Photo 1"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+1.1'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/theater2.jpg" class="d-block" alt="Achievement 1 Photo 2"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+1.2'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/theater3.jpg" class="d-block" alt="Achievement 1 Photo 3"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+1.3'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/theater6.jpg" class="d-block" alt="Achievement 1 Photo 4"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+1.4'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/theater7.jpg" class="d-block" alt="Achievement 1 Photo 5"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+1.5'">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#achievementCarousel1"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#achievementCarousel1"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
               </div>
+              <div class="achievement-post-footer">
+                <div class="floating-hearts-container">
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                </div>
+                <div class="post-actions">
+                  <i class="far fa-heart heart-btn"></i>
+                  <i class="far fa-comment"></i>
+                  <i class="far fa-paper-plane"></i>
+                </div>
+                <div class="post-likes">
+                  <strong>102</strong> likes
+                </div>
+              </div>
+              <div class="achievement-post-caption">
+                <p>
+                  <span class="username-caption">John Paul D. Godoy</span>
+                  From backstage to on-stage! I had an amazing time helping bring our Encanto fractured fairytale to life. My roles included co-directing, making props, and performing as the male version of Isabela Madrigal!
+
+And the result? Our class won every single award and took the trophy! 🏆 So incredibly proud of this team. #Encanto #Theater #StageProduction #PropsMaker #Director #IsabelaMadrigal #AwardWinners
+                </p>
+              </div>
             </div>
+
+            <!-- Achievement Post 2 -->
+            <div class="achievement-post" data-aos="fade-up" data-post-id="2">
+              <div class="achievement-post-header">
+                <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                  onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                <span class="username-caption">
+                  John Paul D. Godoy
+                  <i class="fas fa-check-circle verified-icon-post"></i>
+                </span>
+              </div>
+              <div class="achievement-post-image">
+                <div id="achievementCarousel2" class="carousel slide">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="Me/film5.jpg" class="d-block" alt="Achievement 2 Photo 1"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+2.1'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/film2.jpg" class="d-block" alt="Achievement 2 Photo 2"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+2.2'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/film3.jpg" class="d-block" alt="Achievement 2 Photo 3"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+2.3'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/film4.jpg" class="d-block" alt="Achievement 2 Photo 4"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+2.4'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/film6.jpg" class="d-block" alt="Achievement 2 Photo 5"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+2.5'">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#achievementCarousel2"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#achievementCarousel2"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+              <div class="achievement-post-footer">
+                <div class="floating-hearts-container">
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                </div>
+                <div class="post-actions">
+                  <i class="far fa-heart heart-btn"></i>
+                  <i class="far fa-comment"></i>
+                  <i class="far fa-paper-plane"></i>
+                </div>
+                <div class="post-likes">
+                  <strong>85</strong> likes
+                </div>
+              </div>
+              <div class="achievement-post-caption">
+                <p>
+                  <span class="username-caption">John Paul D. Godoy</span>
+                  From concept to final cut, I was all in. 🎬 So proud to have served as the Production and Technical Manager for our class "Philosofilm," which meant wearing many hats: Director, Scriptwriter, Camera Operator, Film Editor, and SFX Manager.
+
+The best part? We won BEST TRAILER, and I was honored to receive the award for BEST TRAILER EDITOR!
+
+Huge congratulations to the entire CSS team for bringing our vision to life! #Philosofilm #BestTrailer #BestEditor #Filmmaking #Director #CSS #TI
+                </p>
+              </div>
+            </div>
+
+            <!-- Achievement Post 3 -->
+            <div class="achievement-post" data-aos="fade-up" data-post-id="3">
+              <div class="achievement-post-header">
+                <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                  onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                <span class="username-caption">
+                  John Paul D. Godoy
+                  <i class="fas fa-check-circle verified-icon-post"></i>
+                </span>
+              </div>
+              <div class="achievement-post-image">
+                <div id="achievementCarousel3" class="carousel slide">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="Me/dance3.jpg" class="d-block" alt="Achievement 3 Photo 1"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+3.1'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/dance2.jpg" class="d-block" alt="Achievement 3 Photo 2"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+3.2'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/dance1.jpg" class="d-block" alt="Achievement 3 Photo 3"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+3.3'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/dance4.jpg" class="d-block" alt="Achievement 3 Photo 4"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+3.4'">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/dance5.jpg" class="d-block" alt="Achievement 3 Photo 5"
+                        onerror="this.src='https://placehold.co/600x600/2a2d34/white?text=Cert+3.5'">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#achievementCarousel3"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#achievementCarousel3"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+              <div class="achievement-post-footer">
+                <div class="floating-hearts-container">
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                </div>
+                <div class="post-actions">
+                  <i class="far fa-heart heart-btn"></i>
+                  <i class="far fa-comment"></i>
+                  <i class="far fa-paper-plane"></i>
+                </div>
+                <div class="post-likes">
+                  <strong>120</strong> likes
+                </div>
+              </div>
+              <div class="achievement-post-caption">
+                <p>
+                  <span class="username-caption">John Paul D. Godoy</span>
+                 From crafting the props to dancing on stage, every bit of hard work paid off! 🥳 Our section, CSS 12-A, is the official CHAMPION of the Festival Dance! What a way to represent the Maskara Festival!
+                  #Champion #Maskara #FestivalDance #PropsMaker #Dancer #CSS12A #TI
+                </p>
+              </div>
+            </div>
+
+            <!-- Achievement Post 4 -->
+            <div class="achievement-post" data-aos="fade-up" data-post-id="4">
+              <div class="achievement-post-header">
+                <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                  onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                <span class="username-caption">
+                  John Paul D. Godoy
+                  <i class="fas fa-check-circle verified-icon-post"></i>
+                </span>
+              </div>
+              <div class="achievement-post-image">
+                <div id="achievementCarousel4" class="carousel slide">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="Me/ojt.jpg" class="d-block"
+                        alt="Achievement 4 Photo 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/ojt2.jpg" class="d-block"
+                        alt="Achievement 4 Photo 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/ojt3.jpg" class="d-block"
+                        alt="Achievement 4 Photo 3">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/ojt4.jpg" class="d-block"
+                        alt="Achievement 4 Photo 4">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="Me/ojt5.jpg" class="d-block"
+                        alt="Achievement 4 Photo 5">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#achievementCarousel4"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#achievementCarousel4"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+              <div class="achievement-post-footer">
+                <div class="floating-hearts-container">
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                  <i class="fas fa-heart heart-particle"></i>
+                </div>
+                <div class="post-actions">
+                  <i class="far fa-heart heart-btn"></i>
+                  <i class="far fa-comment"></i>
+                  <i class="far fa-paper-plane"></i>
+                </div>
+                <div class="post-likes">
+                  <strong>77</strong> likes
+                </div>
+              </div>
+              <div class="achievement-post-caption">
+                <p>
+                  <span class="username-caption">John Paul D. Godoy</span>
+                 My IT Internship at Roman Canadian Immigration Services (RAIS) has officially come to an end!
+
+I'm so thankful for the lessons learned and the experience gained. A special thank you to my supervisors for their amazing support and to my fellow interns for being the best team.
+
+It was a pleasure to learn and grow alongside you all as we teamed up to build the new company website, romanais.ca. Proud of our work!
+
+#Internship #RAIS #Grateful #WebDev #Teamwork #IT #romanais
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -1950,6 +2611,7 @@
     </div>
   </footer>
 
+  <!-- Gallery Modal -->
   <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
@@ -1969,11 +2631,12 @@
                           onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
                         <div class="caption-content">
                           <strong>John Paul D. Godoy</strong>
-                          My first post on the new gallery! What do you think?
+                          1st.
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="/A06/photos/chaewon2.jpg" alt="User 1" class="profile-pic">
+                        <img src="Me/chaewon2.jpg" alt="User 1" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=C'">
                         <div class="comment-content">
                           <strong>chaechae1</strong> :>
                         </div>
@@ -1994,7 +2657,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="Me/winter.webp" alt="User 2" class="profile-pic">
+                        <img src="Me/winter.webp" alt="User 2" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=W'">
                         <div class="comment-content">
                           <strong>Winter</strong> 🔥🔥🔥
                         </div>
@@ -2015,7 +2679,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="Me/karina.jpg" alt="User 3" class="profile-pic">
+                        <img src="Me/karina.jpg" alt="User 3" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=K'">
                         <div class="comment-content">
                           <strong>Karina</strong> 💕
                         </div>
@@ -2036,7 +2701,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="Me/asa.jpg" alt="User 1" class="profile-pic">
+                        <img src="Me/asa.jpg" alt="User 1" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=A'">
                         <div class="comment-content">
                           <strong>Asa</strong> 😻
                         </div>
@@ -2057,7 +2723,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="Me/yooyeon.jpg" alt="User 2" class="profile-pic">
+                        <img src="Me/yooyeon.jpg" alt="User 2" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=Y'">
                         <div class="comment-content">
                           <strong>Yooyeon_04</strong> 🙀🙀🙀
                         </div>
@@ -2078,7 +2745,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="Me/hayoung.webp" alt="User 3" class="profile-pic">
+                        <img src="Me/hayoung.webp" alt="User 3" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=H'">
                         <div class="comment-content">
                           <strong>Hayoung</strong> 😽
                         </div>
@@ -2099,7 +2767,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="Me/chaewon2.jpg" alt="User 1" class="profile-pic">
+                        <img src="Me/chaewon2.jpg" alt="User 1" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=C'">
                         <div class="comment-content">
                           <strong>kimchae1</strong> ♡´･ᴗ･`♡
                         </div>
@@ -2120,7 +2789,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="Me/yy.webp" alt="User 2" class="profile-pic">
+                        <img src="Me/yy.webp" alt="User 2" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=Y'">
                         <div class="comment-content">
                           <strong>yooyeon_nie</strong> 🥰
                         </div>
@@ -2141,7 +2811,8 @@
                         </div>
                       </div>
                       <div class="post-comment-item">
-                        <img src="/A06/photos/karina3.jpg" alt="User 3" class="profile-pic">
+                        <img src="Me/karina3.jpg" alt="User 3" class="profile-pic"
+                          onerror="this.src='https://placehold.co/32x32/eee/333?text=K'">
                         <div class="comment-content">
                           <strong>katarinablu</strong> T_T
                         </div>
@@ -2176,6 +2847,7 @@
               </div>
 
               <div class="instagram-post-body" id="gallery-post-body">
+                <!-- Content injected by JS -->
               </div>
 
               <div class="instagram-post-footer">
@@ -2194,11 +2866,14 @@
 
                 <div class="collapse" id="galleryReactions">
                   <ul class="reaction-list">
-                    <li><img src="Me/chaewon2.jpg" alt="User 1"> <strong>chaewon</strong>
+                    <li><img src="Me/chaewon2.jpg" alt="User 1"
+                        onerror="this.src='https://placehold.co/32x32/eee/333?text=C'"> <strong>chaewon</strong>
                     </li>
-                    <li><img src="Me/winter.webp" alt="User 2"> <strong>winter</strong>
+                    <li><img src="Me/winter.webp" alt="User 2"
+                        onerror="this.src='https://placehold.co/32x32/eee/333?text=W'"> <strong>winter</strong>
                     </li>
-                    <li><img src="Me/karina.jpg" alt="User 3"> <strong>karina</strong>
+                    <li><img src="Me/karina.jpg" alt="User 3"
+                        onerror="this.src='https://placehold.co/32x32/eee/333?text=K'"> <strong>karina</strong>
                     </li>
                   </ul>
                 </div>
@@ -2211,11 +2886,12 @@
     </div>
   </div>
 
+  <!-- Story Modal -->
   <div class="modal fade instagram-story-modal" id="storyModal" tabindex="-1" aria-labelledby="storyModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div classs="modal-header">
+        <div class="modal-header">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -2297,14 +2973,68 @@
             </a>
             <div class="collapse" id="storyReactions">
               <ul class="reaction-list">
-                <li><img src="Me/chaewon2.jpg" alt="User 1"> <strong>chaewon</strong>
+                <li><img src="Me/chaewon2.jpg" alt="User 1"
+                    onerror="this.src='https://placehold.co/32x32/eee/333?text=C'"> <strong>chaewon</strong>
                 </li>
-                <li><img src="Me/winter.webp" alt="User 2"> <strong>winter</strong></li>
-                <li><img src="Me/karina.jpg" alt="User 3"> <strong>karina</strong></li>
+                <li><img src="Me/winter.webp" alt="User 2"
+                    onerror="this.src='https://placehold.co/32x32/eee/333?text=W'"> <strong>winter</strong></li>
+                <li><img src="Me/karina.jpg" alt="User 3"
+                    onerror="this.src='https://placehold.co/32x32/eee/333?text=K'"> <strong>karina</strong></li>
               </ul>
             </div>
           </div>
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievement Preview Modal -->
+  <div class="modal fade" id="achievementModal" tabindex="-1" aria-labelledby="achievementModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="instagram-post-container">
+
+            <div class="instagram-post-image">
+              <div id="achievementModalCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                  <!-- Carousel items will be injected by JS -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#achievementModalCarousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#achievementModalCarousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="instagram-post-details">
+              <div class="instagram-post-header">
+                <img src="Me/profile2.jpg" alt="Profile" class="profile-pic"
+                  onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+                <span class="username">
+                  John Paul D. Godoy
+                  <i class="fas fa-check-circle verified-icon-post"></i>
+                </span>
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="instagram-post-body" id="achievement-modal-body">
+                <!-- Post caption and comments will be injected by JS -->
+              </div>
+
+              <div class="instagram-post-footer" id="achievement-modal-footer">
+                <!-- Footer content (like button, etc.) will be injected by JS -->
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2329,6 +3059,7 @@
       const isLight = body.classList.contains('light-theme');
       toggleBtn.textContent = isLight ? 'Dark Mode' : 'Light Mode'; // Adjusted logic
 
+      // Update close button for Gallery Modal
       const galleryCloseBtn = document.querySelector('#galleryModal .btn-close');
       if (galleryCloseBtn) {
         if (isLight) {
@@ -2338,6 +3069,17 @@
         }
       }
 
+      // Update close button for Achievement Modal
+      const achievementCloseBtn = document.querySelector('#achievementModal .btn-close');
+      if (achievementCloseBtn) {
+        if (isLight) {
+          achievementCloseBtn.classList.remove('btn-close-white');
+        } else {
+          achievementCloseBtn.classList.add('btn-close-white');
+        }
+      }
+
+      // Update particles
       if (typeof pJSDom !== 'undefined' && pJSDom.length > 0) {
         let particleColor = isLight ? '#2a2d34' : '#9370DB';
         let lineColor = isLight ? '#2a2d34' : '#9370DB';
@@ -2353,10 +3095,11 @@
       updateToggleButton();
     });
 
+    // Run on initial load
     updateToggleButton();
 
+    // --- Active Nav Link ---
     const navLinks = document.querySelectorAll('.nav-link');
-
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === 'index.html') {
@@ -2364,6 +3107,7 @@
       }
     });
 
+    // --- Gallery Modal ---
     const galleryModal = document.getElementById('galleryModal');
     const galleryCarousel = new bootstrap.Carousel(document.getElementById('galleryCarousel'), {
       interval: false,
@@ -2396,6 +3140,7 @@
       galleryCarousel.to(slideIndex);
       updateGalleryPostData(slideIndex);
 
+      // Ensure close button theme is correct when modal opens
       const closeBtn = galleryModal.querySelector('.btn-close');
       if (body.classList.contains('light-theme')) {
         closeBtn.classList.remove('btn-close-white');
@@ -2409,6 +3154,7 @@
     });
 
 
+    // --- Story Modal ---
     const storyModal = document.getElementById('storyModal');
     const storyCarousel = new bootstrap.Carousel(document.getElementById('storyCarousel'), {
       interval: false,
@@ -2424,6 +3170,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
 
+      // --- Profile Pic Flip ---
       const picContainer = document.querySelector('.profile-pic-container');
       let flipTimeout;
 
@@ -2444,6 +3191,7 @@
       }
 
 
+      // --- Music Player ---
       const videoPlayer = document.getElementById('video-player');
       const playPauseBtn = document.getElementById('play-pause-btn');
       const playPauseIcon = document.getElementById('play-pause-icon');
@@ -2587,12 +3335,12 @@
           const songItem = document.createElement('div');
           songItem.classList.add('song-item');
           songItem.innerHTML = `
-                                    <img src="${song.img}" alt="${song.title}">
-                                    <div class="song-info">
-                                        <div class="title">${song.title}</div>
-                                        <div class="artist">${song.artist}</div>
-                                    </div>
-                                `;
+                                <img src="${song.img}" alt="${song.title}"  onerror="this.src='https://placehold.co/50x50/444/fff?text=${song.title.charAt(0)}'">
+                                <div class="song-info">
+                                    <div class="title">${song.title}</div>
+                                    <div class="artist">${song.artist}</div>
+                                </div>
+                            `;
 
           songItem.addEventListener('click', () => {
             currentSongIndex = index;
@@ -2642,9 +3390,163 @@
       }
 
 
-    });
+      // --- Achievement Feed & Modal ---
+
+      // 1. Like Button & Heart Animation
+      document.querySelectorAll('.heart-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const postFooter = button.closest('.achievement-post-footer');
+          if (!postFooter) return;
+
+          const heartsContainer = postFooter.querySelector('.floating-hearts-container');
+          const likesStrong = postFooter.querySelector('.post-likes strong');
+          let likes = parseInt(likesStrong.textContent, 10);
+
+          if (button.classList.contains('far')) { // Liked
+            button.classList.remove('far');
+            button.classList.add('fas');
+            likes++;
+            if (heartsContainer) {
+              heartsContainer.classList.add('animate');
+              setTimeout(() => {
+                heartsContainer.classList.remove('animate');
+              }, 2000); // Match animation duration
+            }
+          } else { // Unliked
+            button.classList.remove('fas');
+            button.classList.add('far');
+            likes--;
+          }
+          likesStrong.textContent = likes;
+        });
+      });
+
+      // 2. Achievement Modal
+      const achievementModal = document.getElementById('achievementModal');
+      const achievementModalCarousel = new bootstrap.Carousel(document.getElementById('achievementModalCarousel'), {
+        interval: false, // We control this manually
+        wrap: true
+      });
+      const modalCarouselInner = achievementModal.querySelector('.carousel-inner');
+      const modalBody = document.getElementById('achievement-modal-body');
+      const modalFooter = document.getElementById('achievement-modal-footer');
+      const modalCloseBtn = achievementModal.querySelector('.btn-close');
+
+      // Add click listeners to post images *only*
+      document.querySelectorAll('.achievement-post .carousel-item img').forEach(img => {
+        img.addEventListener('click', (e) => {
+          const post = e.target.closest('.achievement-post');
+          const postCarousel = post.querySelector('.carousel');
+          const postImages = post.querySelectorAll('.carousel-item');
+          const postCaption = post.querySelector('.achievement-post-caption').innerHTML;
+          const postFooter = post.querySelector('.achievement-post-footer').cloneNode(true); // Clone footer
+
+          // Find the active image index in the *post's* carousel
+          const activeIndex = Array.from(postImages).findIndex(item => item.classList.contains('active'));
+
+          // 1. Populate Modal Carousel
+          modalCarouselInner.innerHTML = ''; // Clear previous images
+          postImages.forEach((item, index) => {
+            const newCarouselItem = document.createElement('div');
+            newCarouselItem.className = `carousel-item ${index === activeIndex ? 'active' : ''}`;
+            newCarouselItem.innerHTML = item.innerHTML; // Copy the image
+            modalCarouselInner.appendChild(newCarouselItem);
+          });
+
+          // 2. Populate Modal Body (Caption)
+          const captionContainer = document.createElement('div');
+          captionContainer.className = 'post-caption-container';
+          captionContainer.innerHTML = `
+            <img src="Me/profile2.jpg" alt="Profile" class="profile-pic" onerror="this.src='https://placehold.co/40x40/9370DB/white?text=JP'">
+            <div class="caption-content">
+              ${postCaption}
+            </div>
+          `;
+          modalBody.innerHTML = ''; // Clear
+          modalBody.appendChild(captionContainer);
+
+          // 3. Populate Modal Footer
+          modalFooter.innerHTML = ''; // Clear
+          // We need to re-add event listeners to the *cloned* footer
+          const newHeartBtn = postFooter.querySelector('.heart-btn');
+          const newLikesStrong = postFooter.querySelector('.post-likes strong');
+          const newHeartsContainer = postFooter.querySelector('.floating-hearts-container');
+
+          if (newHeartBtn) {
+            newHeartBtn.addEventListener('click', () => {
+              let likes = parseInt(newLikesStrong.textContent, 10);
+              if (newHeartBtn.classList.contains('far')) {
+                newHeartBtn.classList.remove('far');
+                newHeartBtn.classList.add('fas');
+                likes++;
+                if (newHeartsContainer) {
+                  newHeartsContainer.classList.add('animate');
+                  setTimeout(() => newHeartsContainer.classList.remove('animate'), 2000);
+                }
+              } else {
+                newHeartBtn.classList.remove('fas');
+                newHeartBtn.classList.add('far');
+                likes--;
+              }
+              newLikesStrong.textContent = likes;
+
+              // Sync back to the main page post
+              const originalPost = document.querySelector(`.achievement-post[data-post-id="${post.dataset.postId}"]`);
+              if (originalPost) {
+                originalPost.querySelector('.heart-btn').className = newHeartBtn.className;
+                originalPost.querySelector('.post-likes strong').textContent = likes;
+              }
+            });
+          }
+          modalFooter.appendChild(postFooter);
+
+          // 4. Set correct theme for close button
+          if (body.classList.contains('light-theme')) {
+            modalCloseBtn.classList.remove('btn-close-white');
+          } else {
+            modalCloseBtn.classList.add('btn-close-white');
+          }
+
+          // 5. Show Modal
+          const modalInstance = bootstrap.Modal.getOrCreateInstance(achievementModal);
+          modalInstance.show();
+
+          // 6. Sync modal carousel to the clicked image index
+          achievementModalCarousel.to(activeIndex);
+        });
+      });
+
+      // Sync likes back to main page when modal is closed
+      achievementModal.addEventListener('hidden.bs.modal', () => {
+        const modalHeartBtn = modalFooter.querySelector('.heart-btn');
+        const modalLikesStrong = modalFooter.querySelector('.post-likes strong');
+        if (!modalHeartBtn || !modalLikesStrong) return;
+
+        // Find which post this was
+        const postCaption = modalBody.querySelector('.caption-content p');
+        if (!postCaption) return;
+
+        // This is a bit brittle, relies on caption text. A data-post-id on the modal would be better.
+        // Let's find the original post by matching the caption text content.
+        const allCaptions = document.querySelectorAll('.achievement-post-caption p');
+        let originalPost = null;
+        allCaptions.forEach(caption => {
+          if (caption.textContent.trim() === postCaption.textContent.trim()) {
+            originalPost = caption.closest('.achievement-post');
+          }
+        });
+
+        if (originalPost) {
+          originalPost.querySelector('.heart-btn').className = modalHeartBtn.className;
+          originalPost.querySelector('.post-likes strong').textContent = modalLikesStrong.textContent;
+        }
+      });
 
 
+    }); // End DOMContentLoaded
+
+
+    // --- Particles.js Config ---
     function getParticlesConfig(particleColor, lineColor) {
       return {
         "particles": {
